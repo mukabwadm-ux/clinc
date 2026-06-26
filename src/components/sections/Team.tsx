@@ -12,7 +12,7 @@ const team: TeamMember[] = [
   {
     initials: 'RO',
     name: 'Robbins',
-    role: 'Co-Founder & Operations Director',
+    role: 'Social Media Manager',
     bio: "Robbins drives operational excellence across Clin-Corp's distribution network, ensuring products reach clients on time and at the highest standard. His technical expertise in coatings applications and logistics management is the backbone behind every successful project delivery across East Africa.",
     gradientFrom: '#1A3272',
     gradientTo: '#00D4B4',
