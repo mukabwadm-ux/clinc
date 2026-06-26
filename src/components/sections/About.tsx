@@ -8,16 +8,17 @@ export default function About() {
   const { ref, inView } = useInView()
 
   return (
-    <section id="about" className="bg-offwhite py-16 lg:py-28 relative overflow-hidden">
-      {/* Warm cream top accent */}
+    <section id="about" className="bg-offwhite py-12 sm:py-16 lg:py-28 relative overflow-hidden">
+      {/* Warm top accent line */}
       <div
         className="absolute top-0 left-0 right-0 h-1 pointer-events-none"
         style={{ background: 'linear-gradient(90deg, #00AEEF, #F5A623, #00D4B4)' }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-16 items-center">
-          {/* Left: text content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 sm:gap-12 lg:gap-16 items-center">
+
+          {/* Left: text */}
           <div
             ref={ref}
             className={cn(
@@ -25,17 +26,17 @@ export default function About() {
               inView ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'
             )}
           >
-            <span className="inline-flex items-center px-4 py-1.5 rounded-full border border-blue/40 bg-blue/10 text-blue text-xs font-semibold tracking-wider uppercase">
+            <span className="inline-flex items-center px-3 sm:px-4 py-1.5 rounded-full border border-blue/40 bg-blue/10 text-blue text-[10px] sm:text-xs font-semibold tracking-wider uppercase">
               Authorized Hempel Distributor
             </span>
-            <p className="font-mono text-[11px] text-slate uppercase tracking-[3px] mt-4">
+            <p className="font-mono text-[10px] sm:text-[11px] text-slate uppercase tracking-[3px] mt-3 sm:mt-4">
               WHO WE ARE
             </p>
-            <h2 className="font-sans font-black text-4xl lg:text-5xl text-navy leading-tight mt-3">
+            <h2 className="font-sans font-black text-navy leading-tight mt-2 sm:mt-3" style={{ fontSize: 'clamp(28px, 5vw, 48px)' }}>
               Built on Expertise.<br />
               <span className="text-blue">Driven by Results.</span>
             </h2>
-            <p className="font-sans text-base text-slate leading-relaxed mt-6">
+            <p className="font-sans text-sm sm:text-base text-slate leading-relaxed mt-4 sm:mt-6">
               Clin-Corp is Kenya&apos;s Authorized Distributor for Hempel Industrial and Marine
               Coatings, proudly serving East Africa from Nairobi since 2024. In under two years,
               we have captured <strong className="text-navy font-bold">37% market share</strong> across
@@ -47,25 +48,24 @@ export default function About() {
               href="https://www.hempel.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-blue font-semibold text-sm mt-6 hover:gap-3 transition-all"
+              className="inline-flex items-center gap-2 text-blue font-semibold text-sm mt-5 sm:mt-6 hover:gap-3 transition-all"
             >
               Learn About Hempel <ArrowRight size={16} />
             </a>
           </div>
 
-          {/* Right: concentric circles with glow */}
-          <div className="relative flex items-center justify-center w-full aspect-square max-w-[300px] mx-auto">
-            {/* Glow */}
+          {/* Right: concentric circles graphic */}
+          <div className="relative flex items-center justify-center w-full aspect-square max-w-[220px] sm:max-w-[260px] lg:max-w-[300px] mx-auto">
             <div
               className="absolute inset-0 rounded-full pointer-events-none"
               style={{ background: 'radial-gradient(circle, rgba(0,174,239,0.20) 0%, transparent 70%)', filter: 'blur(30px)' }}
             />
-            <div className="absolute w-[280px] h-[280px] rounded-full border-[12px] border-navy animate-spin [animation-duration:30s]" />
-            <div className="absolute w-[220px] h-[220px] rounded-full border-[10px] border-blue/20" />
-            <div className="absolute w-[160px] h-[160px] rounded-full border-[10px] border-navy" />
-            <div className="absolute w-[100px] h-[100px] rounded-full border-[10px] border-blue/20" />
+            <div className="absolute w-[90%] h-[90%] rounded-full border-[10px] sm:border-[12px] border-navy animate-spin [animation-duration:30s]" />
+            <div className="absolute w-[70%] h-[70%] rounded-full border-[8px] sm:border-[10px] border-blue/20" />
+            <div className="absolute w-[52%] h-[52%] rounded-full border-[8px] sm:border-[10px] border-navy" />
+            <div className="absolute w-[32%] h-[32%] rounded-full border-[8px] sm:border-[10px] border-blue/20" />
             <div
-              className="w-12 h-12 rounded-full shadow-[0_0_20px_rgba(0,212,180,0.6)]"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full shadow-[0_0_20px_rgba(0,212,180,0.6)]"
               style={{ background: 'linear-gradient(135deg, #00AEEF, #00D4B4)' }}
             />
           </div>

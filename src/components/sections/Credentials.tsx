@@ -32,28 +32,30 @@ export default function Credentials() {
   const { ref, inView } = useInView()
 
   return (
-    <section className="bg-offwhite py-16 lg:py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <p className="font-mono text-[11px] text-slate uppercase tracking-[3px]">OUR CREDENTIALS</p>
-        <h2 className="font-sans font-black text-4xl lg:text-5xl text-navy mt-3">
+    <section className="bg-offwhite py-12 sm:py-16 lg:py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p className="font-mono text-[10px] sm:text-[11px] text-slate uppercase tracking-[3px]">OUR CREDENTIALS</p>
+        <h2 className="font-sans font-black text-navy mt-2 sm:mt-3" style={{ fontSize: 'clamp(24px, 4.5vw, 48px)' }}>
           A Foundation Built<br /><span className="text-blue">for Excellence.</span>
         </h2>
 
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 mt-8 sm:mt-10 lg:mt-12">
           {credentials.map((cred, i) => (
             <div
               key={cred.title}
               className={cn(
-                `bg-white border-l-4 ${cred.accent} ${cred.hover} rounded-r-xl p-8 shadow-md hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-default`,
+                `bg-white border-l-4 ${cred.accent} ${cred.hover} rounded-r-xl p-5 sm:p-6 lg:p-8 shadow-md hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-default`,
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               )}
               style={{ transitionDelay: `${i * 0.15}s`, transitionDuration: '0.6s' }}
             >
-              <div className="w-12 h-12 rounded-xl bg-blue/10 flex items-center justify-center">
-                <cred.Icon className="text-blue" size={24} />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue/10 flex items-center justify-center">
+                <cred.Icon className="text-blue" size={20} />
               </div>
-              <h3 className="font-sans font-bold text-xl text-navy mt-5">{cred.title}</h3>
-              <p className="font-sans text-sm text-slate leading-relaxed mt-2">{cred.body}</p>
+              <h3 className="font-sans font-bold text-navy mt-4 sm:mt-5" style={{ fontSize: 'clamp(16px, 2.5vw, 20px)' }}>
+                {cred.title}
+              </h3>
+              <p className="font-sans text-xs sm:text-sm text-slate leading-relaxed mt-2">{cred.body}</p>
             </div>
           ))}
         </div>

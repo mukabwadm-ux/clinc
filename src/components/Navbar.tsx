@@ -27,17 +27,17 @@ export default function Navbar() {
       <nav
         className={cn(
           'fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-md transition-all duration-300',
-          scrolled ? 'py-3 shadow-[0_4px_30px_rgba(0,0,0,0.4)]' : 'py-5'
+          scrolled ? 'py-2 shadow-[0_4px_30px_rgba(0,0,0,0.4)]' : 'py-3 lg:py-5'
         )}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <a href="#home">
             <Image
               src="/clincorp_logo.png"
               alt="Clin-Corp"
-              height={48}
-              width={160}
-              className="object-contain bg-white rounded-md px-2 py-1"
+              height={40}
+              width={130}
+              className="object-contain bg-white rounded-md px-2 py-1 w-[110px] sm:w-[130px] lg:w-[150px] h-auto"
             />
           </a>
 
@@ -62,7 +62,7 @@ export default function Navbar() {
 
           {/* Mobile menu toggle */}
           <button
-            className="lg:hidden text-white"
+            className="lg:hidden text-white p-1"
             onClick={() => setMenuOpen(true)}
             aria-label="Open menu"
           >
@@ -73,9 +73,9 @@ export default function Navbar() {
 
       {/* Mobile overlay */}
       {menuOpen && (
-        <div className="fixed inset-0 bg-dark/97 z-40 flex flex-col items-center justify-center gap-8">
+        <div className="fixed inset-0 bg-dark/97 z-40 flex flex-col items-center justify-center gap-6 px-6">
           <button
-            className="absolute top-6 right-6 text-white"
+            className="absolute top-5 right-5 text-white p-1"
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
           >
@@ -86,7 +86,8 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="font-sans font-black text-4xl text-white hover:text-blue transition-colors"
+              className="font-sans font-black text-white hover:text-blue transition-colors"
+              style={{ fontSize: 'clamp(28px, 8vw, 40px)' }}
             >
               {link.label}
             </a>
