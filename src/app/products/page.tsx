@@ -66,7 +66,7 @@ function ProductCard({ name, code, tag, description, image, href, accent }: {
 
         <div className="flex items-center gap-4 mt-5 flex-wrap">
           {href && (
-            <a href={href} className="inline-flex items-center gap-1.5 text-white text-xs font-bold tracking-widest uppercase border border-white/20 bg-white/5 hover:bg-white/10 rounded-lg px-4 py-2 transition-all">
+            <a href={href} className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest uppercase border rounded-lg px-4 py-2 transition-all hover:opacity-80" style={{ color: '#F5A623', borderColor: 'rgba(245,166,35,0.35)', background: 'rgba(245,166,35,0.08)' }}>
               View Product <ArrowRight size={13} />
             </a>
           )}
