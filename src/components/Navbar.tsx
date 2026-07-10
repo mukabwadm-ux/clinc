@@ -10,7 +10,7 @@ const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Expertise', href: '#expertise' },
   { label: 'Team', href: '#team' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 export default function Navbar() {
@@ -54,7 +54,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="/contact"
               className="bg-blue text-white rounded-full px-6 py-2 text-sm font-semibold hover:bg-steel transition-colors"
             >
               GET A QUOTE
@@ -94,7 +94,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="/contact"
             onClick={() => setMenuOpen(false)}
             className="bg-blue text-white rounded-full px-8 py-3 text-sm font-semibold hover:bg-steel transition-colors mt-4"
           >

@@ -81,8 +81,8 @@ export default function Contact() {
             </div>
             <div>
               <p className="font-sans text-[10px] text-slate uppercase tracking-widest mb-1">Email</p>
-              <a href="mailto:clinton@clincorp.co.ke" className="font-sans font-semibold text-navy hover:text-blue transition-colors text-sm sm:text-base break-all">
-                clinton@clincorp.co.ke
+              <a href="mailto:clinton@clin-corp.com" className="font-sans font-semibold text-navy hover:text-blue transition-colors text-sm sm:text-base break-all">
+                clinton@clin-corp.com
               </a>
             </div>
           </div>

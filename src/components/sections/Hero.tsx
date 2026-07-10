@@ -90,7 +90,7 @@ export default function Hero() {
                 OUR PRODUCTS
               </a>
               <a
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center justify-center border border-white/30 text-white bg-white/5 hover:bg-white hover:text-navy rounded-md px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-bold tracking-widest uppercase transition-all backdrop-blur-sm"
               >
                 GET A QUOTE

@@ -9,8 +9,8 @@ const navLinks: Record<string, string> = {
   About: '#about',
   Expertise: '#expertise',
   Team: '#team',
-  Contact: '#contact',
-  'Get a Quote': '#contact',
+  Contact: '/contact',
+  'Get a Quote': '/contact',
 }
 
 export default function Footer() {
