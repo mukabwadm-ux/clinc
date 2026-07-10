@@ -44,7 +44,7 @@ function ProductCard({ name, code, tag, description, image, href, accent }: {
 
       {/* Product image if available */}
       {image && (
-        <div className="flex items-center justify-center px-8 pt-8 pb-4" style={{ background: 'rgba(13,27,69,0.5)' }}>
+        <div className="flex items-center justify-center px-8 pt-8 pb-4 bg-white">
           <Image src={image} alt={name} width={140} height={140} className="object-contain drop-shadow-xl" />
         </div>
       )}

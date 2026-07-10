@@ -35,8 +35,7 @@ export default function HempalinEnamel52140() {
             {/* Product image */}
             <div className="flex flex-col items-center">
               <div
-                className="w-full rounded-2xl overflow-hidden border border-white/10 flex items-center justify-center p-8 sm:p-12"
-                style={{ background: 'linear-gradient(135deg, #0D1B45, #07111F)' }}
+                className="w-full rounded-2xl overflow-hidden border border-gray-100 flex items-center justify-center p-8 sm:p-12 bg-white"
               >
                 <Image
                   src="/hempel-marine-can.png"
