@@ -119,7 +119,7 @@ export default function ProductsPage() {
         </div>
 
         {/* ── Marine Coatings ── */}
-        <section className="py-12 sm:py-16 lg:py-24 relative overflow-hidden">
+        <section id="marine" className="py-12 sm:py-16 lg:py-24 relative overflow-hidden">
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #07111F, #0a1628)' }} />
           <div
             className="absolute top-0 left-0 right-0 h-px"
@@ -147,7 +147,7 @@ export default function ProductsPage() {
         </section>
 
         {/* ── Industrial Coatings ── */}
-        <section className="py-12 sm:py-16 lg:py-24 relative overflow-hidden">
+        <section id="industrial" className="py-12 sm:py-16 lg:py-24 relative overflow-hidden">
           <div className="absolute inset-0 bg-offwhite" />
           <div
             className="absolute top-0 left-0 right-0 h-1"

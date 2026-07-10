@@ -1,26 +1,21 @@
-import { BarChart3, Globe } from 'lucide-react'
+import Image from 'next/image'
+import { ArrowRight } from 'lucide-react'
 import PaintStrokeDivider from '@/components/PaintStrokeDivider'
 
 const cards = [
   {
-    icon: BarChart3,
-    heading: 'Industrial Coatings',
-    body: 'From protective coatings for heavy machinery to anti-corrosion solutions for critical infrastructure, we deliver Hempel\'s world-class industrial product range across Kenya and East Africa. Our expert team ensures every application meets global performance standards.',
-    achievements: [
-      '37% Market Share in East Africa',
-      'Full Hempel Industrial Portfolio',
-      'Trusted by Major Kenyan Industries',
-    ],
-  },
-  {
-    icon: Globe,
+    image: '/marine-coatings.webp',
     heading: 'Marine Coatings',
     body: 'Specialising in anti-fouling, hull protection, and topside finishes, our marine coatings expertise keeps vessels performing at their peak in East African waters. We supply and support shipyards, vessel operators, and port facilities across the region.',
-    achievements: [
-      'Complete Marine Product Range',
-      'Mombasa Port Coverage',
-      'Certified Application Expertise',
-    ],
+    href: '/products#marine',
+    label: 'View Marine Products',
+  },
+  {
+    image: '/industrial-coatings.webp',
+    heading: 'Industrial Coatings',
+    body: 'From protective coatings for heavy machinery to anti-corrosion solutions for critical infrastructure, we deliver Hempel\'s world-class industrial product range across Kenya and East Africa. Our expert team ensures every application meets global performance standards.',
+    href: '/products#industrial',
+    label: 'View Industrial Products',
   },
 ]
 
@@ -47,24 +42,35 @@ export default function Expertise() {
           {cards.map((card) => (
             <div
               key={card.heading}
-              className="group bg-white/[0.03] border border-blue/15 rounded-2xl p-6 sm:p-8 lg:p-12 hover:border-blue hover:bg-white/[0.06] hover:shadow-[0_0_40px_rgba(0,174,239,0.12)] transition-all duration-300"
+              className="group bg-white/[0.03] border border-blue/15 rounded-2xl overflow-hidden hover:border-blue hover:shadow-[0_0_40px_rgba(0,174,239,0.12)] transition-all duration-300 flex flex-col"
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-blue/10 border border-blue/20 flex items-center justify-center group-hover:bg-blue/20 transition-colors">
-                <card.icon size={24} className="text-blue sm:hidden" />
-                <card.icon size={28} className="text-blue hidden sm:block" />
+              {/* Full-width image */}
+              <div className="relative w-full h-52 sm:h-60 lg:h-64 overflow-hidden">
+                <Image
+                  src={card.image}
+                  alt={card.heading}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                {/* Subtle bottom fade into card body */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#07111F]/60 via-transparent to-transparent" />
               </div>
-              <h3 className="font-sans font-bold text-white mt-4 sm:mt-6" style={{ fontSize: 'clamp(20px, 3vw, 30px)' }}>
-                {card.heading}
-              </h3>
-              <p className="font-sans text-sm sm:text-[15px] text-slate leading-relaxed mt-3 sm:mt-4">{card.body}</p>
-              <ul className="mt-4 sm:mt-6 space-y-2 sm:space-y-3">
-                {card.achievements.map((a) => (
-                  <li key={a} className="flex items-center gap-3 text-xs sm:text-sm text-white/90 font-medium">
-                    <span className="font-bold text-gold shrink-0">——</span>
-                    {a}
-                  </li>
-                ))}
-              </ul>
+
+              {/* Card body */}
+              <div className="p-6 sm:p-8 lg:p-10 flex flex-col flex-1">
+                <h3 className="font-sans font-black text-white" style={{ fontSize: 'clamp(20px, 3vw, 30px)' }}>
+                  {card.heading}
+                </h3>
+                <p className="font-sans text-sm sm:text-[15px] text-slate leading-relaxed mt-3 sm:mt-4 flex-1">
+                  {card.body}
+                </p>
+                <a
+                  href={card.href}
+                  className="inline-flex items-center gap-2 mt-6 text-sm font-bold tracking-widest uppercase text-blue hover:gap-4 transition-all"
+                >
+                  {card.label} <ArrowRight size={15} />
+                </a>
+              </div>
             </div>
           ))}
         </div>
