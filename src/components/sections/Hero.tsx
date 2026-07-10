@@ -87,7 +87,7 @@ export default function Hero() {
                 href="#expertise"
                 className="inline-flex items-center justify-center bg-blue text-white rounded-md px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-bold tracking-widest uppercase hover:bg-steel transition-colors shadow-[0_0_24px_rgba(0,174,239,0.35)]"
               >
-                EXPLORE SOLUTIONS
+                OUR PRODUCTS
               </a>
               <a
                 href="#contact"
