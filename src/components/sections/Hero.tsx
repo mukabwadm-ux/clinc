@@ -59,19 +59,13 @@ export default function Hero() {
                 className={`block whitespace-nowrap transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                 style={{ transitionDelay: '0.15s' }}
               >
-                CLIN-CORP.
-              </span>
-              <span
-                className={`block whitespace-nowrap text-blue transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                style={{ transitionDelay: '0.3s' }}
-              >
-                FUTURE
+                CLINCORP.
               </span>
               <span
                 className={`block whitespace-nowrap transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                style={{ transitionDelay: '0.45s' }}
+                style={{ transitionDelay: '0.3s' }}
               >
-                <span className="hero-underline">TODAY.</span>
+                <span className="text-blue">FUTURE </span><span className="hero-underline">TODAY.</span>
               </span>
             </h1>
 
