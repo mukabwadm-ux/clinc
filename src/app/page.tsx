@@ -4,7 +4,6 @@ import Stats from '@/components/sections/Stats'
 import About from '@/components/sections/About'
 import Expertise from '@/components/sections/Expertise'
 import Credentials from '@/components/sections/Credentials'
-import Team from '@/components/sections/Team'
 import Footer from '@/components/sections/Footer'
 
 export default function Home() {
@@ -16,7 +15,6 @@ export default function Home() {
       <About />
       <Expertise />
       <Credentials />
-      <Team />
       <Footer />
     </main>
   )

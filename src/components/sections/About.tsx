@@ -45,12 +45,10 @@ export default function About() {
               we deliver coating solutions engineered to last.
             </p>
             <a
-              href="https://www.hempel.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/about"
               className="inline-flex items-center gap-2 text-blue font-semibold text-sm mt-5 sm:mt-6 hover:gap-3 transition-all"
             >
-              Learn About Hempel <ArrowRight size={16} />
+              Learn About Us <ArrowRight size={16} />
             </a>
           </div>
 
