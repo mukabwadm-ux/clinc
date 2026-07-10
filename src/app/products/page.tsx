@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { ArrowRight, Anchor, Factory } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
@@ -9,12 +10,19 @@ export const metadata: Metadata = {
 }
 
 const marineProducts = [
-  { name: 'Product Name', tag: 'Anti-Fouling', description: 'Short product description goes here. Engineered for superior protection in demanding marine environments.' },
-  { name: 'Product Name', tag: 'Hull Protection', description: 'Short product description goes here. Engineered for superior protection in demanding marine environments.' },
-  { name: 'Product Name', tag: 'Anti-Corrosion', description: 'Short product description goes here. Engineered for superior protection in demanding marine environments.' },
-  { name: 'Product Name', tag: 'Primer', description: 'Short product description goes here. Engineered for superior protection in demanding marine environments.' },
-  { name: 'Product Name', tag: 'Topcoat', description: 'Short product description goes here. Engineered for superior protection in demanding marine environments.' },
-  { name: 'Product Name', tag: 'Deck Coating', description: 'Short product description goes here. Engineered for superior protection in demanding marine environments.' },
+  {
+    name: 'Hempalin Enamel 52140',
+    code: '#52140',
+    tag: 'Topcoats',
+    description: 'A glossy, general purpose alkyd topcoat forming a weather resistant coating. Flexible and resistant to salt water and spillage of mineral oil and aliphatic hydrocarbons.',
+    image: '/hempel-marine-can.png',
+    href: '/products/hempalin-enamel-52140',
+  },
+  { name: 'Product Name', code: '', tag: 'Hull Protection', description: 'Short product description goes here. Engineered for superior protection in demanding marine environments.', image: null, href: null },
+  { name: 'Product Name', code: '', tag: 'Anti-Corrosion', description: 'Short product description goes here. Engineered for superior protection in demanding marine environments.', image: null, href: null },
+  { name: 'Product Name', code: '', tag: 'Anti-Fouling', description: 'Short product description goes here. Engineered for superior protection in demanding marine environments.', image: null, href: null },
+  { name: 'Product Name', code: '', tag: 'Primer', description: 'Short product description goes here. Engineered for superior protection in demanding marine environments.', image: null, href: null },
+  { name: 'Product Name', code: '', tag: 'Deck Coating', description: 'Short product description goes here. Engineered for superior protection in demanding marine environments.', image: null, href: null },
 ]
 
 const industrialProducts = [
@@ -26,34 +34,46 @@ const industrialProducts = [
   { name: 'Product Name', tag: 'Tank Lining', description: 'Short product description goes here. Built to withstand the harshest industrial conditions and extend asset life.' },
 ]
 
-function ProductCard({ name, tag, description, accent }: { name: string; tag: string; description: string; accent: string }) {
+function ProductCard({ name, code, tag, description, image, href, accent }: {
+  name: string; code: string; tag: string; description: string
+  image: string | null; href: string | null; accent: string
+}) {
   return (
     <div className="group relative rounded-2xl border border-white/10 hover:border-blue/50 bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300 overflow-hidden flex flex-col">
-      {/* Top accent bar */}
       <div className="h-1 w-full" style={{ background: accent }} />
 
+      {/* Product image if available */}
+      {image && (
+        <div className="flex items-center justify-center px-8 pt-8 pb-4" style={{ background: 'rgba(13,27,69,0.5)' }}>
+          <Image src={image} alt={name} width={140} height={140} className="object-contain drop-shadow-xl" />
+        </div>
+      )}
+
       <div className="p-6 sm:p-7 flex flex-col flex-1">
-        {/* Tag */}
-        <span
-          className="inline-block self-start px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4"
-          style={{ background: 'rgba(0,174,239,0.12)', color: '#00AEEF' }}
-        >
-          {tag}
-        </span>
+        <div className="flex items-center gap-2 mb-4 flex-wrap">
+          <span className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest" style={{ background: 'rgba(0,174,239,0.12)', color: '#00AEEF' }}>
+            {tag}
+          </span>
+          {code && (
+            <span className="inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-widest" style={{ background: 'rgba(245,166,35,0.12)', color: '#F5A623' }}>
+              {code}
+            </span>
+          )}
+        </div>
 
-        {/* Product name */}
         <h3 className="font-sans font-black text-white text-lg sm:text-xl leading-tight">{name}</h3>
-
-        {/* Description */}
         <p className="font-sans text-slate text-sm leading-relaxed mt-3 flex-1">{description}</p>
 
-        {/* CTA */}
-        <a
-          href="/contact"
-          className="inline-flex items-center gap-2 text-blue text-sm font-semibold mt-5 hover:gap-3 transition-all"
-        >
-          Get a Quote <ArrowRight size={14} />
-        </a>
+        <div className="flex items-center gap-4 mt-5 flex-wrap">
+          {href && (
+            <a href={href} className="inline-flex items-center gap-1.5 text-white text-xs font-bold tracking-widest uppercase border border-white/20 bg-white/5 hover:bg-white/10 rounded-lg px-4 py-2 transition-all">
+              View Product <ArrowRight size={13} />
+            </a>
+          )}
+          <a href="/contact" className="inline-flex items-center gap-1.5 text-blue text-xs font-bold tracking-widest uppercase hover:gap-2.5 transition-all">
+            Get a Quote <ArrowRight size={13} />
+          </a>
+        </div>
       </div>
     </div>
   )
@@ -142,6 +162,7 @@ export default function ProductsPage() {
               {marineProducts.map((p, i) => (
                 <ProductCard key={i} {...p} accent="linear-gradient(90deg, #00AEEF, #00D4B4)" />
               ))}
+
             </div>
           </div>
         </section>
