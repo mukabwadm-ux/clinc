@@ -22,7 +22,7 @@ export default function Hero() {
       }}
     >
       {/* Dark navy overlay — keeps image visible but text readable */}
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(4,13,26,0.60) 0%, rgba(13,27,69,0.50) 50%, rgba(4,13,26,0.60) 100%)' }} />
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(4,13,26,0.88) 0%, rgba(4,13,26,0.80) 35%, rgba(13,27,69,0.40) 60%, rgba(4,13,26,0.10) 100%)' }} />
 
       {/* Cyan glow — top left */}
       <div
