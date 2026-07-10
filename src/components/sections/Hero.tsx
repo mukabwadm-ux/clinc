@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import { ChevronDown, ShieldCheck } from 'lucide-react'
 
 export default function Hero() {
@@ -13,24 +12,22 @@ export default function Hero() {
   }, [])
 
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden">
-
-      {/* Background image */}
-      <Image
-        src="/Hempel.webp"
-        alt="Hempel Coatings"
-        fill
-        className="object-cover object-center"
-        priority
-      />
-
+    <section
+      id="home"
+      className="relative min-h-screen overflow-hidden"
+      style={{
+        backgroundImage: 'url(/Hempel.webp)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
       {/* Dark navy overlay — keeps image visible but text readable */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#040D1A]/88 via-[#0D1B45]/80 to-[#040D1A]/88" />
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(4,13,26,0.82) 0%, rgba(13,27,69,0.72) 50%, rgba(4,13,26,0.82) 100%)' }} />
 
       {/* Cyan glow — top left */}
       <div
         className="absolute -top-20 -left-40 w-[600px] h-[600px] lg:w-[900px] lg:h-[900px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(0,174,239,0.15) 0%, transparent 70%)', filter: 'blur(60px)' }}
+        style={{ background: 'radial-gradient(circle, rgba(0,174,239,0.12) 0%, transparent 70%)', filter: 'blur(60px)' }}
       />
 
       {/* Gold glow — bottom right */}
