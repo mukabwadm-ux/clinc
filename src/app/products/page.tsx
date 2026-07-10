@@ -15,7 +15,7 @@ const marineProducts = [
     code: '#52140',
     tag: 'Topcoats',
     description: 'A glossy, general purpose alkyd topcoat forming a weather resistant coating. Flexible and resistant to salt water and spillage of mineral oil and aliphatic hydrocarbons.',
-    image: '/hempel-marine-can.png',
+    image: '/hempel-product-can.png',
     href: '/products/hempalin-enamel-52140',
   },
   { name: 'Product Name', code: '', tag: 'Hull Protection', description: 'Short product description goes here. Engineered for superior protection in demanding marine environments.', image: null, href: null },

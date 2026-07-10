@@ -38,7 +38,7 @@ export default function HempalinEnamel52140() {
                 className="w-full rounded-2xl overflow-hidden border border-gray-100 flex items-center justify-center p-8 sm:p-12 bg-white"
               >
                 <Image
-                  src="/hempel-marine-can.png"
+                  src="/hempel-product-can.png"
                   alt="Hempalin Enamel 52140"
                   width={280}
                   height={280}
