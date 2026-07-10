@@ -63,7 +63,7 @@ export default function Hero() {
               </span>
               <span
                 className={`block whitespace-nowrap transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                style={{ transitionDelay: '0.3s', fontSize: 'clamp(34px, 4.964vw, 68px)', marginTop: '10px' }}
+                style={{ transitionDelay: '0.3s', fontSize: 'clamp(29px, 4.219vw, 58px)', marginTop: '10px' }}
               >
                 <span className="text-blue">FUTURE </span><span className="hero-underline">TODAY.</span>
               </span>
