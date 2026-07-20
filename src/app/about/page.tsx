@@ -54,24 +54,49 @@ export default function AboutPage() {
       <main style={{ background: '#040D1A' }} className="text-white">
 
         {/* ── Hero ── */}
-        <section className="relative min-h-[65vh] flex items-end overflow-hidden">
+        <section className="relative min-h-screen overflow-hidden flex items-center">
           <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #040D1A 0%, #0D1B45 50%, #040D1A 100%)' }} />
           <div className="absolute -top-20 -left-40 w-[700px] h-[700px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(0,112,192,0.10) 0%, transparent 70%)', filter: 'blur(60px)' }} />
-          <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(245,166,35,0.09) 0%, transparent 70%)', filter: 'blur(80px)' }} />
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 lg:pb-28 pt-32 sm:pt-36">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="h-px w-8 rounded-full" style={{ background: '#F5A623' }} />
-              <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[3px]" style={{ color: '#F5A623' }}>ABOUT CLIN CORP</p>
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(245,166,35,0.09) 0%, transparent 70%)', filter: 'blur(80px)' }} />
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 w-full">
+            <div className="w-full max-w-3xl">
+
+              {/* Eyebrow badge — mirrors homepage */}
+              <div
+                className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full border mb-5 sm:mb-7"
+                style={{
+                  fontSize: 'clamp(9px, 2vw, 11px)',
+                  borderColor: 'rgba(245,166,35,0.35)',
+                  background: 'rgba(245,166,35,0.08)',
+                  color: '#F5A623',
+                  letterSpacing: '2px',
+                  fontFamily: 'var(--font-poppins)',
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#F5A623' }} />
+                About Clin Corp · East Africa
+              </div>
+
+              {/* Headline — "Delivering Excellence" = same size as "FUTURE TODAY." on homepage */}
+              <h1 className="font-sans font-black text-white leading-[0.92]" style={{ fontSize: 'clamp(30px, 4.4vw, 61px)' }}>
+                <span className="block">Delivering</span>
+                <span className="block"><span style={{ color: '#0070C0' }}>Excellence</span>.</span>
+              </h1>
+
+              {/* Sub-heading — smaller than "Delivering Excellence" */}
+              <p className="font-sans font-black mt-3 sm:mt-4 leading-snug" style={{ fontSize: 'clamp(15px, 2vw, 22px)', color: '#F5A623' }}>
+                Building the Future.
+              </p>
+
+              <p className="font-sans text-sm sm:text-base mt-5 sm:mt-7 max-w-xl leading-relaxed" style={{ color: '#8899AE' }}>
+                Kenya&apos;s trusted partner in protective coatings &amp; industrial solutions across East Africa.
+              </p>
+
+              <div className="w-14 h-0.5 mt-6 rounded-full" style={{ background: 'linear-gradient(90deg, #F5A623, #0070C0)' }} />
             </div>
-            <h1 className="font-sans font-black text-white leading-[0.95]" style={{ fontSize: 'clamp(36px, 6.5vw, 84px)' }}>
-              Protecting Assets.<br />
-              Delivering Excellence.<br />
-              <span style={{ color: '#F5A623' }}>Building the Future.</span>
-            </h1>
-            <p className="font-sans text-base sm:text-lg mt-5 max-w-2xl leading-relaxed" style={{ color: '#6B7A99' }}>
-              Your trusted partner in protective coatings &amp; solutions across East Africa.
-            </p>
-            <div className="w-14 h-0.5 mt-6 rounded-full" style={{ background: 'linear-gradient(90deg, #F5A623, #0070C0)' }} />
           </div>
         </section>
 
