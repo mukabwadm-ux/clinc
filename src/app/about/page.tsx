@@ -280,13 +280,24 @@ export default function AboutPage() {
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
               {partners.map((p) => (
-                <div key={p.name} className="rounded-2xl border bg-white flex items-center justify-center p-6 sm:p-8 hover:shadow-[0_8px_32px_rgba(26,43,94,0.09)] hover:border-gold/30 transition-all duration-300" style={{ borderColor: 'rgba(26,43,94,0.09)', minHeight: '130px' }}>
+                <div
+                  key={p.name}
+                  className="rounded-2xl border flex items-center justify-center p-6 sm:p-8 hover:shadow-[0_8px_32px_rgba(26,43,94,0.09)] hover:border-gold/30 transition-all duration-300 relative overflow-hidden"
+                  style={{ borderColor: 'rgba(26,43,94,0.09)', minHeight: '130px', background: '#fff' }}
+                >
+                  {/* Logo as faint background wash */}
+                  <div
+                    className="absolute inset-0 bg-center bg-cover"
+                    style={{ backgroundImage: `url(${p.logo})`, opacity: 0.08 }}
+                  />
+                  {/* Foreground logo — 10% bigger: 160→176, 80→88 */}
                   <Image
                     src={p.logo}
                     alt={p.name}
-                    width={160}
-                    height={80}
-                    className="object-contain max-h-20 w-auto"
+                    width={176}
+                    height={88}
+                    className="object-contain relative z-10"
+                    style={{ maxHeight: '88px', width: 'auto' }}
                   />
                 </div>
               ))}
