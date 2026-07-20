@@ -89,7 +89,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {productLinks.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="font-sans text-sm transition-colors duration-200 cursor-pointer hover:text-white" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                  <a href={l.href} className="font-sans text-sm transition-colors duration-200 cursor-pointer hover:text-gold" style={{ color: 'rgba(255,255,255,0.55)' }}>
                     {l.label}
                   </a>
                 </li>
@@ -103,14 +103,14 @@ export default function Footer() {
             <ul className="space-y-3">
               {companyLinks.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="font-sans text-sm transition-colors duration-200 cursor-pointer hover:text-white" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                  <a href={l.href} className="font-sans text-sm transition-colors duration-200 cursor-pointer hover:text-gold" style={{ color: 'rgba(255,255,255,0.55)' }}>
                     {l.label}
                   </a>
                 </li>
               ))}
               {contactLinks.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="font-sans text-sm transition-colors duration-200 cursor-pointer hover:text-white" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                  <a href={l.href} className="font-sans text-sm transition-colors duration-200 cursor-pointer hover:text-gold" style={{ color: 'rgba(255,255,255,0.55)' }}>
                     {l.label}
                   </a>
                 </li>
@@ -130,13 +130,13 @@ export default function Footer() {
               </li>
               <li className="flex gap-3 items-center">
                 <Phone size={14} className="shrink-0" style={{ color: '#F5A623' }} />
-                <a href="tel:+254723887417" className="font-sans text-sm transition-colors duration-200 cursor-pointer hover:text-white" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                <a href="tel:+254723887417" className="font-sans text-sm transition-colors duration-200 cursor-pointer hover:text-gold" style={{ color: 'rgba(255,255,255,0.55)' }}>
                   +254 723 887 417
                 </a>
               </li>
               <li className="flex gap-3 items-center">
                 <Mail size={14} className="shrink-0" style={{ color: '#F5A623' }} />
-                <a href="mailto:clinton@clin-corp.com" className="font-sans text-sm transition-colors duration-200 cursor-pointer hover:text-white" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                <a href="mailto:clinton@clin-corp.com" className="font-sans text-sm transition-colors duration-200 cursor-pointer hover:text-gold" style={{ color: 'rgba(255,255,255,0.55)' }}>
                   clinton@clin-corp.com
                 </a>
               </li>
