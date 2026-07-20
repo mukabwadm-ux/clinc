@@ -42,7 +42,7 @@ export default function Expertise() {
           {cards.map((card) => (
             <div
               key={card.heading}
-              className="group bg-white/[0.03] border border-blue/15 rounded-2xl overflow-hidden hover:border-blue hover:shadow-[0_0_40px_rgba(0,174,239,0.12)] transition-all duration-300 flex flex-col"
+              className="group border border-blue/15 rounded-2xl overflow-hidden hover:border-blue/40 hover:shadow-[0_8px_40px_rgba(0,112,192,0.12)] transition-all duration-300 flex flex-col"
             >
               {/* Full-width image */}
               <div className="relative w-full h-52 sm:h-60 lg:h-64 overflow-hidden">
@@ -52,16 +52,14 @@ export default function Expertise() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                {/* Subtle bottom fade into card body */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#07111F]/60 via-transparent to-transparent" />
               </div>
 
               {/* Card body */}
-              <div className="p-6 sm:p-8 lg:p-10 flex flex-col flex-1">
-                <h3 className="font-sans font-black text-white" style={{ fontSize: 'clamp(20px, 3vw, 30px)' }}>
+              <div className="p-6 sm:p-8 lg:p-10 flex flex-col flex-1" style={{ background: '#F4F4F4' }}>
+                <h3 className="font-sans font-black text-navy" style={{ fontSize: 'clamp(20px, 3vw, 30px)' }}>
                   {card.heading}
                 </h3>
-                <p className="font-sans text-sm sm:text-[15px] text-slate leading-relaxed mt-3 sm:mt-4 flex-1">
+                <p className="font-sans text-sm sm:text-[15px] leading-relaxed mt-3 sm:mt-4 flex-1" style={{ color: '#6B7A99' }}>
                   {card.body}
                 </p>
                 <a
