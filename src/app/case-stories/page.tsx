@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { Anchor, Factory, Zap, ArrowRight, MapPin, Calendar } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
@@ -17,6 +18,7 @@ const marineProjects = [
     tag: 'Vessel Coating',
     description: "Below-waterline and hull-area coating on a passenger/cargo ferry applying a full Hempel system directly at the vessel's berth, alongside surface preparation and priming of a red-hulled tug/barge vessel at an inland waterway site.",
     specs: [],
+    image: '/case-stories/project-01.jpg',
   },
   {
     number: '02',
@@ -240,6 +242,17 @@ export default function CaseStoriesPage() {
                   key={p.number}
                   className="group rounded-2xl border border-white/[0.08] hover:border-gold/35 bg-white/[0.03] hover:shadow-[0_8px_32px_rgba(245,166,35,0.06)] transition-all duration-300 overflow-hidden flex flex-col cursor-default"
                 >
+                  {'image' in p && p.image && (
+                    <div className="w-full overflow-hidden" style={{ height: '200px' }}>
+                      <Image
+                        src={p.image as string}
+                        alt={p.title}
+                        width={600}
+                        height={200}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
                   <div className="h-0.5 w-full" style={{ background: 'linear-gradient(90deg, #F5A623, rgba(0,112,192,0.5))' }} />
                   <div className="p-5 sm:p-6 flex flex-col flex-1">
                     <div className="flex items-center justify-between mb-4">
@@ -307,6 +320,17 @@ export default function CaseStoriesPage() {
                   className="group rounded-2xl border bg-white hover:shadow-[0_8px_40px_rgba(26,43,94,0.09)] hover:border-gold/40 transition-all duration-300 overflow-hidden flex flex-col cursor-default"
                   style={{ borderColor: 'rgba(26,43,94,0.09)' }}
                 >
+                  {'image' in p && p.image && (
+                    <div className="w-full overflow-hidden" style={{ height: '200px' }}>
+                      <Image
+                        src={p.image as string}
+                        alt={p.title}
+                        width={600}
+                        height={200}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
                   <div className="h-0.5 w-full" style={{ background: 'linear-gradient(90deg, #F5A623, rgba(0,112,192,0.5))' }} />
                   <div className="p-5 sm:p-7 flex flex-col flex-1">
                     <div className="flex items-center justify-between mb-4">
