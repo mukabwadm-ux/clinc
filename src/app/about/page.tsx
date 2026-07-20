@@ -60,48 +60,62 @@ export default function AboutPage() {
           <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(245,166,35,0.09) 0%, transparent 70%)', filter: 'blur(80px)' }} />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 w-full">
-            <div className="w-full max-w-3xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center w-full">
 
-              {/* Eyebrow badge — mirrors homepage */}
-              <div
-                className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full border mb-5 sm:mb-7"
-                style={{
-                  fontSize: 'clamp(9px, 2vw, 11px)',
-                  borderColor: 'rgba(245,166,35,0.35)',
-                  background: 'rgba(245,166,35,0.08)',
-                  color: '#F5A623',
-                  letterSpacing: '2px',
-                  fontFamily: 'var(--font-poppins)',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                }}
-              >
-                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#F5A623' }} />
-                About Clin Corp · East Africa
+              {/* Left — text */}
+              <div>
+                {/* Eyebrow badge */}
+                <div
+                  className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full border mb-5 sm:mb-7"
+                  style={{
+                    fontSize: 'clamp(9px, 2vw, 11px)',
+                    borderColor: 'rgba(245,166,35,0.35)',
+                    background: 'rgba(245,166,35,0.08)',
+                    color: '#F5A623',
+                    letterSpacing: '2px',
+                    fontFamily: 'var(--font-poppins)',
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#F5A623' }} />
+                  About Clin Corp · East Africa
+                </div>
+
+                {/* Headline */}
+                <h1 className="font-sans font-black text-white leading-[0.95]">
+                  <span className="block" style={{ fontSize: 'clamp(36px, 5.8vw, 80px)' }}>
+                    Protecting Assets.
+                  </span>
+                  <span className="block mt-2" style={{ fontSize: 'clamp(30px, 4.4vw, 61px)' }}>
+                    <span style={{ color: '#0070C0' }}>Delivering</span> Excellence.
+                  </span>
+                </h1>
+
+                <p className="font-sans font-black mt-3 leading-snug" style={{ fontSize: 'clamp(17px, 2.2vw, 24px)', color: '#F5A623' }}>
+                  Building the Future.
+                </p>
+
+                <p className="font-sans text-sm sm:text-base mt-5 sm:mt-7 max-w-xl leading-relaxed" style={{ color: '#8899AE' }}>
+                  Your trusted partner in protective coatings &amp; solutions across East Africa.
+                </p>
+
+                <div className="w-14 h-0.5 mt-6 rounded-full" style={{ background: 'linear-gradient(90deg, #F5A623, #0070C0)' }} />
               </div>
 
-              {/* Headline */}
-              <h1 className="font-sans font-black text-white leading-[0.95]">
-                {/* "Protecting Assets." — large, mirrors CLINCORP. size */}
-                <span className="block" style={{ fontSize: 'clamp(36px, 5.8vw, 80px)' }}>
-                  Protecting Assets.
-                </span>
-                {/* "Delivering Excellence." — same size as FUTURE TODAY. on homepage */}
-                <span className="block mt-2" style={{ fontSize: 'clamp(30px, 4.4vw, 61px)' }}>
-                  <span style={{ color: '#0070C0' }}>Delivering</span> Excellence.
-                </span>
-              </h1>
+              {/* Right — hero image */}
+              <div className="hidden lg:block w-full">
+                <Image
+                  src="/about-hero.jpg"
+                  alt="Ship hull coating at dry dock"
+                  width={640}
+                  height={480}
+                  className="w-full h-auto object-cover"
+                  style={{ borderRadius: '20px' }}
+                  priority
+                />
+              </div>
 
-              {/* "Building the Future." — smaller than Delivering Excellence */}
-              <p className="font-sans font-black mt-3 leading-snug" style={{ fontSize: 'clamp(17px, 2.2vw, 24px)', color: '#F5A623' }}>
-                Building the Future.
-              </p>
-
-              <p className="font-sans text-sm sm:text-base mt-5 sm:mt-7 max-w-xl leading-relaxed" style={{ color: '#8899AE' }}>
-                Your trusted partner in protective coatings &amp; solutions across East Africa.
-              </p>
-
-              <div className="w-14 h-0.5 mt-6 rounded-full" style={{ background: 'linear-gradient(90deg, #F5A623, #0070C0)' }} />
             </div>
           </div>
         </section>
