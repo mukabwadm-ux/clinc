@@ -80,19 +80,25 @@ export default function AboutPage() {
                 About Clin Corp · East Africa
               </div>
 
-              {/* Headline — "Delivering Excellence" = same size as "FUTURE TODAY." on homepage */}
-              <h1 className="font-sans font-black text-white leading-[0.92]" style={{ fontSize: 'clamp(30px, 4.4vw, 61px)' }}>
-                <span className="block">Delivering</span>
-                <span className="block"><span style={{ color: '#0070C0' }}>Excellence</span>.</span>
+              {/* Headline */}
+              <h1 className="font-sans font-black text-white leading-[0.95]">
+                {/* "Protecting Assets." — large, mirrors CLINCORP. size */}
+                <span className="block" style={{ fontSize: 'clamp(36px, 5.8vw, 80px)' }}>
+                  Protecting Assets.
+                </span>
+                {/* "Delivering Excellence." — same size as FUTURE TODAY. on homepage */}
+                <span className="block mt-2" style={{ fontSize: 'clamp(30px, 4.4vw, 61px)' }}>
+                  <span style={{ color: '#0070C0' }}>Delivering</span> Excellence.
+                </span>
               </h1>
 
-              {/* Sub-heading — smaller than "Delivering Excellence" */}
-              <p className="font-sans font-black mt-3 sm:mt-4 leading-snug" style={{ fontSize: 'clamp(15px, 2vw, 22px)', color: '#F5A623' }}>
+              {/* "Building the Future." — smaller than Delivering Excellence */}
+              <p className="font-sans font-black mt-3 leading-snug" style={{ fontSize: 'clamp(15px, 2vw, 22px)', color: '#F5A623' }}>
                 Building the Future.
               </p>
 
               <p className="font-sans text-sm sm:text-base mt-5 sm:mt-7 max-w-xl leading-relaxed" style={{ color: '#8899AE' }}>
-                Kenya&apos;s trusted partner in protective coatings &amp; industrial solutions across East Africa.
+                Your trusted partner in protective coatings &amp; solutions across East Africa.
               </p>
 
               <div className="w-14 h-0.5 mt-6 rounded-full" style={{ background: 'linear-gradient(90deg, #F5A623, #0070C0)' }} />
