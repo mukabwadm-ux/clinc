@@ -93,7 +93,7 @@ export default function AboutPage() {
               </h1>
 
               {/* "Building the Future." — smaller than Delivering Excellence */}
-              <p className="font-sans font-black mt-3 leading-snug" style={{ fontSize: 'clamp(15px, 2vw, 22px)', color: '#F5A623' }}>
+              <p className="font-sans font-black mt-3 leading-snug" style={{ fontSize: 'clamp(17px, 2.2vw, 24px)', color: '#F5A623' }}>
                 Building the Future.
               </p>
 
