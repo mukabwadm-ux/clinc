@@ -60,7 +60,7 @@ export default function AboutPage() {
           <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(245,166,35,0.09) 0%, transparent 70%)', filter: 'blur(80px)' }} />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-10 lg:gap-14 items-center w-full">
 
               {/* Left — text */}
               <div>
@@ -110,8 +110,8 @@ export default function AboutPage() {
                   alt="Ship hull coating at dry dock"
                   width={640}
                   height={480}
-                  className="w-full h-auto object-cover"
-                  style={{ borderRadius: '20px' }}
+                  className="w-full object-cover"
+                  style={{ borderRadius: '20px', maxHeight: '340px' }}
                   priority
                 />
               </div>
