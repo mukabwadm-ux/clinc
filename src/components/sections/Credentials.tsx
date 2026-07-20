@@ -31,16 +31,11 @@ export default function Credentials() {
   const { ref, inView } = useInView()
 
   return (
-    <section className="relative py-16 sm:py-20 lg:py-28 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #040D1A 0%, #0D1B45 50%, #040D1A 100%)' }} />
-      <div className="absolute -top-32 -right-40 w-[600px] h-[600px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(0,112,192,0.10) 0%, transparent 70%)', filter: 'blur(60px)' }} />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-offwhite py-16 sm:py-20 lg:py-28 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <p className="font-mono text-[10px] sm:text-[11px] text-blue uppercase tracking-[3px]">WHAT WE OFFER</p>
-        <h2 className="font-sans font-black text-white mt-2 sm:mt-3 leading-tight" style={{ fontSize: 'clamp(28px, 5vw, 56px)' }}>
+        <p className="font-mono text-[10px] sm:text-[11px] text-slate uppercase tracking-[3px]">WHAT WE OFFER</p>
+        <h2 className="font-sans font-black text-navy mt-2 sm:mt-3 leading-tight" style={{ fontSize: 'clamp(28px, 5vw, 56px)' }}>
           Our <span className="text-blue">Solutions.</span>
         </h2>
         <p className="font-sans text-slate text-sm sm:text-base mt-3 max-w-xl leading-relaxed">
@@ -56,11 +51,11 @@ export default function Credentials() {
             <div
               key={s.title}
               className={cn(
-                'rounded-2xl border border-white/10 hover:border-blue/40 p-6 sm:p-8 transition-all duration-300 hover:bg-white/[0.06] group cursor-default',
+                'rounded-2xl border bg-white hover:shadow-[0_8px_32px_rgba(26,43,94,0.10)] p-6 sm:p-8 transition-all duration-300 cursor-default',
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               )}
               style={{
-                background: 'rgba(255,255,255,0.04)',
+                borderColor: 'rgba(26,43,94,0.10)',
                 transitionDelay: `${i * 0.12}s`,
                 transitionDuration: '0.6s',
               }}
@@ -68,13 +63,13 @@ export default function Credentials() {
               {/* Icon */}
               <div
                 className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-5"
-                style={{ background: 'rgba(0,112,192,0.18)' }}
+                style={{ background: 'rgba(0,112,192,0.10)' }}
               >
                 <s.Icon size={22} className="text-blue" strokeWidth={1.8} />
               </div>
 
               {/* Title */}
-              <h3 className="font-sans font-black text-white text-base sm:text-lg leading-snug">
+              <h3 className="font-sans font-black text-navy text-base sm:text-lg leading-snug">
                 {s.title}
               </h3>
 
