@@ -242,10 +242,10 @@ export default function CaseStoriesPage() {
                   key={p.number}
                   className="group rounded-2xl border border-white/[0.08] hover:border-gold/35 bg-white/[0.03] hover:shadow-[0_8px_32px_rgba(245,166,35,0.06)] transition-all duration-300 overflow-hidden flex flex-col cursor-default"
                 >
-                  {'image' in p && p.image && (
+                  {(p as { image?: string }).image && (
                     <div className="w-full overflow-hidden" style={{ height: '200px' }}>
                       <Image
-                        src={p.image as string}
+                        src={(p as { image?: string }).image!}
                         alt={p.title}
                         width={600}
                         height={200}
@@ -320,10 +320,10 @@ export default function CaseStoriesPage() {
                   className="group rounded-2xl border bg-white hover:shadow-[0_8px_40px_rgba(26,43,94,0.09)] hover:border-gold/40 transition-all duration-300 overflow-hidden flex flex-col cursor-default"
                   style={{ borderColor: 'rgba(26,43,94,0.09)' }}
                 >
-                  {'image' in p && p.image && (
+                  {(p as { image?: string }).image && (
                     <div className="w-full overflow-hidden" style={{ height: '200px' }}>
                       <Image
-                        src={p.image as string}
+                        src={(p as { image?: string }).image!}
                         alt={p.title}
                         width={600}
                         height={200}
