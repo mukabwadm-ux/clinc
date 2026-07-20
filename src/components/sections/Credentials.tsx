@@ -1,30 +1,29 @@
 'use client'
 
-import { GraduationCap, Trophy, Globe2 } from 'lucide-react'
+import { Ship, Factory, ShieldCheck, Headphones, ArrowRight } from 'lucide-react'
 import { useInView } from '@/hooks/useInView'
 import { cn } from '@/lib/utils'
 
-const credentials = [
+const solutions = [
   {
-    Icon: GraduationCap,
-    title: 'BBA — Marketing',
-    body: 'Armed with a Bachelor of Business Administration in Marketing, our leadership brings deep commercial strategy and market development expertise to every client engagement and partnership.',
-    accent: 'border-l-gold',
-    hover: 'hover:border-l-blue',
+    Icon: Ship,
+    title: 'Marine Coatings',
+    body: 'Advanced coating systems for hull, deck, cargo, ballast tanks and marine structures.',
   },
   {
-    Icon: Trophy,
-    title: 'SBS Leadership Excellence',
-    body: 'Recognised by the Strathmore Business School for outstanding leadership capability, our team operates at the intersection of business acumen and industry expertise.',
-    accent: 'border-l-blue',
-    hover: 'hover:border-l-gold',
+    Icon: Factory,
+    title: 'Industrial Coatings',
+    body: 'Protective solutions for steel structures, tanks, pipelines, equipment and machinery.',
   },
   {
-    Icon: Globe2,
-    title: 'IFC / World Bank Certified',
-    body: 'Certified through the International Finance Corporation and World Bank program, equipping us with global standards in business development, financial strategy, and enterprise growth.',
-    accent: 'border-l-teal',
-    hover: 'hover:border-l-gold',
+    Icon: ShieldCheck,
+    title: 'Protective Solutions',
+    body: 'High performance coatings for long term protection in the most demanding environments.',
+  },
+  {
+    Icon: Headphones,
+    title: 'Technical Support',
+    body: 'Expert technical advisory, specification support, site visits and after-sales service you can rely on.',
   },
 ]
 
@@ -32,32 +31,76 @@ export default function Credentials() {
   const { ref, inView } = useInView()
 
   return (
-    <section className="bg-offwhite py-12 sm:py-16 lg:py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="font-mono text-[10px] sm:text-[11px] text-slate uppercase tracking-[3px]">OUR CREDENTIALS</p>
-        <h2 className="font-sans font-black text-navy mt-2 sm:mt-3" style={{ fontSize: 'clamp(24px, 4.5vw, 48px)' }}>
-          A Foundation Built<br /><span className="text-blue">for Excellence.</span>
-        </h2>
+    <section className="relative py-16 sm:py-20 lg:py-28 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #040D1A 0%, #0D1B45 50%, #040D1A 100%)' }} />
+      <div className="absolute -top-32 -right-40 w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(0,112,192,0.10) 0%, transparent 70%)', filter: 'blur(60px)' }} />
 
-        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 mt-8 sm:mt-10 lg:mt-12">
-          {credentials.map((cred, i) => (
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <p className="font-mono text-[10px] sm:text-[11px] text-blue uppercase tracking-[3px]">WHAT WE OFFER</p>
+        <h2 className="font-sans font-black text-white mt-2 sm:mt-3 leading-tight" style={{ fontSize: 'clamp(28px, 5vw, 56px)' }}>
+          Our <span className="text-blue">Solutions.</span>
+        </h2>
+        <p className="font-sans text-slate text-sm sm:text-base mt-3 max-w-xl leading-relaxed">
+          We provide a complete range of high performance coatings and tailored solutions for every industry.
+        </p>
+
+        {/* Cards grid */}
+        <div
+          ref={ref}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 mt-10 sm:mt-12 lg:mt-14"
+        >
+          {solutions.map((s, i) => (
             <div
-              key={cred.title}
+              key={s.title}
               className={cn(
-                `bg-white border-l-4 ${cred.accent} ${cred.hover} rounded-r-xl p-5 sm:p-6 lg:p-8 shadow-md hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-default`,
+                'rounded-2xl border border-white/10 hover:border-blue/40 p-6 sm:p-8 transition-all duration-300 hover:bg-white/[0.06] group cursor-default',
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               )}
-              style={{ transitionDelay: `${i * 0.15}s`, transitionDuration: '0.6s' }}
+              style={{
+                background: 'rgba(255,255,255,0.04)',
+                transitionDelay: `${i * 0.12}s`,
+                transitionDuration: '0.6s',
+              }}
             >
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue/10 flex items-center justify-center">
-                <cred.Icon className="text-blue" size={20} />
+              {/* Icon */}
+              <div
+                className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-5"
+                style={{ background: 'rgba(0,112,192,0.18)' }}
+              >
+                <s.Icon size={22} className="text-blue" strokeWidth={1.8} />
               </div>
-              <h3 className="font-sans font-bold text-navy mt-4 sm:mt-5" style={{ fontSize: 'clamp(16px, 2.5vw, 20px)' }}>
-                {cred.title}
+
+              {/* Title */}
+              <h3 className="font-sans font-black text-white text-base sm:text-lg leading-snug">
+                {s.title}
               </h3>
-              <p className="font-sans text-xs sm:text-sm text-slate leading-relaxed mt-2">{cred.body}</p>
+
+              {/* Body */}
+              <p className="font-sans text-slate text-sm leading-relaxed mt-2">
+                {s.body}
+              </p>
             </div>
           ))}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-10 sm:mt-12 flex items-center gap-4">
+          <a
+            href="/about"
+            className="inline-flex items-center gap-2 text-white rounded-md px-7 py-3.5 text-sm font-bold tracking-widest uppercase transition-colors"
+            style={{ background: '#0070C0' }}
+          >
+            ABOUT US <ArrowRight size={15} />
+          </a>
+          <a
+            href="/products"
+            className="inline-flex items-center gap-2 text-blue text-sm font-semibold hover:gap-3 transition-all"
+          >
+            View Products <ArrowRight size={15} />
+          </a>
         </div>
       </div>
     </section>
