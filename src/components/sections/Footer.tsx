@@ -79,7 +79,7 @@ export default function Footer() {
 
           {/* Products */}
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[3px] mb-5" style={{ color: '#6B7A99' }}>Products</p>
+            <p className="font-mono text-[10px] uppercase tracking-[3px] mb-5" style={{ color: '#F5A623' }}>Products</p>
             <ul className="space-y-3">
               {productLinks.map((l) => (
                 <li key={l.label}>
@@ -93,7 +93,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[3px] mb-5" style={{ color: '#6B7A99' }}>Company</p>
+            <p className="font-mono text-[10px] uppercase tracking-[3px] mb-5" style={{ color: '#F5A623' }}>Company</p>
             <ul className="space-y-3">
               {companyLinks.map((l) => (
                 <li key={l.label}>
@@ -107,7 +107,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[3px] mb-5" style={{ color: '#6B7A99' }}>Contact</p>
+            <p className="font-mono text-[10px] uppercase tracking-[3px] mb-5" style={{ color: '#F5A623' }}>Contact</p>
             <ul className="space-y-4">
               <li className="flex gap-3 items-start">
                 <MapPin size={14} className="mt-0.5 shrink-0" style={{ color: '#F5A623' }} />
