@@ -54,7 +54,7 @@ export default function AboutPage() {
       <main style={{ background: '#040D1A' }} className="text-white">
 
         {/* ── Hero ── */}
-        <section className="relative min-h-screen overflow-hidden flex items-center">
+        <section className="relative min-h-[65vh] overflow-hidden flex items-center">
           <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #040D1A 0%, #0D1B45 50%, #040D1A 100%)' }} />
           <div className="absolute -top-20 -left-40 w-[700px] h-[700px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(0,112,192,0.10) 0%, transparent 70%)', filter: 'blur(60px)' }} />
           <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(245,166,35,0.09) 0%, transparent 70%)', filter: 'blur(80px)' }} />
