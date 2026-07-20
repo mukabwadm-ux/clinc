@@ -21,7 +21,21 @@ const contactLinks = [
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#040D1A' }}>
+    <footer className="relative" style={{ background: '#040D1A' }}>
+      {/* Background image — faint overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: 'url(/footer%20bg.webp)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
+          opacity: 0.13,
+        }}
+      />
+
+      {/* All content sits above the bg image */}
+      <div className="relative z-10">
+
       {/* Gold top line */}
       <div className="h-0.5 w-full" style={{ background: 'linear-gradient(90deg, transparent, #F5A623 30%, #0070C0 70%, transparent)' }} />
 
@@ -142,6 +156,7 @@ export default function Footer() {
           </p>
         </div>
       </div>
+      </div>{/* end relative z-10 wrapper */}
     </footer>
   )
 }
