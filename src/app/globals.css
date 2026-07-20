@@ -5,15 +5,16 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* Clin Corp brand palette — vibrant, warm */
-  --color-navy:     #1A3272;
-  --color-blue:     #00AEEF;
-  --color-steel:    #0B80C7;
+  /* Clin Corp brand palette — matched to brochure */
+  --color-navy:     #1A2B5E;
+  --color-blue:     #0070C0;
+  --color-steel:    #1565C0;
   --color-teal:     #00D4B4;
   --color-gold:     #F5A623;
-  --color-dark:     #07111F;
-  --color-offwhite: #FFF9F5;
-  --color-slate:    #8899AE;
+  --color-crimson:  #B91C1C;
+  --color-dark:     #0D1B4B;
+  --color-offwhite: #F4F4F4;
+  --color-slate:    #6B7A99;
 
   --font-sans: var(--font-poppins);
 
@@ -80,7 +81,7 @@ html {
   left: 0;
   height: 4px;
   width: 100%;
-  background: linear-gradient(90deg, #F5A623, #00AEEF);
+  background: linear-gradient(90deg, #F5A623, #0070C0);
   transform: scaleX(0);
   transform-origin: left;
   animation: drawLine 0.9s ease-out 0.8s forwards;
