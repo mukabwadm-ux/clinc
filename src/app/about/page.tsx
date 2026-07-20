@@ -34,10 +34,10 @@ const pillars = [
 ]
 
 const partners = [
-  { name: 'Kenya Shipyards Limited', sub: 'Building Ships · Building Kenya' },
-  { name: 'Kenya Ports Authority', sub: 'Valued Customer' },
-  { name: 'Tilenga Project in Uganda', sub: 'Valued Customer' },
-  { name: 'Ministry of Defence', sub: 'Republic of Kenya' },
+  { name: 'Kenya Ports Authority', logo: '/partners/kenya-ports-authority.png' },
+  { name: 'Kenya Shipyards Limited', logo: '/partners/kenya-shipyards.png' },
+  { name: 'Ministry of Defence', logo: '/partners/ministry-of-defence.png' },
+  { name: 'Tilenga Project in Uganda', logo: '/partners/tilenga-project.png' },
 ]
 
 const stats = [
@@ -279,13 +279,15 @@ export default function AboutPage() {
               </h2>
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-              {partners.map((p, i) => (
-                <div key={p.name} className="rounded-2xl p-6 sm:p-8 border bg-white text-center hover:shadow-[0_8px_32px_rgba(26,43,94,0.09)] hover:border-gold/30 transition-all duration-300" style={{ borderColor: 'rgba(26,43,94,0.09)' }}>
-                  <div className="w-12 h-12 rounded-xl mx-auto flex items-center justify-center mb-4" style={{ background: i % 2 === 0 ? 'rgba(26,43,94,0.07)' : 'rgba(245,166,35,0.10)' }}>
-                    <ShieldCheck size={20} style={{ color: i % 2 === 0 ? '#1A2B5E' : '#F5A623' }} />
-                  </div>
-                  <h3 className="font-sans font-black text-sm sm:text-base leading-tight" style={{ color: '#1A2B5E' }}>{p.name}</h3>
-                  <p className="font-sans text-xs mt-1" style={{ color: '#8899AE' }}>{p.sub}</p>
+              {partners.map((p) => (
+                <div key={p.name} className="rounded-2xl border bg-white flex items-center justify-center p-6 sm:p-8 hover:shadow-[0_8px_32px_rgba(26,43,94,0.09)] hover:border-gold/30 transition-all duration-300" style={{ borderColor: 'rgba(26,43,94,0.09)', minHeight: '130px' }}>
+                  <Image
+                    src={p.logo}
+                    alt={p.name}
+                    width={160}
+                    height={80}
+                    className="object-contain max-h-20 w-auto"
+                  />
                 </div>
               ))}
             </div>
