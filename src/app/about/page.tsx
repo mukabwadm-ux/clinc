@@ -283,7 +283,7 @@ export default function AboutPage() {
                 <div
                   key={p.name}
                   className="rounded-2xl border flex items-center justify-center p-6 sm:p-8 hover:shadow-[0_8px_32px_rgba(26,43,94,0.09)] hover:border-gold/30 transition-all duration-300 relative overflow-hidden"
-                  style={{ borderColor: 'rgba(26,43,94,0.09)', minHeight: '130px', background: '#fff' }}
+                  style={{ borderColor: 'rgba(26,43,94,0.09)', minHeight: '130px', background: '#edeef0' }}
                 >
                   {/* Logo as faint background wash */}
                   <div
