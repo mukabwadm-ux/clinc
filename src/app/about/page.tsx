@@ -285,18 +285,13 @@ export default function AboutPage() {
                   className="rounded-2xl border flex items-center justify-center p-6 sm:p-8 hover:shadow-[0_8px_32px_rgba(26,43,94,0.09)] hover:border-gold/30 transition-all duration-300 relative overflow-hidden"
                   style={{ borderColor: 'rgba(26,43,94,0.09)', minHeight: '130px', background: '#edeef0' }}
                 >
-                  {/* Logo as faint background wash */}
-                  <div
-                    className="absolute inset-0 bg-center bg-cover"
-                    style={{ backgroundImage: `url(${p.logo})`, opacity: 0.08 }}
-                  />
                   {/* Foreground logo — 10% bigger: 160→176, 80→88 */}
                   <Image
                     src={p.logo}
                     alt={p.name}
                     width={176}
                     height={88}
-                    className="object-contain relative z-10"
+                    className="object-contain"
                     style={{ maxHeight: '88px', width: 'auto' }}
                   />
                 </div>
