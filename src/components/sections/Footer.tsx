@@ -8,15 +8,9 @@ const productLinks = [
 ]
 
 const companyLinks = [
-  { label: 'About Us', href: '/about' },
-  { label: 'Expertise', href: '#expertise' },
+  { label: 'About', href: '/about' },
   { label: 'Case Stories', href: '/case-stories' },
-  { label: 'Our Team', href: '#team' },
-]
-
-const contactLinks = [
-  { label: 'Get a Quote', href: '/contact' },
-  { label: 'Contact Us', href: '/contact' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 export default function Footer() {
@@ -102,13 +96,6 @@ export default function Footer() {
             <p className="font-mono text-[10px] uppercase tracking-[3px] mb-5" style={{ color: '#6B7A99' }}>Company</p>
             <ul className="space-y-3">
               {companyLinks.map((l) => (
-                <li key={l.label}>
-                  <a href={l.href} className="font-sans text-sm transition-colors duration-200 cursor-pointer hover:text-gold" style={{ color: 'rgba(255,255,255,0.55)' }}>
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-              {contactLinks.map((l) => (
                 <li key={l.label}>
                   <a href={l.href} className="font-sans text-sm transition-colors duration-200 cursor-pointer hover:text-gold" style={{ color: 'rgba(255,255,255,0.55)' }}>
                     {l.label}
