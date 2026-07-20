@@ -84,10 +84,10 @@ export default function AboutPage() {
 
                 {/* Headline */}
                 <h1 className="font-sans font-black text-white leading-[0.95]">
-                  <span className="block" style={{ fontSize: 'clamp(36px, 5.8vw, 80px)' }}>
+                  <span className="block" style={{ fontSize: 'clamp(26px, 3.8vw, 52px)' }}>
                     Protecting Assets.
                   </span>
-                  <span className="block mt-2" style={{ fontSize: 'clamp(30px, 4.4vw, 61px)' }}>
+                  <span className="block mt-2" style={{ fontSize: 'clamp(20px, 2.8vw, 38px)' }}>
                     <span style={{ color: '#0070C0' }}>Delivering</span> Excellence.
                   </span>
                 </h1>
