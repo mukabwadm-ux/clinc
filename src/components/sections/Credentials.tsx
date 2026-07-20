@@ -65,22 +65,12 @@ export default function Credentials() {
             <div
               key={s.title}
               className={cn(
-                'group rounded-2xl bg-white p-6 sm:p-8 transition-all duration-300 cursor-default',
+                'group rounded-2xl bg-white p-6 sm:p-8 transition-all duration-300 cursor-default border border-[rgba(26,43,94,0.09)] hover:border-gold/40 hover:shadow-[0_8px_32px_rgba(26,43,94,0.09)]',
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               )}
               style={{
-                border: '1px solid rgba(26,43,94,0.09)',
                 transitionDelay: `${i * 0.10}s`,
                 transitionDuration: '0.6s',
-                boxShadow: '0 1px 4px rgba(26,43,94,0.04)',
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(245,166,35,0.45)'
-                ;(e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 32px rgba(26,43,94,0.09)'
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(26,43,94,0.09)'
-                ;(e.currentTarget as HTMLDivElement).style.boxShadow = '0 1px 4px rgba(26,43,94,0.04)'
               }}
             >
               {/* Gold top accent on hover — using border-top */}

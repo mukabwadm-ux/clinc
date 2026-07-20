@@ -43,10 +43,7 @@ export default function Expertise() {
           {cards.map((card) => (
             <div
               key={card.heading}
-              className="group rounded-2xl overflow-hidden transition-all duration-300 flex flex-col cursor-pointer"
-              style={{ border: '1px solid rgba(255,255,255,0.08)' }}
-              onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(245,166,35,0.35)')}
-              onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)')}
+              className="group rounded-2xl overflow-hidden transition-all duration-300 flex flex-col cursor-pointer border border-white/[0.08] hover:border-gold/35 hover:shadow-[0_8px_40px_rgba(245,166,35,0.08)]"
             >
               {/* Full-width image */}
               <div className="relative w-full h-52 sm:h-60 lg:h-64 overflow-hidden">
