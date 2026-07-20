@@ -301,10 +301,10 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               {[
-                { icon: MapPin, label: 'Address', value: 'Britam Towers, Hospital Road, Upper Hill, Nairobi, Kenya', iconColor: '#1A2B5E', iconBg: 'rgba(26,43,94,0.07)' },
-                { icon: Phone, label: 'Phone', value: '+254 723 887 417', iconColor: '#F5A623', iconBg: 'rgba(245,166,35,0.10)' },
-                { icon: Mail, label: 'Email', value: 'clinton@clin-corp.com', iconColor: '#1A2B5E', iconBg: 'rgba(26,43,94,0.07)' },
-                { icon: ShieldCheck, label: 'Authorized', value: 'Hempel Distributor · East Africa', iconColor: '#F5A623', iconBg: 'rgba(245,166,35,0.10)' },
+                { icon: MapPin, label: 'Address', value: 'Britam Towers, Hospital Road, Upper Hill, Nairobi, Kenya', href: null, iconColor: '#1A2B5E', iconBg: 'rgba(26,43,94,0.07)' },
+                { icon: Phone, label: 'Phone', value: '+254 723 887 417', href: 'tel:+254723887417', iconColor: '#F5A623', iconBg: 'rgba(245,166,35,0.10)' },
+                { icon: Mail, label: 'Email', value: 'clin@clincorps.com', href: 'mailto:clin@clincorps.com', iconColor: '#1A2B5E', iconBg: 'rgba(26,43,94,0.07)' },
+                { icon: ShieldCheck, label: 'Authorized', value: 'Hempel Distributor · East Africa', href: null, iconColor: '#F5A623', iconBg: 'rgba(245,166,35,0.10)' },
               ].map((item) => (
                 <div key={item.label} className="flex gap-3 items-start">
                   <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: item.iconBg }}>
@@ -312,7 +312,11 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <p className="font-mono text-[10px] uppercase tracking-widest" style={{ color: '#8899AE' }}>{item.label}</p>
-                    <p className="font-sans font-semibold text-sm mt-0.5" style={{ color: '#1A2B5E' }}>{item.value}</p>
+                    {item.href ? (
+                      <a href={item.href} className="font-sans font-semibold text-sm mt-0.5 hover:text-blue transition-colors duration-200 cursor-pointer" style={{ color: '#1A2B5E' }}>{item.value}</a>
+                    ) : (
+                      <p className="font-sans font-semibold text-sm mt-0.5" style={{ color: '#1A2B5E' }}>{item.value}</p>
+                    )}
                   </div>
                 </div>
               ))}

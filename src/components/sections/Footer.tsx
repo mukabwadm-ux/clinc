@@ -123,8 +123,8 @@ export default function Footer() {
               </li>
               <li className="flex gap-3 items-center">
                 <Mail size={14} className="shrink-0" style={{ color: '#F5A623' }} />
-                <a href="mailto:clinton@clin-corp.com" className="font-sans text-sm transition-colors duration-200 cursor-pointer hover:text-gold" style={{ color: 'rgba(255,255,255,0.55)' }}>
-                  clinton@clin-corp.com
+                <a href="mailto:clin@clincorps.com" className="font-sans text-sm transition-colors duration-200 cursor-pointer hover:text-gold" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                  clin@clincorps.com
                 </a>
               </li>
             </ul>

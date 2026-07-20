@@ -19,8 +19,8 @@ const contactDetails = [
   {
     Icon: Mail,
     label: 'Email',
-    value: 'clinton@clin-corp.com',
-    href: 'mailto:clinton@clin-corp.com',
+    value: 'clin@clincorps.com',
+    href: 'mailto:clin@clincorps.com',
     iconColor: '#F5A623',
     iconBg: 'rgba(245,166,35,0.10)',
   },
