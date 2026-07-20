@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { useInView } from '@/hooks/useInView'
 import { cn } from '@/lib/utils'
@@ -52,19 +53,14 @@ export default function About() {
             </a>
           </div>
 
-          {/* Right: concentric circles graphic */}
-          <div className="relative flex items-center justify-center w-full aspect-square max-w-[220px] sm:max-w-[260px] lg:max-w-[300px] mx-auto">
-            <div
-              className="absolute inset-0 rounded-full pointer-events-none"
-              style={{ background: 'radial-gradient(circle, rgba(0,174,239,0.20) 0%, transparent 70%)', filter: 'blur(30px)' }}
-            />
-            <div className="absolute w-[90%] h-[90%] rounded-full border-[10px] sm:border-[12px] border-navy animate-spin [animation-duration:30s]" />
-            <div className="absolute w-[70%] h-[70%] rounded-full border-[8px] sm:border-[10px] border-blue/20" />
-            <div className="absolute w-[52%] h-[52%] rounded-full border-[8px] sm:border-[10px] border-navy" />
-            <div className="absolute w-[32%] h-[32%] rounded-full border-[8px] sm:border-[10px] border-blue/20" />
-            <div
-              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full shadow-[0_0_20px_rgba(0,212,180,0.6)]"
-              style={{ background: 'linear-gradient(135deg, #00AEEF, #00D4B4)' }}
+          {/* Right: Clin Corp brand image */}
+          <div className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[460px] mx-auto">
+            <Image
+              src="/ccimage.jpeg"
+              alt="Clin Corp — Authorised Hempel Distributor"
+              width={460}
+              height={340}
+              className="w-full h-auto rounded-2xl shadow-[0_20px_60px_rgba(26,43,94,0.18)] object-cover"
             />
           </div>
         </div>
