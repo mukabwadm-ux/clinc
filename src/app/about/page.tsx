@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { ArrowRight, ShieldCheck, Star, Truck, Leaf, MapPin, Ship, Factory, Shield, Headphones, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, ShieldCheck, Star, Truck, Leaf, MapPin, CheckCircle2 } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Team from '@/components/sections/Team'
 import Footer from '@/components/sections/Footer'
@@ -9,29 +9,6 @@ export const metadata: Metadata = {
   title: 'About Us',
   description: 'Clin Corp Limited — a leading provider of high performance protective coatings and industrial solutions in East Africa. Authorised distributor of Hempel products.',
 }
-
-const solutions = [
-  {
-    icon: Ship,
-    title: 'Marine Coatings',
-    body: 'Advanced coating systems for hull, deck, cargo, ballast tanks and marine structures.',
-  },
-  {
-    icon: Factory,
-    title: 'Industrial Coatings',
-    body: 'Protective solutions for steel structures, tanks, pipelines, equipment and machinery.',
-  },
-  {
-    icon: Shield,
-    title: 'Protective Solutions',
-    body: 'High performance coatings for long term protection in the most demanding environments.',
-  },
-  {
-    icon: Headphones,
-    title: 'Technical Support',
-    body: 'Expert technical advisory, specification support, site visits and after-sales service you can rely on.',
-  },
-]
 
 const values = [
   {
@@ -166,32 +143,6 @@ export default function AboutPage() {
                 <div key={p.label} className="flex items-center gap-3">
                   <p.icon size={20} className="text-gold shrink-0" style={{ color: '#F5A623' }} />
                   <span className="font-sans font-bold text-white text-sm sm:text-base">{p.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── Our Solutions ── */}
-        <section className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom right, #07111F, #0D1B45, #07111F)' }} />
-          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(0,174,239,0.06) 0%, transparent 70%)' }} />
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="font-mono text-[10px] sm:text-[11px] text-blue uppercase tracking-[3px]">WHAT WE OFFER</p>
-            <h2 className="font-sans font-black text-white mt-2 sm:mt-3" style={{ fontSize: 'clamp(28px, 4.5vw, 52px)' }}>
-              Our <span className="text-blue">Solutions.</span>
-            </h2>
-            <p className="font-sans text-slate text-sm sm:text-base mt-3 max-w-xl leading-relaxed">
-              We provide a complete range of high performance coatings and tailored solutions for every industry.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 mt-10 sm:mt-14">
-              {solutions.map((s) => (
-                <div key={s.title} className="group rounded-2xl p-6 sm:p-8 border border-blue/10 hover:border-blue/40 hover:bg-white/[0.04] transition-all duration-300" style={{ background: 'rgba(255,255,255,0.02)' }}>
-                  <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style={{ background: 'linear-gradient(135deg, rgba(0,174,239,0.2), rgba(26,50,114,0.3))' }}>
-                    <s.icon size={20} className="text-blue" />
-                  </div>
-                  <h3 className="font-sans font-black text-white text-lg sm:text-xl">{s.title}</h3>
-                  <p className="font-sans text-sm sm:text-[15px] text-slate leading-relaxed mt-3">{s.body}</p>
                 </div>
               ))}
             </div>
