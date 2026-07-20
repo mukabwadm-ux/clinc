@@ -7,6 +7,33 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Phone, MapPin, Mail, ArrowRight, Loader2, CheckCircle2 } from 'lucide-react'
 import { contactSchema, type ContactFormData } from '@/lib/validations'
 
+const contactDetails = [
+  {
+    Icon: Phone,
+    label: 'Phone',
+    value: '+254 723 887 417',
+    href: 'tel:+254723887417',
+    iconColor: '#1A2B5E',
+    iconBg: 'rgba(26,43,94,0.08)',
+  },
+  {
+    Icon: Mail,
+    label: 'Email',
+    value: 'clinton@clin-corp.com',
+    href: 'mailto:clinton@clin-corp.com',
+    iconColor: '#F5A623',
+    iconBg: 'rgba(245,166,35,0.10)',
+  },
+  {
+    Icon: MapPin,
+    label: 'Location',
+    value: 'Britam Towers, Upper Hill\nNairobi, Kenya 00100',
+    href: null,
+    iconColor: '#1A2B5E',
+    iconBg: 'rgba(26,43,94,0.08)',
+  },
+]
+
 export default function Contact() {
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -37,69 +64,59 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="grid grid-cols-1 lg:grid-cols-2">
-      {/* Left: contact info */}
-      <div className="relative bg-offwhite p-6 sm:p-10 lg:p-16 xl:p-24 overflow-hidden">
-        <div
-          className="absolute top-0 left-0 right-0 h-1"
-          style={{ background: 'linear-gradient(90deg, #F5A623, #00AEEF)' }}
-        />
+    <section id="contact" className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
+
+      {/* ── Left: contact info ── */}
+      <div className="relative p-6 sm:p-10 lg:p-14 xl:p-20 overflow-hidden flex flex-col justify-center" style={{ background: '#FAFAF8' }}>
+        {/* Gold top accent */}
+        <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, #F5A623, #0070C0)' }} />
+
         <Image
           src="/clincorp_logo.png"
           alt="Clin-Corp"
           width={140}
           height={44}
-          className="object-contain bg-white rounded-md px-2 py-1 shadow-sm w-[120px] sm:w-[140px] h-auto"
+          className="object-contain bg-white rounded-lg px-2 py-1 shadow-sm w-[120px] sm:w-[140px] h-auto mb-8 sm:mb-10"
         />
-        <h2
-          className="font-sans font-black text-navy mt-6 sm:mt-8 leading-tight"
-          style={{ fontSize: 'clamp(28px, 4.5vw, 48px)' }}
-        >
-          Get in <span className="text-blue">Touch.</span>
+
+        {/* Heading */}
+        <div className="flex items-center gap-3 mb-3">
+          <div className="h-px w-8 rounded-full" style={{ background: '#F5A623' }} />
+          <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[3px]" style={{ color: '#F5A623' }}>GET IN TOUCH</p>
+        </div>
+        <h2 className="font-sans font-black text-navy leading-tight" style={{ fontSize: 'clamp(28px, 4.5vw, 52px)' }}>
+          Let&apos;s Talk <span className="text-blue">Coatings.</span>
         </h2>
-        <p className="font-sans text-slate text-sm sm:text-base leading-relaxed mt-3 sm:mt-4">
-          Ready to protect your assets with world-class Hempel coatings? Our team is available to
-          advise on the right product solutions for your industry.
+        <p className="font-sans text-sm sm:text-base leading-relaxed mt-3 sm:mt-4 max-w-sm" style={{ color: '#6B7A99' }}>
+          Ready to protect your assets with world-class Hempel coatings? Our team is available to advise on the right product solutions for your industry.
         </p>
 
-        <div className="mt-6 sm:mt-10 space-y-4 sm:space-y-6">
-          <div className="flex items-start gap-3 sm:gap-4">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue/10 flex items-center justify-center shrink-0">
-              <Phone className="text-blue" size={16} />
+        {/* Contact details */}
+        <div className="mt-8 sm:mt-10 space-y-5">
+          {contactDetails.map((c) => (
+            <div key={c.label} className="flex items-start gap-4">
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                style={{ background: c.iconBg }}
+              >
+                <c.Icon size={16} style={{ color: c.iconColor }} />
+              </div>
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-widest mb-1" style={{ color: '#8899AE' }}>{c.label}</p>
+                {c.href ? (
+                  <a href={c.href} className="font-sans font-semibold text-navy text-sm sm:text-base hover:text-blue transition-colors duration-200 cursor-pointer break-all">
+                    {c.value}
+                  </a>
+                ) : (
+                  <p className="font-sans font-semibold text-navy text-sm whitespace-pre-line">{c.value}</p>
+                )}
+              </div>
             </div>
-            <div>
-              <p className="font-sans text-[10px] text-slate uppercase tracking-widest mb-1">Phone</p>
-              <a href="tel:+254723887417" className="font-sans font-semibold text-navy hover:text-blue transition-colors text-sm sm:text-base">
-                +254 723 887 417
-              </a>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-3 sm:gap-4">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue/10 flex items-center justify-center shrink-0">
-              <Mail className="text-blue" size={16} />
-            </div>
-            <div>
-              <p className="font-sans text-[10px] text-slate uppercase tracking-widest mb-1">Email</p>
-              <a href="mailto:clinton@clin-corp.com" className="font-sans font-semibold text-navy hover:text-blue transition-colors text-sm sm:text-base break-all">
-                clinton@clin-corp.com
-              </a>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-3 sm:gap-4">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue/10 flex items-center justify-center shrink-0">
-              <MapPin className="text-blue" size={16} />
-            </div>
-            <div>
-              <p className="font-sans text-[10px] text-slate uppercase tracking-widest mb-1">Location</p>
-              <p className="font-sans text-navy font-semibold text-sm">Britam Towers, Upper Hill</p>
-              <p className="font-sans text-slate text-sm">Nairobi, Kenya 00100</p>
-            </div>
-          </div>
+          ))}
         </div>
 
-        <div className="mt-6 sm:mt-10 bg-white rounded-2xl p-4 sm:p-5 border border-blue/10 shadow-sm flex items-center gap-3 sm:gap-4">
+        {/* Hempel badge */}
+        <div className="mt-8 sm:mt-10 bg-white rounded-2xl p-4 sm:p-5 flex items-center gap-4" style={{ border: '1px solid rgba(245,166,35,0.15)', boxShadow: '0 2px 12px rgba(26,43,94,0.06)' }}>
           <Image
             src="/hempel-distributor.jpg"
             alt="Official Hempel Distributor"
@@ -109,70 +126,62 @@ export default function Contact() {
           />
           <div>
             <p className="font-sans font-bold text-navy text-sm">Official Hempel Partner</p>
-            <p className="font-sans text-slate text-xs mt-0.5">Authorized Distributor · East Africa</p>
+            <p className="font-sans text-xs mt-0.5" style={{ color: '#8899AE' }}>Authorized Distributor · East Africa</p>
           </div>
         </div>
       </div>
 
-      {/* Right: contact form */}
-      <div className="relative overflow-hidden p-6 sm:p-10 lg:p-16 xl:p-24">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#07111F] to-[#0D1B45]" />
-        <div
-          className="absolute top-0 right-0 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(0,174,239,0.08) 0%, transparent 70%)', filter: 'blur(60px)' }}
-        />
+      {/* ── Right: contact form ── */}
+      <div className="relative overflow-hidden p-6 sm:p-10 lg:p-14 xl:p-20 flex flex-col justify-center">
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #040D1A 0%, #0D1B45 60%, #040D1A 100%)' }} />
+        <div className="absolute top-0 right-0 w-[350px] h-[350px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(245,166,35,0.06) 0%, transparent 70%)', filter: 'blur(60px)' }} />
 
-        <div className="relative z-10">
+        <div className="relative z-10 w-full max-w-lg mx-auto">
           {success ? (
-            <div className="text-center py-12">
-              <CheckCircle2 className="text-teal mx-auto mb-4" size={48} />
+            <div className="text-center py-16">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5" style={{ background: 'rgba(0,212,180,0.12)' }}>
+                <CheckCircle2 size={32} style={{ color: '#00D4B4' }} />
+              </div>
               <h3 className="font-sans font-black text-3xl text-white">Thank you.</h3>
-              <p className="font-sans text-slate mt-3">We&apos;ll be in touch shortly.</p>
+              <p className="font-sans mt-3" style={{ color: '#6B7A99' }}>We&apos;ll be in touch shortly.</p>
             </div>
           ) : (
             <>
-              <h3 className="font-sans font-bold text-white text-lg sm:text-xl mb-6 sm:mb-8">Send us a message</h3>
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8">
-                <div>
-                  <label className="block font-sans text-[10px] uppercase tracking-widest text-slate mb-2">Full Name</label>
-                  <input
-                    {...register('fullName')}
-                    placeholder="Your full name"
-                    className="w-full bg-transparent border-0 border-b border-white/15 text-white placeholder:text-slate/50 focus:outline-none focus:border-blue px-0 py-2.5 sm:py-3 font-sans text-sm transition-colors"
-                  />
-                  {errors.fullName && <p className="text-red-400 text-xs mt-1">{errors.fullName.message}</p>}
-                </div>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="h-px w-8 rounded-full" style={{ background: '#F5A623' }} />
+                <p className="font-mono text-[10px] uppercase tracking-[3px]" style={{ color: '#F5A623' }}>SEND A MESSAGE</p>
+              </div>
+              <h3 className="font-sans font-black text-white text-xl sm:text-2xl mb-8 sm:mb-10">We&apos;re here to help.</h3>
+
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-7 sm:space-y-8">
+                {[
+                  { id: 'fullName' as const, label: 'Full Name', type: 'text', placeholder: 'Your full name' },
+                  { id: 'email' as const, label: 'Email Address', type: 'email', placeholder: 'you@company.com' },
+                  { id: 'company' as const, label: 'Company / Organisation', type: 'text', placeholder: 'Your company name' },
+                ].map((field) => (
+                  <div key={field.id}>
+                    <label className="block font-mono text-[10px] uppercase tracking-widest mb-2.5" style={{ color: '#6B7A99' }}>{field.label}</label>
+                    <input
+                      {...register(field.id)}
+                      type={field.type}
+                      placeholder={field.placeholder}
+                      className="w-full bg-transparent border-0 border-b text-white placeholder:text-white/25 focus:outline-none px-0 py-2.5 font-sans text-sm transition-colors duration-200"
+                      style={{ borderColor: 'rgba(255,255,255,0.12)' }}
+                    />
+                    {errors[field.id] && <p className="text-red-400 text-xs mt-1.5">{errors[field.id]?.message}</p>}
+                  </div>
+                ))}
 
                 <div>
-                  <label className="block font-sans text-[10px] uppercase tracking-widest text-slate mb-2">Email Address</label>
-                  <input
-                    {...register('email')}
-                    type="email"
-                    placeholder="you@company.com"
-                    className="w-full bg-transparent border-0 border-b border-white/15 text-white placeholder:text-slate/50 focus:outline-none focus:border-blue px-0 py-2.5 sm:py-3 font-sans text-sm transition-colors"
-                  />
-                  {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
-                </div>
-
-                <div>
-                  <label className="block font-sans text-[10px] uppercase tracking-widest text-slate mb-2">Company / Organisation</label>
-                  <input
-                    {...register('company')}
-                    placeholder="Your company name"
-                    className="w-full bg-transparent border-0 border-b border-white/15 text-white placeholder:text-slate/50 focus:outline-none focus:border-blue px-0 py-2.5 sm:py-3 font-sans text-sm transition-colors"
-                  />
-                  {errors.company && <p className="text-red-400 text-xs mt-1">{errors.company.message}</p>}
-                </div>
-
-                <div>
-                  <label className="block font-sans text-[10px] uppercase tracking-widest text-slate mb-2">Message</label>
+                  <label className="block font-mono text-[10px] uppercase tracking-widest mb-2.5" style={{ color: '#6B7A99' }}>Message</label>
                   <textarea
                     {...register('message')}
                     rows={4}
                     placeholder="Tell us about your project or requirements..."
-                    className="w-full bg-transparent border-0 border-b border-white/15 text-white placeholder:text-slate/50 focus:outline-none focus:border-blue px-0 py-2.5 sm:py-3 font-sans text-sm transition-colors resize-none"
+                    className="w-full bg-transparent border-0 border-b text-white placeholder:text-white/25 focus:outline-none px-0 py-2.5 font-sans text-sm transition-colors duration-200 resize-none"
+                    style={{ borderColor: 'rgba(255,255,255,0.12)' }}
                   />
-                  {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message.message}</p>}
+                  {errors.message && <p className="text-red-400 text-xs mt-1.5">{errors.message.message}</p>}
                 </div>
 
                 {serverError && <p className="text-red-400 text-sm">{serverError}</p>}
@@ -180,7 +189,8 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full flex items-center justify-center gap-2 bg-blue hover:bg-steel text-white font-bold tracking-widest uppercase py-4 sm:py-5 rounded-xl text-xs sm:text-sm transition-all hover:-translate-y-0.5 disabled:opacity-50 shadow-[0_4px_20px_rgba(0,174,239,0.3)] hover:shadow-[0_8px_30px_rgba(0,174,239,0.4)]"
+                  className="w-full flex items-center justify-center gap-2 font-black tracking-widest uppercase py-4 sm:py-5 rounded-xl text-xs sm:text-sm transition-all duration-200 cursor-pointer disabled:opacity-60"
+                  style={{ background: '#F5A623', color: '#0D1B4B', boxShadow: '0 0 28px rgba(245,166,35,0.25)' }}
                 >
                   {submitting ? (
                     <Loader2 className="animate-spin" size={18} />

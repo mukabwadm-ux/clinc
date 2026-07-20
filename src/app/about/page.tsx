@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { ArrowRight, ShieldCheck, Star, Truck, Leaf, MapPin, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, ShieldCheck, Star, Truck, Leaf, MapPin, Mail, Phone, CheckCircle2 } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Team from '@/components/sections/Team'
 import Footer from '@/components/sections/Footer'
@@ -11,31 +11,11 @@ export const metadata: Metadata = {
 }
 
 const values = [
-  {
-    title: 'Integrity',
-    body: 'We conduct our business with honesty, transparency and professionalism.',
-    color: '#00AEEF',
-  },
-  {
-    title: 'Quality',
-    body: 'We are committed to delivering the highest quality in everything we do.',
-    color: '#F5A623',
-  },
-  {
-    title: 'Safety',
-    body: 'We promote a safety-first culture in all our operations.',
-    color: '#00D4B4',
-  },
-  {
-    title: 'Innovation',
-    body: 'We embrace innovation to provide better solutions for our clients.',
-    color: '#00AEEF',
-  },
-  {
-    title: 'Teamwork',
-    body: 'We believe in the power of partnership and working together for success.',
-    color: '#F5A623',
-  },
+  { title: 'Integrity', body: 'We conduct our business with honesty, transparency and professionalism.', color: '#0070C0' },
+  { title: 'Quality', body: 'We are committed to delivering the highest quality in everything we do.', color: '#F5A623' },
+  { title: 'Safety', body: 'We promote a safety-first culture in all our operations.', color: '#00D4B4' },
+  { title: 'Innovation', body: 'We embrace innovation to provide better solutions for our clients.', color: '#0070C0' },
+  { title: 'Teamwork', body: 'We believe in the power of partnership and working together for success.', color: '#F5A623' },
 ]
 
 const whyUs = [
@@ -60,72 +40,78 @@ const partners = [
   { name: 'Ministry of Defence', sub: 'Republic of Kenya' },
 ]
 
+const stats = [
+  { value: '37%', label: 'East Africa Market Share', color: '#F5A623' },
+  { value: '2+', label: 'Years Operating', color: '#0070C0' },
+  { value: 'EA', label: 'Regional Coverage', color: '#00D4B4' },
+  { value: '100%', label: 'Hempel Authorized', color: '#1A2B5E' },
+]
+
 export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main className="bg-dark text-white">
+      <main style={{ background: '#040D1A' }} className="text-white">
 
         {/* ── Hero ── */}
-        <section className="relative min-h-[60vh] flex items-end overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#040D1A] via-[#0D1B45] to-[#040D1A]" />
-          <div className="absolute -top-20 -left-40 w-[700px] h-[700px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(0,174,239,0.14) 0%, transparent 70%)', filter: 'blur(60px)' }} />
-          <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 70%)', filter: 'blur(80px)' }} />
+        <section className="relative min-h-[65vh] flex items-end overflow-hidden">
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #040D1A 0%, #0D1B45 50%, #040D1A 100%)' }} />
+          <div className="absolute -top-20 -left-40 w-[700px] h-[700px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(0,112,192,0.10) 0%, transparent 70%)', filter: 'blur(60px)' }} />
+          <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(245,166,35,0.09) 0%, transparent 70%)', filter: 'blur(80px)' }} />
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 lg:pb-28 pt-32 sm:pt-36">
-            <p className="font-mono text-[10px] sm:text-[11px] text-blue uppercase tracking-[3px]">ABOUT CLIN CORP</p>
-            <h1 className="font-sans font-black text-white mt-2 sm:mt-3 leading-[0.95]" style={{ fontSize: 'clamp(36px, 6.5vw, 84px)' }}>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-px w-8 rounded-full" style={{ background: '#F5A623' }} />
+              <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[3px]" style={{ color: '#F5A623' }}>ABOUT CLIN CORP</p>
+            </div>
+            <h1 className="font-sans font-black text-white leading-[0.95]" style={{ fontSize: 'clamp(36px, 6.5vw, 84px)' }}>
               Protecting Assets.<br />
               Delivering Excellence.<br />
-              <span className="text-blue">Building the Future.</span>
+              <span style={{ color: '#F5A623' }}>Building the Future.</span>
             </h1>
-            <p className="font-sans text-slate text-base sm:text-lg mt-5 max-w-2xl leading-relaxed">
+            <p className="font-sans text-base sm:text-lg mt-5 max-w-2xl leading-relaxed" style={{ color: '#6B7A99' }}>
               Your trusted partner in protective coatings &amp; solutions across East Africa.
             </p>
-            <div className="w-16 h-0.5 mt-6 rounded-full" style={{ background: 'linear-gradient(90deg, #F5A623, #00AEEF)' }} />
+            <div className="w-14 h-0.5 mt-6 rounded-full" style={{ background: 'linear-gradient(90deg, #F5A623, #0070C0)' }} />
           </div>
         </section>
 
         {/* ── Who We Are ── */}
-        <section className="bg-offwhite py-16 sm:py-20 lg:py-28 relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-1 pointer-events-none" style={{ background: 'linear-gradient(90deg, #00AEEF, #F5A623, #00D4B4)' }} />
+        <section className="py-16 sm:py-20 lg:py-28 relative overflow-hidden" style={{ background: '#FAFAF8' }}>
+          <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, #F5A623, #0070C0, #00D4B4)' }} />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div>
-                <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[3px]" style={{ color: '#8899AE' }}>WHO WE ARE</p>
-                <h2 className="font-sans font-black leading-tight mt-2" style={{ fontSize: 'clamp(28px, 4.5vw, 52px)', color: '#1A3272' }}>
-                  East Africa&apos;s Leading<br /><span style={{ color: '#00AEEF' }}>Coatings Partner.</span>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="h-px w-8 rounded-full" style={{ background: '#F5A623' }} />
+                  <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[3px]" style={{ color: '#F5A623' }}>WHO WE ARE</p>
+                </div>
+                <h2 className="font-sans font-black leading-tight" style={{ fontSize: 'clamp(28px, 4.5vw, 52px)', color: '#1A2B5E' }}>
+                  East Africa&apos;s Leading<br /><span style={{ color: '#0070C0' }}>Coatings Partner.</span>
                 </h2>
-                <p className="font-sans text-sm sm:text-base leading-relaxed mt-5" style={{ color: '#8899AE' }}>
+                <p className="font-sans text-sm sm:text-base leading-relaxed mt-5" style={{ color: '#6B7A99' }}>
                   Clin Corp Limited is a leading provider of high performance protective coatings and industrial solutions in East Africa. As the authorised distributor of HEMPEL products, we deliver world-class coatings, technical expertise and reliable service that protect assets, extend life and enhance performance.
                 </p>
 
-                {/* Mission / Vision / Purpose */}
                 <div className="mt-8 space-y-5">
                   {[
-                    { label: 'Our Mission', text: 'To deliver innovative coating solutions and exceptional service that protect our clients\' assets and create value.' },
+                    { label: 'Our Mission', text: "To deliver innovative coating solutions and exceptional service that protect our clients' assets and create value." },
                     { label: 'Our Vision', text: 'To be the most trusted partner in protective coatings and solutions in East Africa.' },
                     { label: 'Our Purpose', text: 'Protecting today, improving tomorrow and building a better future.' },
                   ].map((item) => (
                     <div key={item.label} className="flex gap-4 items-start">
-                      <div className="w-2 h-2 rounded-full mt-2 shrink-0" style={{ background: '#00AEEF' }} />
+                      <div className="w-2 h-2 rounded-full mt-2 shrink-0" style={{ background: '#F5A623' }} />
                       <div>
-                        <p className="font-sans font-black text-sm" style={{ color: '#1A3272' }}>{item.label}</p>
-                        <p className="font-sans text-sm leading-relaxed mt-1" style={{ color: '#8899AE' }}>{item.text}</p>
+                        <p className="font-sans font-black text-sm" style={{ color: '#1A2B5E' }}>{item.label}</p>
+                        <p className="font-sans text-sm leading-relaxed mt-1" style={{ color: '#6B7A99' }}>{item.text}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Stats grid */}
-              <div className="grid grid-cols-2 gap-4 sm:gap-6">
-                {[
-                  { value: '37%', label: 'East Africa Market Share', color: '#F5A623' },
-                  { value: '2+', label: 'Years Operating', color: '#00AEEF' },
-                  { value: 'EA', label: 'Regional Coverage', color: '#00D4B4' },
-                  { value: '100%', label: 'Hempel Authorized', color: '#1A3272' },
-                ].map((stat) => (
-                  <div key={stat.label} className="rounded-2xl p-5 sm:p-7 border" style={{ background: 'white', borderColor: 'rgba(0,174,239,0.12)' }}>
+              <div className="grid grid-cols-2 gap-4 sm:gap-5">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="rounded-2xl p-5 sm:p-7 border bg-white hover:shadow-[0_4px_24px_rgba(26,43,94,0.08)] transition-all duration-300" style={{ borderColor: 'rgba(26,43,94,0.09)' }}>
                     <span className="font-sans font-black block leading-none" style={{ fontSize: 'clamp(32px, 5vw, 48px)', color: stat.color }}>{stat.value}</span>
                     <span className="font-sans text-xs uppercase tracking-widest mt-2 block" style={{ color: '#8899AE' }}>{stat.label}</span>
                   </div>
@@ -136,12 +122,12 @@ export default function AboutPage() {
         </section>
 
         {/* ── Pillars strip ── */}
-        <section className="py-10 sm:py-12" style={{ background: '#1A3272' }}>
+        <section className="py-10 sm:py-12" style={{ background: '#1A2B5E' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               {pillars.map((p) => (
                 <div key={p.label} className="flex items-center gap-3">
-                  <p.icon size={20} className="text-gold shrink-0" style={{ color: '#F5A623' }} />
+                  <p.icon size={20} style={{ color: '#F5A623' }} className="shrink-0" />
                   <span className="font-sans font-bold text-white text-sm sm:text-base">{p.label}</span>
                 </div>
               ))}
@@ -150,38 +136,41 @@ export default function AboutPage() {
         </section>
 
         {/* ── Hempel Partnership ── */}
-        <section className="bg-offwhite py-16 sm:py-20 lg:py-28 relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-1 pointer-events-none" style={{ background: 'linear-gradient(90deg, #F5A623, #00AEEF)' }} />
+        <section className="py-16 sm:py-20 lg:py-28 relative overflow-hidden" style={{ background: '#FAFAF8' }}>
+          <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, #F5A623, #0070C0)' }} />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div>
-                <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[3px]" style={{ color: '#8899AE' }}>OUR PRINCIPAL</p>
-                <h2 className="font-sans font-black leading-tight mt-2" style={{ fontSize: 'clamp(28px, 4.5vw, 52px)', color: '#1A3272' }}>
-                  Powered by <span style={{ color: '#00AEEF' }}>Hempel.</span>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="h-px w-8 rounded-full" style={{ background: '#F5A623' }} />
+                  <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[3px]" style={{ color: '#F5A623' }}>OUR PRINCIPAL</p>
+                </div>
+                <h2 className="font-sans font-black leading-tight" style={{ fontSize: 'clamp(28px, 4.5vw, 52px)', color: '#1A2B5E' }}>
+                  Powered by <span style={{ color: '#0070C0' }}>Hempel.</span>
                 </h2>
-                <p className="font-sans text-sm sm:text-base leading-relaxed mt-5" style={{ color: '#8899AE' }}>
+                <p className="font-sans text-sm sm:text-base leading-relaxed mt-5" style={{ color: '#6B7A99' }}>
                   We proudly distribute the full range of HEMPEL high performance coatings and systems — trusted since 1915. Our authorization means every product is genuine, certified, and backed by Hempel&apos;s global technical support network.
                 </p>
                 <ul className="mt-6 space-y-2.5">
                   {['Marine Coatings', 'Protective Coatings', 'Industrial Coatings', 'Flooring Solutions', 'Passive Fire Protection', 'Yacht Coatings', 'Thinners & Ancillaries'].map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-sm font-medium" style={{ color: '#1A3272' }}>
-                      <CheckCircle2 size={16} style={{ color: '#00AEEF' }} className="shrink-0" />
+                    <li key={item} className="flex items-center gap-3 text-sm font-medium" style={{ color: '#1A2B5E' }}>
+                      <CheckCircle2 size={15} style={{ color: '#F5A623' }} className="shrink-0" />
                       {item}
                     </li>
                   ))}
                 </ul>
                 <div className="flex flex-wrap gap-4 mt-8">
-                  <a href="https://www.hempel.com/en/products" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-blue text-white rounded-md px-6 py-3 text-xs font-bold tracking-widest uppercase hover:bg-steel transition-colors shadow-[0_0_20px_rgba(0,174,239,0.3)]" style={{ background: '#00AEEF' }}>
+                  <a href="https://www.hempel.com/en/products" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-xs font-black tracking-widest uppercase cursor-pointer transition-all duration-200" style={{ background: '#F5A623', color: '#0D1B4B' }}>
                     Hempel Products <ArrowRight size={14} />
                   </a>
-                  <a href="https://www.hempel.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border text-sm font-bold tracking-widest uppercase transition-all px-6 py-3 rounded-md hover:opacity-80" style={{ borderColor: 'rgba(26,50,114,0.3)', color: '#1A3272' }}>
+                  <a href="https://www.hempel.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-xs font-bold tracking-widest uppercase cursor-pointer transition-all duration-200 hover:opacity-80" style={{ border: '1px solid rgba(26,43,94,0.20)', color: '#1A2B5E' }}>
                     Hempel Global <ArrowRight size={14} />
                   </a>
                 </div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="bg-white rounded-2xl p-8 sm:p-10 shadow-[0_0_60px_rgba(0,174,239,0.12)] border" style={{ borderColor: 'rgba(0,174,239,0.1)' }}>
-                  <Image src="/hempel-distributor.jpg" alt="Official Hempel Authorized Distributor" width={200} height={150} className="object-contain" />
+                <div className="bg-white rounded-2xl p-8 sm:p-10 text-center" style={{ border: '1px solid rgba(245,166,35,0.15)', boxShadow: '0 8px 40px rgba(26,43,94,0.08)' }}>
+                  <Image src="/hempel-distributor.jpg" alt="Official Hempel Authorized Distributor" width={200} height={150} className="object-contain mx-auto" />
                   <p className="font-sans text-center text-xs font-semibold mt-4" style={{ color: '#8899AE' }}>Authorised Distributor · Trusted Since 1915</p>
                 </div>
               </div>
@@ -189,24 +178,28 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ── Why Choose Us ── */}
+        {/* ── Why Choose Us + Values ── */}
         <section className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom right, #07111F, #0D1B45)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #040D1A 0%, #0D1B45 60%, #040D1A 100%)' }} />
+          <div className="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(245,166,35,0.05) 0%, transparent 70%)', filter: 'blur(60px)' }} />
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
               <div>
-                <p className="font-mono text-[10px] sm:text-[11px] text-blue uppercase tracking-[3px]">WHY CHOOSE US</p>
-                <h2 className="font-sans font-black text-white mt-2 sm:mt-3" style={{ fontSize: 'clamp(28px, 4.5vw, 52px)' }}>
-                  The Clin Corp <span className="text-blue">Promise.</span>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="h-px w-8 rounded-full" style={{ background: '#F5A623' }} />
+                  <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[3px]" style={{ color: '#F5A623' }}>WHY CHOOSE US</p>
+                </div>
+                <h2 className="font-sans font-black text-white" style={{ fontSize: 'clamp(28px, 4.5vw, 52px)' }}>
+                  The Clin Corp <span style={{ color: '#F5A623' }}>Promise.</span>
                 </h2>
-                <p className="font-sans text-slate text-sm sm:text-base mt-4 leading-relaxed max-w-lg">
-                  Quality products. Technical expertise. Reliable delivery. Lasting protection. <span style={{ color: '#F5A623' }}>That is the Clin Corp promise.</span>
+                <p className="font-sans text-sm sm:text-base mt-4 leading-relaxed max-w-lg" style={{ color: '#6B7A99' }}>
+                  Quality products. Technical expertise. Reliable delivery. Lasting protection. That is the Clin Corp promise.
                 </p>
                 <ul className="mt-8 space-y-4">
-                  {whyUs.map((item) => (
+                  {whyUs.map((item, i) => (
                     <li key={item} className="flex items-center gap-4">
-                      <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(0,174,239,0.15)' }}>
-                        <CheckCircle2 size={16} className="text-blue" />
+                      <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style={{ background: i % 2 === 0 ? 'rgba(245,166,35,0.10)' : 'rgba(0,112,192,0.12)' }}>
+                        <CheckCircle2 size={15} style={{ color: i % 2 === 0 ? '#F5A623' : '#0070C0' }} />
                       </div>
                       <span className="font-sans font-semibold text-white text-sm sm:text-base">{item}</span>
                     </li>
@@ -214,17 +207,22 @@ export default function AboutPage() {
                 </ul>
               </div>
 
-              {/* Values */}
               <div>
-                <p className="font-mono text-[10px] sm:text-[11px] text-blue uppercase tracking-[3px] mb-6">OUR VALUES</p>
-                <div className="space-y-4">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="h-px w-8 rounded-full" style={{ background: 'rgba(255,255,255,0.2)' }} />
+                  <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[3px]" style={{ color: '#6B7A99' }}>OUR VALUES</p>
+                </div>
+                <h2 className="font-sans font-black text-white mb-6" style={{ fontSize: 'clamp(22px, 3vw, 36px)' }}>
+                  What We <span style={{ color: '#0070C0' }}>Stand For.</span>
+                </h2>
+                <div className="space-y-3">
                   {values.map((v) => (
-                    <div key={v.title} className="rounded-xl p-5 border border-white/10 hover:border-blue/30 transition-all" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                    <div key={v.title} className="rounded-xl p-5 border border-white/[0.07] hover:border-white/20 transition-all duration-200" style={{ background: 'rgba(255,255,255,0.03)' }}>
                       <div className="flex items-start gap-4">
-                        <div className="w-2.5 h-2.5 rounded-full mt-1.5 shrink-0" style={{ background: v.color }} />
+                        <div className="w-2 h-2 rounded-full mt-1.5 shrink-0" style={{ background: v.color }} />
                         <div>
                           <h3 className="font-sans font-black text-white text-sm sm:text-base">{v.title}</h3>
-                          <p className="font-sans text-slate text-sm leading-relaxed mt-1">{v.body}</p>
+                          <p className="font-sans text-sm leading-relaxed mt-1" style={{ color: '#6B7A99' }}>{v.body}</p>
                         </div>
                       </div>
                     </div>
@@ -236,20 +234,26 @@ export default function AboutPage() {
         </section>
 
         {/* ── Valued Customers & Partners ── */}
-        <section className="bg-offwhite py-16 sm:py-20 lg:py-24 relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-1 pointer-events-none" style={{ background: 'linear-gradient(90deg, #00AEEF, #F5A623, #00D4B4)' }} />
+        <section className="py-16 sm:py-20 lg:py-24 relative overflow-hidden" style={{ background: '#FAFAF8' }}>
+          <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, #F5A623, #0070C0, #00D4B4)' }} />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[3px] text-center" style={{ color: '#8899AE' }}>TRUSTED BY</p>
-            <h2 className="font-sans font-black text-center mt-2" style={{ fontSize: 'clamp(24px, 4vw, 46px)', color: '#1A3272' }}>
-              Our Valued Customers <span style={{ color: '#00AEEF' }}>&amp; Partners.</span>
-            </h2>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mt-10 sm:mt-14">
-              {partners.map((p) => (
-                <div key={p.name} className="rounded-2xl p-6 sm:p-8 border text-center hover:shadow-md transition-all" style={{ background: 'white', borderColor: 'rgba(0,174,239,0.12)' }}>
-                  <div className="w-12 h-12 rounded-full mx-auto flex items-center justify-center mb-4" style={{ background: 'linear-gradient(135deg, #00AEEF, #1A3272)' }}>
-                    <ShieldCheck size={20} className="text-white" />
+            <div className="text-center mb-10 sm:mb-14">
+              <div className="flex items-center justify-center gap-3 mb-3">
+                <div className="h-px w-8 rounded-full" style={{ background: '#F5A623' }} />
+                <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[3px]" style={{ color: '#F5A623' }}>TRUSTED BY</p>
+                <div className="h-px w-8 rounded-full" style={{ background: '#F5A623' }} />
+              </div>
+              <h2 className="font-sans font-black" style={{ fontSize: 'clamp(24px, 4vw, 46px)', color: '#1A2B5E' }}>
+                Our Valued Customers <span style={{ color: '#0070C0' }}>&amp; Partners.</span>
+              </h2>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+              {partners.map((p, i) => (
+                <div key={p.name} className="rounded-2xl p-6 sm:p-8 border bg-white text-center hover:shadow-[0_8px_32px_rgba(26,43,94,0.09)] hover:border-gold/30 transition-all duration-300" style={{ borderColor: 'rgba(26,43,94,0.09)' }}>
+                  <div className="w-12 h-12 rounded-xl mx-auto flex items-center justify-center mb-4" style={{ background: i % 2 === 0 ? 'rgba(26,43,94,0.07)' : 'rgba(245,166,35,0.10)' }}>
+                    <ShieldCheck size={20} style={{ color: i % 2 === 0 ? '#1A2B5E' : '#F5A623' }} />
                   </div>
-                  <h3 className="font-sans font-black text-sm sm:text-base leading-tight" style={{ color: '#1A3272' }}>{p.name}</h3>
+                  <h3 className="font-sans font-black text-sm sm:text-base leading-tight" style={{ color: '#1A2B5E' }}>{p.name}</h3>
                   <p className="font-sans text-xs mt-1" style={{ color: '#8899AE' }}>{p.sub}</p>
                 </div>
               ))}
@@ -261,23 +265,23 @@ export default function AboutPage() {
         <Team />
 
         {/* ── Contact strip ── */}
-        <section className="bg-offwhite py-12 sm:py-16 relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-1 pointer-events-none" style={{ background: 'linear-gradient(90deg, #F5A623, #00AEEF)' }} />
+        <section className="py-12 sm:py-16 relative overflow-hidden" style={{ background: '#FAFAF8' }}>
+          <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, #F5A623, #0070C0)' }} />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               {[
-                { icon: MapPin, label: 'Address', value: 'Britam Towers, Hospital Road, Upper Hill, Nairobi, Kenya' },
-                { icon: ShieldCheck, label: 'Phone', value: '+254 723 887 417' },
-                { icon: ShieldCheck, label: 'Email', value: 'clin@clincorps.com' },
-                { icon: ShieldCheck, label: 'Website', value: 'www.Clincorp.com' },
+                { icon: MapPin, label: 'Address', value: 'Britam Towers, Hospital Road, Upper Hill, Nairobi, Kenya', iconColor: '#1A2B5E', iconBg: 'rgba(26,43,94,0.07)' },
+                { icon: Phone, label: 'Phone', value: '+254 723 887 417', iconColor: '#F5A623', iconBg: 'rgba(245,166,35,0.10)' },
+                { icon: Mail, label: 'Email', value: 'clinton@clin-corp.com', iconColor: '#1A2B5E', iconBg: 'rgba(26,43,94,0.07)' },
+                { icon: ShieldCheck, label: 'Authorized', value: 'Hempel Distributor · East Africa', iconColor: '#F5A623', iconBg: 'rgba(245,166,35,0.10)' },
               ].map((item) => (
                 <div key={item.label} className="flex gap-3 items-start">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(0,174,239,0.1)' }}>
-                    <item.icon size={16} style={{ color: '#00AEEF' }} />
+                  <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: item.iconBg }}>
+                    <item.icon size={15} style={{ color: item.iconColor }} />
                   </div>
                   <div>
                     <p className="font-mono text-[10px] uppercase tracking-widest" style={{ color: '#8899AE' }}>{item.label}</p>
-                    <p className="font-sans font-semibold text-sm mt-0.5" style={{ color: '#1A3272' }}>{item.value}</p>
+                    <p className="font-sans font-semibold text-sm mt-0.5" style={{ color: '#1A2B5E' }}>{item.value}</p>
                   </div>
                 </div>
               ))}
@@ -289,13 +293,18 @@ export default function AboutPage() {
         <section className="py-16 sm:py-20 lg:py-24 text-center relative overflow-hidden">
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #040D1A, #0D1B45, #040D1A)' }} />
           <div className="relative z-10 max-w-2xl mx-auto px-4 sm:px-6">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="h-px w-8 rounded-full" style={{ background: 'rgba(255,255,255,0.2)' }} />
+              <p className="font-mono text-[10px] uppercase tracking-[3px]" style={{ color: '#6B7A99' }}>WORK WITH US</p>
+              <div className="h-px w-8 rounded-full" style={{ background: 'rgba(255,255,255,0.2)' }} />
+            </div>
             <h2 className="font-sans font-black text-white" style={{ fontSize: 'clamp(26px, 4vw, 46px)' }}>
-              Ready to Work <span className="text-blue">With Us?</span>
+              Ready to Work <span style={{ color: '#F5A623' }}>With Us?</span>
             </h2>
-            <p className="font-sans text-slate text-sm sm:text-base leading-relaxed mt-4">
+            <p className="font-sans text-sm sm:text-base leading-relaxed mt-4" style={{ color: '#6B7A99' }}>
               Talk to our team about your coating requirements and get a tailored solution for your project.
             </p>
-            <a href="/contact" className="mt-7 inline-flex items-center gap-2 text-white rounded-md px-8 py-4 text-sm font-bold tracking-widest uppercase transition-colors shadow-[0_0_24px_rgba(0,174,239,0.35)]" style={{ background: '#00AEEF' }}>
+            <a href="/contact" className="mt-7 inline-flex items-center gap-2 rounded-lg px-8 py-4 text-sm font-black tracking-widest uppercase cursor-pointer transition-all duration-200" style={{ background: '#F5A623', color: '#0D1B4B', boxShadow: '0 0 28px rgba(245,166,35,0.25)' }}>
               GET IN TOUCH <ArrowRight size={16} />
             </a>
           </div>
