@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { LayoutDashboard, Package, Images, Mail, LogOut } from 'lucide-react'
+import { LayoutDashboard, Package, Images, Mail, ExternalLink, LogOut } from 'lucide-react'
 
 const nav = [
   { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
@@ -68,8 +68,20 @@ export default function AdminSidebar() {
         })}
       </nav>
 
-      {/* Sign out */}
-      <div className="px-3 pb-4 pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      {/* View site + Sign out */}
+      <div className="px-3 pb-4 pt-3 space-y-0.5" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <a
+          href="/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm font-semibold transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-yellow-400/30"
+          style={{ color: 'rgba(255,255,255,0.45)' }}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.85)'; (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)' }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.45)'; (e.currentTarget as HTMLElement).style.background = 'transparent' }}
+        >
+          <ExternalLink size={16} />
+          <span>View Site</span>
+        </a>
         <button
           onClick={handleLogout}
           className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm font-semibold transition-all duration-150 cursor-pointer focus:outline-none focus:ring-2 focus:ring-red-400/30"
