@@ -2,13 +2,14 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { LayoutDashboard, Package, Images, Mail, ExternalLink, LogOut } from 'lucide-react'
+import { LayoutDashboard, Package, Images, Mail, ExternalLink, LogOut, MessageSquare } from 'lucide-react'
 
 const nav = [
-  { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
-  { label: 'Products', href: '/admin/products', icon: Package },
-  { label: 'Media', href: '/admin/media', icon: Images },
-  { label: 'Contacts', href: '/admin/contacts', icon: Mail },
+  { label: 'Dashboard', href: '/admin', icon: LayoutDashboard, sub: false },
+  { label: 'Products', href: '/admin/products', icon: Package, sub: false },
+  { label: 'Quotes', href: '/admin/quotes', icon: MessageSquare, sub: true },
+  { label: 'Media', href: '/admin/media', icon: Images, sub: false },
+  { label: 'Contacts', href: '/admin/contacts', icon: Mail, sub: false },
 ]
 
 export default function AdminSidebar() {
@@ -39,10 +40,33 @@ export default function AdminSidebar() {
 
       {/* Nav */}
       <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto" aria-label="Admin navigation">
-        {nav.map(({ label, href, icon: Icon }) => {
+        {nav.map(({ label, href, icon: Icon, sub }) => {
           const active = href === '/admin'
             ? pathname === '/admin'
             : pathname.startsWith(href)
+
+          if (sub) {
+            return (
+              <div key={href} className="flex items-stretch pl-5">
+                {/* Connector line */}
+                <div className="w-px mr-3 rounded-full" style={{ background: active ? 'rgba(245,166,35,0.4)' : 'rgba(255,255,255,0.08)' }} />
+                <a
+                  href={href}
+                  aria-current={active ? 'page' : undefined}
+                  className="flex-1 flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-yellow-400/40"
+                  style={{
+                    color: active ? '#F5A623' : 'rgba(255,255,255,0.4)',
+                    background: active ? 'rgba(245,166,35,0.09)' : 'transparent',
+                  }}
+                  onMouseEnter={e => { if (!active) (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.75)' }}
+                  onMouseLeave={e => { if (!active) (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.4)' }}
+                >
+                  <Icon size={13} strokeWidth={active ? 2.5 : 2} />
+                  <span>{label}</span>
+                </a>
+              </div>
+            )
+          }
 
           return (
             <a

@@ -77,11 +77,10 @@ function QuoteModal({ productName, onClose }: { productName: string; onClose: ()
     if (Object.keys(errs).length) { setErrors(errs); return }
     setStatus('loading')
     try {
-      const messageWithProduct = `Product of Interest: ${productName}\n\n${form.message}${form.phone ? `\n\nPhone: ${form.phone}` : ''}`
-      const res = await fetch('/api/contact', {
+      const res = await fetch('/api/quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fullName: form.fullName, email: form.email, company: form.company, message: messageWithProduct }),
+        body: JSON.stringify({ productName, fullName: form.fullName, email: form.email, phone: form.phone, company: form.company, message: form.message }),
       })
       setStatus(res.ok ? 'success' : 'error')
     } catch { setStatus('error') }
