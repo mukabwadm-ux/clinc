@@ -4,7 +4,7 @@ import { ArrowRight, Anchor, Factory } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
 import FeaturedProduct from '@/components/FeaturedProduct'
-import ProductDownloads from '@/components/ProductDownloads'
+import QuoteButton from '@/components/QuoteButton'
 import { supabase } from '@/lib/supabase'
 
 export const dynamic = 'force-dynamic'
@@ -37,7 +37,7 @@ function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, '').replace(/&[a-z]+;/gi, ' ').trim()
 }
 
-function ProductCard({ name, code, tag, description, image_url, images, featured_image_url, featured_image_alt, slug, product_data_sheet_url, safety_data_sheet_url, application_instruction_url }: Product) {
+function ProductCard({ name, code, tag, description, image_url, images, featured_image_url, featured_image_alt, slug }: Product) {
   const primaryImage = featured_image_url || images?.[0]?.url || image_url
   const primaryAlt   = featured_image_alt  || images?.[0]?.alt || name
   const descText     = stripHtml(description)
@@ -77,17 +77,14 @@ function ProductCard({ name, code, tag, description, image_url, images, featured
               Enquire <ArrowRight size={13} />
             </a>
           )}
-          <a href="/contact" className="inline-flex items-center gap-1.5 text-xs font-semibold transition-all duration-200 cursor-pointer hover:gap-2.5" style={{ color: '#6B7A99' }}>
-            Get a Quote <ArrowRight size={13} />
-          </a>
+          <QuoteButton productName={name} variant="ghost" />
         </div>
-        <ProductDownloads pds={product_data_sheet_url} sds={safety_data_sheet_url} ai={application_instruction_url} dark />
       </div>
     </div>
   )
 }
 
-function IndustrialCard({ name, tag, description, slug, product_data_sheet_url, safety_data_sheet_url, application_instruction_url }: Product) {
+function IndustrialCard({ name, tag, description, slug }: Product) {
   const descText = stripHtml(description)
   return (
     <div className="group rounded-2xl border bg-white hover:shadow-[0_8px_36px_rgba(26,43,94,0.09)] hover:border-gold/40 transition-all duration-300 overflow-hidden flex flex-col cursor-default" style={{ borderColor: 'rgba(26,43,94,0.09)' }}>
@@ -98,16 +95,14 @@ function IndustrialCard({ name, tag, description, slug, product_data_sheet_url, 
         </span>
         <h3 className="font-sans font-black text-lg sm:text-xl leading-tight" style={{ color: '#1A2B5E' }}>{name}</h3>
         <p className="font-sans text-sm leading-relaxed mt-3 flex-1 line-clamp-3" style={{ color: '#6B7A99' }}>{descText}</p>
-        {slug ? (
-          <a href={`/products/${slug}`} className="inline-flex items-center gap-2 text-sm font-semibold mt-5 cursor-pointer hover:gap-3 transition-all duration-200" style={{ color: '#0070C0' }}>
-            View Product <ArrowRight size={14} />
-          </a>
-        ) : (
-          <a href="/contact" className="inline-flex items-center gap-2 text-sm font-semibold mt-5 cursor-pointer hover:gap-3 transition-all duration-200" style={{ color: '#0070C0' }}>
-            Get a Quote <ArrowRight size={14} />
-          </a>
-        )}
-        <ProductDownloads pds={product_data_sheet_url} sds={safety_data_sheet_url} ai={application_instruction_url} />
+        <div className="flex items-center gap-4 mt-5 flex-wrap">
+          {slug && (
+            <a href={`/products/${slug}`} className="inline-flex items-center gap-2 text-sm font-semibold cursor-pointer hover:gap-3 transition-all duration-200" style={{ color: '#0070C0' }}>
+              View Product <ArrowRight size={14} />
+            </a>
+          )}
+          <QuoteButton productName={name} variant="link" />
+        </div>
       </div>
     </div>
   )

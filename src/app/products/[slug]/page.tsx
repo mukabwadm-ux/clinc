@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Tag, Beaker, Wrench, ShieldCheck } from 'lucide-
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
 import ProductDownloads from '@/components/ProductDownloads'
+import QuoteButton from '@/components/QuoteButton'
 import { supabase } from '@/lib/supabase'
 
 export const dynamic = 'force-dynamic'
@@ -95,13 +96,7 @@ export default async function ProductDetailPage({ params }: Props) {
                 </div>
               )}
 
-              <a
-                href="/contact"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-xl py-4 text-sm font-black tracking-widest uppercase cursor-pointer transition-all duration-200"
-                style={{ background: '#F5A623', color: '#0D1B4B', boxShadow: '0 0 24px rgba(245,166,35,0.28)' }}
-              >
-                GET A QUOTE <ArrowRight size={15} />
-              </a>
+              <QuoteButton productName={p.name} variant="gold" fullWidth />
 
               {/* Downloads */}
               <ProductDownloads

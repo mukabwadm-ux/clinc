@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import Image from 'next/image'
-import { ArrowLeft, ArrowRight, Tag, Beaker, Wrench, ShieldCheck } from 'lucide-react'
+import { ArrowLeft, Tag, Beaker, Wrench, ShieldCheck } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
+import QuoteButton from '@/components/QuoteButton'
 
 export const metadata: Metadata = {
   title: 'Hempalin Enamel 52140 | Marine Topcoat',
@@ -44,13 +45,7 @@ export default function HempalinEnamel52140() {
                 />
               </div>
 
-              <a
-                href="/contact"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-xl py-4 text-sm font-black tracking-widest uppercase cursor-pointer transition-all duration-200"
-                style={{ background: '#F5A623', color: '#0D1B4B', boxShadow: '0 0 24px rgba(245,166,35,0.28)' }}
-              >
-                GET A QUOTE <ArrowRight size={15} />
-              </a>
+              <QuoteButton productName="Hempalin Enamel 52140" variant="gold" fullWidth />
               <a
                 href="/contact"
                 className="w-full inline-flex items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-bold tracking-widest uppercase cursor-pointer transition-all duration-200"
