@@ -20,6 +20,7 @@ export default async function EditProductPage({ params }: { params: Promise<{ id
         images: Array.isArray(data.images) ? data.images : [],
         slug: data.slug ?? '',
         is_active: data.is_active,
+        is_featured: data.is_featured ?? false,
         sort_order: data.sort_order ?? 0,
         product_data_sheet_url: data.product_data_sheet_url ?? '',
         safety_data_sheet_url: data.safety_data_sheet_url ?? '',

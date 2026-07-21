@@ -23,6 +23,7 @@ const schema = z.object({
   description: z.string().min(1, 'Description is required'),
   slug: z.string().regex(/^[a-z0-9-]*$/, 'Slug: only lowercase letters, numbers and hyphens'),
   is_active: z.boolean(),
+  is_featured: z.boolean(),
   sort_order: z.number().int().min(0),
   images: z.array(z.object({
     url: z.string().min(1),
@@ -37,7 +38,7 @@ type FormValues = z.infer<typeof schema>
 
 const defaultValues: FormValues = {
   name: '', code: '', tag: '', category: 'marine',
-  description: '', slug: '', is_active: true, sort_order: 0,
+  description: '', slug: '', is_active: true, is_featured: false, sort_order: 0,
   images: [] as Array<{ url: string; alt: string }>,
   product_data_sheet_url: '', safety_data_sheet_url: '', application_instruction_url: '',
 }
@@ -74,7 +75,8 @@ export default function ProductForm({ initial, productId }: Props) {
 
   const category = watch('category')
   const nameVal  = watch('name')
-  const isActive = watch('is_active')
+  const isActive   = watch('is_active')
+  const isFeatured = watch('is_featured')
   const pdsUrl   = watch('product_data_sheet_url')
   const sdsUrl   = watch('safety_data_sheet_url')
   const aiUrl    = watch('application_instruction_url')
@@ -191,6 +193,18 @@ export default function ProductForm({ initial, productId }: Props) {
                   className="relative w-11 h-6 rounded-full transition-colors duration-200 cursor-pointer"
                   style={{ background: isActive ? '#F5A623' : '#CBD5E1' }} aria-pressed={isActive}>
                   <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-200 ${isActive ? 'translate-x-5' : 'translate-x-0'}`} />
+                </button>
+              </div>
+
+              <div className="flex items-center justify-between py-2" style={{ borderTop: '1px solid rgba(26,43,94,0.07)' }}>
+                <div>
+                  <p className="font-semibold text-sm" style={{ color: '#1A2B5E' }}>Featured</p>
+                  <p className="text-xs" style={{ color: '#9CAABB' }}>Shown in the Featured Product section</p>
+                </div>
+                <button type="button" onClick={() => setValue('is_featured', !isFeatured)}
+                  className="relative w-11 h-6 rounded-full transition-colors duration-200 cursor-pointer"
+                  style={{ background: isFeatured ? '#0070C0' : '#CBD5E1' }} aria-pressed={isFeatured}>
+                  <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-200 ${isFeatured ? 'translate-x-5' : 'translate-x-0'}`} />
                 </button>
               </div>
             </div>

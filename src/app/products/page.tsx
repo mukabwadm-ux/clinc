@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { ArrowRight, Anchor, Factory, FileText, ShieldCheck, ClipboardList, Download } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
+import FeaturedProduct from '@/components/FeaturedProduct'
 import { supabase } from '@/lib/supabase'
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ interface Product {
   images?: Array<{ url: string; alt: string }>
   slug: string | null
   is_active: boolean
+  is_featured: boolean
   product_data_sheet_url: string | null
   safety_data_sheet_url: string | null
   application_instruction_url: string | null
@@ -177,8 +179,10 @@ export default async function ProductsPage() {
     .order('sort_order', { ascending: true })
     .order('created_at', { ascending: false })
 
-  const marineProducts = (allProducts ?? []).filter(p => p.category === 'marine')
-  const industrialProducts = (allProducts ?? []).filter(p => p.category === 'industrial')
+  const products = allProducts ?? []
+  const featuredProduct = products.find(p => p.is_featured) ?? null
+  const marineProducts = products.filter(p => p.category === 'marine')
+  const industrialProducts = products.filter(p => p.category === 'industrial')
 
   return (
     <>
@@ -203,6 +207,9 @@ export default async function ProductsPage() {
             <div className="w-14 h-0.5 mt-6 rounded-full" style={{ background: 'linear-gradient(90deg, #F5A623, #0070C0)' }} />
           </div>
         </div>
+
+        {/* ── Featured Product ── */}
+        {featuredProduct && <FeaturedProduct {...featuredProduct} />}
 
         {/* ── Marine Coatings ── */}
         <section id="marine" className="py-14 sm:py-20 lg:py-28 relative overflow-hidden">
