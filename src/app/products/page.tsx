@@ -99,9 +99,9 @@ function ProductDownloads({
   )
 }
 
-function ProductCard({ name, code, tag, description, image_url, images, slug, product_data_sheet_url, safety_data_sheet_url, application_instruction_url }: Product) {
-  const primaryImage = images?.[0]?.url || image_url
-  const primaryAlt   = images?.[0]?.alt || name
+function ProductCard({ name, code, tag, description, image_url, images, featured_image_url, featured_image_alt, slug, product_data_sheet_url, safety_data_sheet_url, application_instruction_url }: Product) {
+  const primaryImage = featured_image_url || images?.[0]?.url || image_url
+  const primaryAlt   = featured_image_alt  || images?.[0]?.alt || name
   const descText     = stripHtml(description)
 
   return (
