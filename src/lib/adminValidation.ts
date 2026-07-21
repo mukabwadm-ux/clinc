@@ -14,8 +14,15 @@ export const productSchema = z.object({
   category: z.enum(['marine', 'industrial'] as const, {
     error: 'Category must be marine or industrial',
   }),
-  description: z.string().min(10, 'Description must be at least 10 characters').max(2000).transform(strip),
+  description: z.string()
+    .max(100000, 'Description is too long')
+    .refine(v => v.replace(/<[^>]*>/g, '').trim().length >= 1, 'Description is required')
+    .transform(s => s.trim()),
   image_url: z.string().max(500).nullable().optional().transform(v => v || null),
+  images: z.array(z.object({
+    url: z.string().min(1),
+    alt: z.string().min(1, 'Alt text is required for each image'),
+  })).optional().default([]),
   slug: z
     .string()
     .max(200)

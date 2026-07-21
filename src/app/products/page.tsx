@@ -18,11 +18,16 @@ interface Product {
   category: string
   description: string
   image_url: string | null
+  images?: Array<{ url: string; alt: string }>
   slug: string | null
   is_active: boolean
   product_data_sheet_url: string | null
   safety_data_sheet_url: string | null
   application_instruction_url: string | null
+}
+
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, '').replace(/&[a-z]+;/gi, ' ').trim()
 }
 
 function ProductDownloads({
@@ -88,14 +93,18 @@ function ProductDownloads({
   )
 }
 
-function ProductCard({ name, code, tag, description, image_url, slug, product_data_sheet_url, safety_data_sheet_url, application_instruction_url }: Product) {
+function ProductCard({ name, code, tag, description, image_url, images, slug, product_data_sheet_url, safety_data_sheet_url, application_instruction_url }: Product) {
+  const primaryImage = images?.[0]?.url || image_url
+  const primaryAlt   = images?.[0]?.alt || name
+  const descText     = stripHtml(description)
+
   return (
     <div className="group rounded-2xl border border-white/[0.08] hover:border-gold/35 bg-white/[0.03] hover:shadow-[0_8px_36px_rgba(245,166,35,0.07)] transition-all duration-300 overflow-hidden flex flex-col cursor-default">
       <div className="h-0.5 w-full" style={{ background: 'linear-gradient(90deg, #F5A623, rgba(245,166,35,0.15))' }} />
 
-      {image_url && (
+      {primaryImage && (
         <div className="flex items-center justify-center px-8 pt-7 pb-4 bg-white rounded-b-none">
-          <Image src={image_url} alt={name} width={154} height={154} className="object-contain drop-shadow-xl" />
+          <Image src={primaryImage} alt={primaryAlt} width={154} height={154} className="object-contain drop-shadow-xl" />
         </div>
       )}
 
@@ -112,7 +121,7 @@ function ProductCard({ name, code, tag, description, image_url, slug, product_da
         </div>
 
         <h3 className="font-sans font-black text-white text-lg sm:text-xl leading-tight">{name}</h3>
-        <p className="font-sans text-sm leading-relaxed mt-3 flex-1" style={{ color: '#6B7A99' }}>{description}</p>
+        <p className="font-sans text-sm leading-relaxed mt-3 flex-1 line-clamp-3" style={{ color: '#6B7A99' }}>{descText}</p>
 
         <div className="flex items-center gap-4 mt-5 pt-4 border-t border-white/[0.06] flex-wrap">
           {slug ? (
@@ -135,6 +144,7 @@ function ProductCard({ name, code, tag, description, image_url, slug, product_da
 }
 
 function IndustrialCard({ name, tag, description, slug, product_data_sheet_url, safety_data_sheet_url, application_instruction_url }: Product) {
+  const descText = stripHtml(description)
   return (
     <div className="group rounded-2xl border bg-white hover:shadow-[0_8px_36px_rgba(26,43,94,0.09)] hover:border-gold/40 transition-all duration-300 overflow-hidden flex flex-col cursor-default" style={{ borderColor: 'rgba(26,43,94,0.09)' }}>
       <div className="h-0.5 w-full" style={{ background: 'linear-gradient(90deg, #F5A623, rgba(0,112,192,0.4))' }} />
@@ -143,7 +153,7 @@ function IndustrialCard({ name, tag, description, slug, product_data_sheet_url, 
           {tag}
         </span>
         <h3 className="font-sans font-black text-lg sm:text-xl leading-tight" style={{ color: '#1A2B5E' }}>{name}</h3>
-        <p className="font-sans text-sm leading-relaxed mt-3 flex-1" style={{ color: '#6B7A99' }}>{description}</p>
+        <p className="font-sans text-sm leading-relaxed mt-3 flex-1 line-clamp-3" style={{ color: '#6B7A99' }}>{descText}</p>
         {slug ? (
           <a href={`/products/${slug}`} className="inline-flex items-center gap-2 text-sm font-semibold mt-5 cursor-pointer hover:gap-3 transition-all duration-200" style={{ color: '#0070C0' }}>
             View Product <ArrowRight size={14} />

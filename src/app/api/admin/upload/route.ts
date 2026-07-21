@@ -1,53 +1,78 @@
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabaseAdmin'
 
-const ALLOWED_TYPES = [
+const IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif']
+const DOC_TYPES = [
   'application/pdf',
   'application/msword',
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 ]
-const MAX_SIZE = 10 * 1024 * 1024 // 10 MB
+const IMAGE_MAX = 500 * 1024        // 500 KB
+const DOC_MAX   = 10 * 1024 * 1024 // 10 MB
 
 export async function POST(req: Request) {
   let form: FormData
-  try {
-    form = await req.formData()
-  } catch {
+  try { form = await req.formData() } catch {
     return NextResponse.json({ error: 'Invalid form data' }, { status: 400 })
   }
 
-  const file = form.get('file') as File | null
+  const file   = form.get('file')   as File   | null
+  const alt    = form.get('alt')    as string | null
+  const bucket = (form.get('bucket') as string | null) ?? 'product-documents'
+
   if (!file || typeof file === 'string') {
     return NextResponse.json({ error: 'No file provided' }, { status: 400 })
   }
 
-  if (!ALLOWED_TYPES.includes(file.type)) {
-    return NextResponse.json({ error: 'Only PDF and Word documents (.pdf, .doc, .docx) are allowed' }, { status: 422 })
-  }
+  const isImage = IMAGE_TYPES.includes(file.type)
+  const isDoc   = DOC_TYPES.includes(file.type)
 
-  if (file.size > MAX_SIZE) {
-    return NextResponse.json({ error: 'File must be under 10 MB' }, { status: 422 })
+  if (!isImage && !isDoc) {
+    return NextResponse.json(
+      { error: 'Unsupported file type. Use JPEG, PNG, WEBP, PDF, DOC or DOCX.' },
+      { status: 422 }
+    )
+  }
+  if (isImage && file.size > IMAGE_MAX) {
+    return NextResponse.json({ error: 'Image must be under 500 KB' }, { status: 422 })
+  }
+  if (isDoc && file.size > DOC_MAX) {
+    return NextResponse.json({ error: 'Document must be under 10 MB' }, { status: 422 })
+  }
+  if (isImage && (!alt || alt.trim() === '')) {
+    return NextResponse.json({ error: 'Alt text is required for images' }, { status: 422 })
   }
 
   const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_').slice(0, 100)
-  const path = `documents/${Date.now()}-${safeName}`
-  const buffer = await file.arrayBuffer()
+  const folder   = isImage ? 'images' : 'documents'
+  const path     = `${folder}/${Date.now()}-${safeName}`
+  const buffer   = await file.arrayBuffer()
 
   const { data, error } = await supabaseAdmin.storage
-    .from('product-documents')
+    .from(bucket)
     .upload(path, buffer, { contentType: file.type, upsert: false })
 
   if (error) {
     console.error('[upload]', error.message)
     return NextResponse.json(
-      { error: 'Upload failed. Make sure the "product-documents" bucket exists in Supabase Storage.' },
+      { error: `Upload failed. Check the "${bucket}" bucket exists in Supabase Storage.` },
       { status: 500 }
     )
   }
 
   const { data: { publicUrl } } = supabaseAdmin.storage
-    .from('product-documents')
+    .from(bucket)
     .getPublicUrl(data.path)
 
-  return NextResponse.json({ url: publicUrl })
+  // Track in media_library
+  await supabaseAdmin.from('media_library').insert({
+    path: data.path,
+    url: publicUrl,
+    alt: alt?.trim() || null,
+    bucket,
+    file_size: file.size,
+    mime_type: file.type,
+  })
+
+  return NextResponse.json({ url: publicUrl, path: data.path })
 }

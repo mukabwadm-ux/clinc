@@ -2,11 +2,12 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { LayoutDashboard, Package, Mail, LogOut } from 'lucide-react'
+import { LayoutDashboard, Package, Images, Mail, LogOut } from 'lucide-react'
 
 const nav = [
   { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
   { label: 'Products', href: '/admin/products', icon: Package },
+  { label: 'Media', href: '/admin/media', icon: Images },
   { label: 'Contacts', href: '/admin/contacts', icon: Mail },
 ]
 

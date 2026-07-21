@@ -17,7 +17,7 @@ export default async function EditProductPage({ params }: { params: Promise<{ id
         tag: data.tag,
         category: data.category,
         description: data.description,
-        image_url: data.image_url ?? '',
+        images: Array.isArray(data.images) ? data.images : [],
         slug: data.slug ?? '',
         is_active: data.is_active,
         sort_order: data.sort_order ?? 0,
