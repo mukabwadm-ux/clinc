@@ -20,7 +20,7 @@ export default function ProductDownloads({ pds, sds, ai, dark = false }: Props) 
 
   return (
     <div
-      className="mt-4 rounded-xl p-3"
+      className="w-full mt-4 rounded-xl p-3"
       style={dark
         ? { background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }
         : { background: 'rgba(0,112,192,0.03)', border: '1px solid rgba(26,43,94,0.07)' }
