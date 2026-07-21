@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Image from 'next/image'
@@ -73,7 +73,7 @@ export default function Contact() {
 
         <Image
           src="/clincorp_logo.png"
-          alt="Clin-Corp"
+          alt="Clincorps"
           width={140}
           height={44}
           className="object-contain bg-white rounded-lg px-2 py-1 shadow-sm w-[120px] sm:w-[140px] h-auto mb-8 sm:mb-10"

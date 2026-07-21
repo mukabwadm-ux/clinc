@@ -1,12 +1,12 @@
-import type { Metadata } from 'next'
-import Image from 'next/image'
+﻿import type { Metadata } from 'next'
 import { Anchor, Factory, Zap, ArrowRight, MapPin, Calendar } from 'lucide-react'
+import ProjectImageGallery from '@/components/ProjectImageGallery'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
 
 export const metadata: Metadata = {
   title: 'Case Stories',
-  description: 'Real-world marine and industrial coating projects delivered by Clin-Corp across East Africa — hull restorations, infrastructure protection, and tank linings using Hempel systems.',
+  description: 'Real-world marine and industrial coating projects delivered by Clincorps across East Africa — hull restorations, infrastructure protection, and tank linings using Hempel systems.',
 }
 
 const marineProjects = [
@@ -18,7 +18,7 @@ const marineProjects = [
     tag: 'Vessel Coating',
     description: "Below-waterline and hull-area coating on a passenger/cargo ferry applying a full Hempel system directly at the vessel's berth, alongside surface preparation and priming of a red-hulled tug/barge vessel at an inland waterway site.",
     specs: [],
-    image: '/case-stories/project-01.jpg',
+    images: ['/case-stories/project-01.jpg'],
   },
   {
     number: '02',
@@ -140,7 +140,7 @@ const industrialProjects = [
     date: '10 September 2025',
     location: 'Uganda',
     tag: 'Fuel Storage Tank',
-    description: "Complete three-coat Hempel system on a fuel storage tank for Total Energy Uganda — demonstrating Clincorp's project reach into the wider East African region.",
+    description: "Complete three-coat Hempel system on a fuel storage tank for Total Energy Uganda — demonstrating Clincorps' project reach into the wider East African region.",
     specs: [
       { label: 'Primer', value: 'Hempadur Avanguard 500 1734G' },
       { label: 'Intermediate', value: 'Hempadur Multi 500 45950' },
@@ -194,7 +194,7 @@ export default function CaseStoriesPage() {
               Case <span className="text-blue">Stories.</span>
             </h1>
             <p className="font-sans text-base sm:text-lg mt-4 max-w-2xl leading-relaxed" style={{ color: '#6B7A99' }}>
-              From Mombasa Shipyard to Uganda's fuel terminals — how Clin-Corp has protected East Africa's most critical marine and industrial assets using Hempel coating systems.
+              From Mombasa Shipyard to Uganda's fuel terminals — how Clincorps has protected East Africa's most critical marine and industrial assets using Hempel coating systems.
             </p>
             <div className="w-14 h-0.5 mt-6 rounded-full" style={{ background: 'linear-gradient(90deg, #F5A623, #0070C0)' }} />
 
@@ -242,16 +242,8 @@ export default function CaseStoriesPage() {
                   key={p.number}
                   className="group rounded-2xl border border-white/[0.08] hover:border-gold/35 bg-white/[0.03] hover:shadow-[0_8px_32px_rgba(245,166,35,0.06)] transition-all duration-300 overflow-hidden flex flex-col cursor-default"
                 >
-                  {(p as { image?: string }).image && (
-                    <div className="w-full overflow-hidden" style={{ height: '200px' }}>
-                      <Image
-                        src={(p as { image?: string }).image!}
-                        alt={p.title}
-                        width={600}
-                        height={200}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
+                  {(p as { images?: string[] }).images && (p as { images?: string[] }).images!.length > 0 && (
+                    <ProjectImageGallery images={(p as { images?: string[] }).images!} title={p.title} />
                   )}
                   <div className="h-0.5 w-full" style={{ background: 'linear-gradient(90deg, #F5A623, rgba(0,112,192,0.5))' }} />
                   <div className="p-5 sm:p-6 flex flex-col flex-1">
@@ -320,16 +312,8 @@ export default function CaseStoriesPage() {
                   className="group rounded-2xl border bg-white hover:shadow-[0_8px_40px_rgba(26,43,94,0.09)] hover:border-gold/40 transition-all duration-300 overflow-hidden flex flex-col cursor-default"
                   style={{ borderColor: 'rgba(26,43,94,0.09)' }}
                 >
-                  {(p as { image?: string }).image && (
-                    <div className="w-full overflow-hidden" style={{ height: '200px' }}>
-                      <Image
-                        src={(p as { image?: string }).image!}
-                        alt={p.title}
-                        width={600}
-                        height={200}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
+                  {(p as { images?: string[] }).images && (p as { images?: string[] }).images!.length > 0 && (
+                    <ProjectImageGallery images={(p as { images?: string[] }).images!} title={p.title} />
                   )}
                   <div className="h-0.5 w-full" style={{ background: 'linear-gradient(90deg, #F5A623, rgba(0,112,192,0.5))' }} />
                   <div className="p-5 sm:p-7 flex flex-col flex-1">
@@ -405,7 +389,7 @@ export default function CaseStoriesPage() {
                   Hempaguard X7 — Fouling Release &amp; Fuel Efficiency
                 </h3>
                 <p className="font-sans text-sm sm:text-[15px] leading-relaxed mt-4 max-w-2xl" style={{ color: '#6B7A99' }}>
-                  Clin-Corp promotes Hempaguard X7, Hempel&apos;s fusion fouling-release technology combining a hydrogel binder with biocide. In side-by-side comparison against a competitor premium silicone system after 180 days idle, Hempaguard X7 vessels showed a cleaner hull and smoother movement through the water.
+                  Clincorps promotes Hempaguard X7, Hempel&apos;s fusion fouling-release technology combining a hydrogel binder with biocide. In side-by-side comparison against a competitor premium silicone system after 180 days idle, Hempaguard X7 vessels showed a cleaner hull and smoother movement through the water.
                 </p>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">

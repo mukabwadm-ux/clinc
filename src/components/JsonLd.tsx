@@ -1,12 +1,12 @@
-export default function JsonLd() {
+﻿export default function JsonLd() {
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'Organization',
         '@id': 'https://clincorp.co.ke/#organization',
-        name: 'Clin-Corp Limited',
-        alternateName: 'Clin-Corp',
+        name: 'Clincorps Limited',
+        alternateName: 'Clincorps',
         url: 'https://clincorp.co.ke',
         logo: {
           '@type': 'ImageObject',
@@ -47,7 +47,7 @@ export default function JsonLd() {
         '@type': 'WebSite',
         '@id': 'https://clincorp.co.ke/#website',
         url: 'https://clincorp.co.ke',
-        name: 'Clin-Corp',
+        name: 'Clincorps',
         description: 'Authorized Hempel Industrial & Marine Coatings Distributor — Kenya',
         publisher: { '@id': 'https://clincorp.co.ke/#organization' },
         inLanguage: 'en-KE',
@@ -55,7 +55,7 @@ export default function JsonLd() {
       {
         '@type': 'LocalBusiness',
         '@id': 'https://clincorp.co.ke/#localbusiness',
-        name: 'Clin-Corp Limited',
+        name: 'Clincorps Limited',
         image: 'https://clincorp.co.ke/clincorp_logo.png',
         telephone: '+254723887417',
         email: 'clinton@clincorp.co.ke',

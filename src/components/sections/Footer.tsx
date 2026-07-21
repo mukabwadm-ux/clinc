@@ -1,4 +1,4 @@
-import Image from 'next/image'
+﻿import Image from 'next/image'
 import { ArrowRight, Mail, Phone, MapPin } from 'lucide-react'
 
 const productLinks = [
@@ -64,7 +64,7 @@ export default function Footer() {
           <div>
             <Image
               src="/clincorp_logo.png"
-              alt="Clin-Corp"
+              alt="Clincorps"
               width={140}
               height={44}
               className="object-contain bg-white rounded-lg px-2 py-1 w-[120px] sm:w-[140px] h-auto"
@@ -136,7 +136,7 @@ export default function Footer() {
       <div className="border-t" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row justify-between gap-2 sm:gap-4">
           <p className="font-sans text-[12px] sm:text-[13px]" style={{ color: 'rgba(255,255,255,0.85)' }}>
-            © {new Date().getFullYear()} Clin-Corp Limited. All rights reserved.
+            © {new Date().getFullYear()} Clincorps Limited. All rights reserved.
           </p>
           <p className="font-mono text-[11px]" style={{ color: 'rgba(255,255,255,0.85)' }}>
             Authorized Hempel Distributor · East Africa

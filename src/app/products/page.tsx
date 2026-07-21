@@ -3,49 +3,33 @@ import Image from 'next/image'
 import { ArrowRight, Anchor, Factory } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
+import { supabase } from '@/lib/supabase'
 
 export const metadata: Metadata = {
   title: 'Products',
-  description: "Explore Clin-Corp's range of Hempel Industrial & Marine Coatings — anti-corrosion, anti-fouling, hull protection, and infrastructure coatings available in Kenya and East Africa.",
+  description: "Explore Clincorps's range of Hempel Industrial & Marine Coatings — anti-corrosion, anti-fouling, hull protection, and infrastructure coatings available in Kenya and East Africa.",
 }
 
-const marineProducts = [
-  {
-    name: 'Hempalin Enamel 52140',
-    code: '#52140',
-    tag: 'Topcoats',
-    description: 'A glossy, general purpose alkyd topcoat forming a weather resistant coating. Flexible and resistant to salt water and spillage of mineral oil and aliphatic hydrocarbons.',
-    image: '/hempel-product-can.png',
-    href: '/products/hempalin-enamel-52140',
-  },
-  { name: 'Coming Soon', code: '', tag: 'Hull Protection', description: 'Engineered for superior protection in demanding marine environments. Contact us for product availability.', image: null, href: null },
-  { name: 'Coming Soon', code: '', tag: 'Anti-Corrosion', description: 'Engineered for superior protection in demanding marine environments. Contact us for product availability.', image: null, href: null },
-  { name: 'Coming Soon', code: '', tag: 'Anti-Fouling', description: 'Engineered for superior protection in demanding marine environments. Contact us for product availability.', image: null, href: null },
-  { name: 'Coming Soon', code: '', tag: 'Primer', description: 'Engineered for superior protection in demanding marine environments. Contact us for product availability.', image: null, href: null },
-  { name: 'Coming Soon', code: '', tag: 'Deck Coating', description: 'Engineered for superior protection in demanding marine environments. Contact us for product availability.', image: null, href: null },
-]
+interface Product {
+  id: string
+  name: string
+  code: string | null
+  tag: string
+  category: string
+  description: string
+  image_url: string | null
+  slug: string | null
+  is_active: boolean
+}
 
-const industrialProducts = [
-  { name: 'Coming Soon', tag: 'Anti-Corrosion', description: 'Built to withstand the harshest industrial conditions and extend asset life. Contact us for product availability.' },
-  { name: 'Coming Soon', tag: 'Structural Steel', description: 'Built to withstand the harshest industrial conditions and extend asset life. Contact us for product availability.' },
-  { name: 'Coming Soon', tag: 'Fire Protection', description: 'Built to withstand the harshest industrial conditions and extend asset life. Contact us for product availability.' },
-  { name: 'Coming Soon', tag: 'Floor Coating', description: 'Built to withstand the harshest industrial conditions and extend asset life. Contact us for product availability.' },
-  { name: 'Coming Soon', tag: 'Pipeline', description: 'Built to withstand the harshest industrial conditions and extend asset life. Contact us for product availability.' },
-  { name: 'Coming Soon', tag: 'Tank Lining', description: 'Built to withstand the harshest industrial conditions and extend asset life. Contact us for product availability.' },
-]
-
-function ProductCard({ name, code, tag, description, image, href }: {
-  name: string; code: string; tag: string; description: string
-  image: string | null; href: string | null
-}) {
+function ProductCard({ name, code, tag, description, image_url, slug }: Product) {
   return (
     <div className="group rounded-2xl border border-white/[0.08] hover:border-gold/35 bg-white/[0.03] hover:shadow-[0_8px_36px_rgba(245,166,35,0.07)] transition-all duration-300 overflow-hidden flex flex-col cursor-default">
-      {/* Gold accent top line */}
       <div className="h-0.5 w-full" style={{ background: 'linear-gradient(90deg, #F5A623, rgba(245,166,35,0.15))' }} />
 
-      {image && (
+      {image_url && (
         <div className="flex items-center justify-center px-8 pt-7 pb-4 bg-white rounded-b-none">
-          <Image src={image} alt={name} width={154} height={154} className="object-contain drop-shadow-xl" />
+          <Image src={image_url} alt={name} width={154} height={154} className="object-contain drop-shadow-xl" />
         </div>
       )}
 
@@ -65,8 +49,8 @@ function ProductCard({ name, code, tag, description, image, href }: {
         <p className="font-sans text-sm leading-relaxed mt-3 flex-1" style={{ color: '#6B7A99' }}>{description}</p>
 
         <div className="flex items-center gap-4 mt-5 pt-4 border-t border-white/[0.06] flex-wrap">
-          {href ? (
-            <a href={href} className="inline-flex items-center gap-1.5 text-xs font-black tracking-widest uppercase rounded-lg px-4 py-2 transition-all duration-200 cursor-pointer" style={{ color: '#0D1B4B', background: '#F5A623' }}>
+          {slug ? (
+            <a href={`/products/${slug}`} className="inline-flex items-center gap-1.5 text-xs font-black tracking-widest uppercase rounded-lg px-4 py-2 transition-all duration-200 cursor-pointer" style={{ color: '#0D1B4B', background: '#F5A623' }}>
               View Product <ArrowRight size={13} />
             </a>
           ) : (
@@ -83,7 +67,41 @@ function ProductCard({ name, code, tag, description, image, href }: {
   )
 }
 
-export default function ProductsPage() {
+function IndustrialCard({ name, tag, description, slug }: Product) {
+  return (
+    <div className="group rounded-2xl border bg-white hover:shadow-[0_8px_36px_rgba(26,43,94,0.09)] hover:border-gold/40 transition-all duration-300 overflow-hidden flex flex-col cursor-default" style={{ borderColor: 'rgba(26,43,94,0.09)' }}>
+      <div className="h-0.5 w-full" style={{ background: 'linear-gradient(90deg, #F5A623, rgba(0,112,192,0.4))' }} />
+      <div className="p-6 sm:p-7 flex flex-col flex-1">
+        <span className="inline-block self-start px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-widest mb-4" style={{ background: 'rgba(245,166,35,0.10)', color: '#B45309' }}>
+          {tag}
+        </span>
+        <h3 className="font-sans font-black text-lg sm:text-xl leading-tight" style={{ color: '#1A2B5E' }}>{name}</h3>
+        <p className="font-sans text-sm leading-relaxed mt-3 flex-1" style={{ color: '#6B7A99' }}>{description}</p>
+        {slug ? (
+          <a href={`/products/${slug}`} className="inline-flex items-center gap-2 text-sm font-semibold mt-5 cursor-pointer hover:gap-3 transition-all duration-200" style={{ color: '#0070C0' }}>
+            View Product <ArrowRight size={14} />
+          </a>
+        ) : (
+          <a href="/contact" className="inline-flex items-center gap-2 text-sm font-semibold mt-5 cursor-pointer hover:gap-3 transition-all duration-200" style={{ color: '#0070C0' }}>
+            Get a Quote <ArrowRight size={14} />
+          </a>
+        )}
+      </div>
+    </div>
+  )
+}
+
+export default async function ProductsPage() {
+  const { data: allProducts } = await supabase
+    .from('products')
+    .select('*')
+    .eq('is_active', true)
+    .order('sort_order', { ascending: true })
+    .order('created_at', { ascending: false })
+
+  const marineProducts = (allProducts ?? []).filter(p => p.category === 'marine')
+  const industrialProducts = (allProducts ?? []).filter(p => p.category === 'industrial')
+
   return (
     <>
       <Navbar />
@@ -131,11 +149,16 @@ export default function ProductsPage() {
                 </p>
               </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-              {marineProducts.map((p, i) => (
-                <ProductCard key={i} {...p} />
-              ))}
-            </div>
+
+            {marineProducts.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                {marineProducts.map(p => <ProductCard key={p.id} {...p} />)}
+              </div>
+            ) : (
+              <div className="rounded-2xl border border-white/[0.06] py-14 text-center">
+                <p className="font-sans text-sm" style={{ color: '#6B7A99' }}>Marine products coming soon.</p>
+              </div>
+            )}
           </div>
         </section>
 
@@ -161,34 +184,16 @@ export default function ProductsPage() {
                 </p>
               </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-              {industrialProducts.map((p, i) => (
-                <div
-                  key={i}
-                  className="group rounded-2xl border bg-white hover:shadow-[0_8px_36px_rgba(26,43,94,0.09)] hover:border-gold/40 transition-all duration-300 overflow-hidden flex flex-col cursor-default"
-                  style={{ borderColor: 'rgba(26,43,94,0.09)' }}
-                >
-                  <div className="h-0.5 w-full" style={{ background: 'linear-gradient(90deg, #F5A623, rgba(0,112,192,0.4))' }} />
-                  <div className="p-6 sm:p-7 flex flex-col flex-1">
-                    <span
-                      className="inline-block self-start px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-widest mb-4"
-                      style={{ background: 'rgba(245,166,35,0.10)', color: '#B45309' }}
-                    >
-                      {p.tag}
-                    </span>
-                    <h3 className="font-sans font-black text-lg sm:text-xl leading-tight" style={{ color: '#1A2B5E' }}>{p.name}</h3>
-                    <p className="font-sans text-sm leading-relaxed mt-3 flex-1" style={{ color: '#6B7A99' }}>{p.description}</p>
-                    <a
-                      href="/contact"
-                      className="inline-flex items-center gap-2 text-sm font-semibold mt-5 cursor-pointer hover:gap-3 transition-all duration-200"
-                      style={{ color: '#0070C0' }}
-                    >
-                      Get a Quote <ArrowRight size={14} />
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
+
+            {industrialProducts.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                {industrialProducts.map(p => <IndustrialCard key={p.id} {...p} />)}
+              </div>
+            ) : (
+              <div className="rounded-2xl border py-14 text-center" style={{ borderColor: 'rgba(26,43,94,0.09)' }}>
+                <p className="font-sans text-sm" style={{ color: '#6B7A99' }}>Industrial products coming soon.</p>
+              </div>
+            )}
           </div>
         </section>
 
@@ -207,11 +212,7 @@ export default function ProductsPage() {
             <p className="font-sans text-sm sm:text-base mt-4 leading-relaxed" style={{ color: '#6B7A99' }}>
               Our technical team will advise on the best coating system for your specific application and environment.
             </p>
-            <a
-              href="/contact"
-              className="mt-7 inline-flex items-center gap-2 rounded-lg px-8 py-4 text-sm font-black tracking-widest uppercase cursor-pointer transition-all duration-200"
-              style={{ background: '#F5A623', color: '#0D1B4B', boxShadow: '0 0 28px rgba(245,166,35,0.28)' }}
-            >
+            <a href="/contact" className="mt-7 inline-flex items-center gap-2 rounded-lg px-8 py-4 text-sm font-black tracking-widest uppercase cursor-pointer transition-all duration-200" style={{ background: '#F5A623', color: '#0D1B4B', boxShadow: '0 0 28px rgba(245,166,35,0.28)' }}>
               TALK TO OUR TEAM <ArrowRight size={16} />
             </a>
           </div>

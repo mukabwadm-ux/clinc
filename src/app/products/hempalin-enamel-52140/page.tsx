@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Image from 'next/image'
 import { ArrowLeft, ArrowRight, Tag, Beaker, Wrench, ShieldCheck } from 'lucide-react'
 import Navbar from '@/components/Navbar'
@@ -6,7 +6,7 @@ import Footer from '@/components/sections/Footer'
 
 export const metadata: Metadata = {
   title: 'Hempalin Enamel 52140 | Marine Topcoat',
-  description: 'Hempalin Enamel 52140 — a glossy, general purpose alkyd topcoat forming a weather resistant coating. Resistant to salt water and mineral oil. Available in Kenya via Clin-Corp.',
+  description: 'Hempalin Enamel 52140 — a glossy, general purpose alkyd topcoat forming a weather resistant coating. Resistant to salt water and mineral oil. Available in Kenya via Clincorps.',
 }
 
 export default function HempalinEnamel52140() {

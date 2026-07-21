@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
@@ -14,7 +14,7 @@ export default function About() {
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(245,166,35,0.5), transparent)' }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-10 sm:gap-14 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-16 items-center">
 
           {/* Left: text */}
           <div
@@ -38,7 +38,7 @@ export default function About() {
             </h2>
 
             <p className="font-sans text-sm sm:text-base leading-relaxed mt-5 sm:mt-6 max-w-lg" style={{ color: '#6B7A99' }}>
-              Clin-Corp is Kenya&apos;s Authorized Distributor for Hempel Industrial and Marine
+              Clincorps is Kenya&apos;s Authorized Distributor for Hempel Industrial and Marine
               Coatings, proudly serving East Africa from Nairobi since 2024. In under two years,
               we have captured <strong className="font-bold" style={{ color: '#1A2B5E' }}>37% market share</strong> across
               the region — built on a foundation of uncompromising quality, deep technical knowledge,
@@ -68,7 +68,7 @@ export default function About() {
           </div>
 
           {/* Right: brand image */}
-          <div className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[480px] mx-auto">
+          <div className="relative w-full max-w-[425px] sm:max-w-[500px] lg:max-w-full mx-auto">
             {/* Warm gold accent frame behind image */}
             <div
               className="absolute -bottom-4 -right-4 w-full h-full rounded-2xl pointer-events-none"
@@ -76,9 +76,9 @@ export default function About() {
             />
             <Image
               src="/ccimage.jpeg"
-              alt="Clin Corp — Authorised Hempel Distributor"
-              width={480}
-              height={360}
+              alt="Clincorps — Authorised Hempel Distributor"
+              width={600}
+              height={450}
               className="relative w-full h-auto rounded-2xl object-cover"
               style={{ boxShadow: '0 20px 60px rgba(26,43,94,0.14)' }}
             />
