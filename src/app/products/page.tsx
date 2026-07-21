@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { ArrowRight, Anchor, Factory, FileText, ShieldCheck, ClipboardList } from 'lucide-react'
+import { ArrowRight, Anchor, Factory, FileText, ShieldCheck, ClipboardList, Download } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
 import { supabase } from '@/lib/supabase'
@@ -25,58 +25,65 @@ interface Product {
   application_instruction_url: string | null
 }
 
-function DocLinks({ pds, sds, ai }: { pds: string | null; sds: string | null; ai: string | null }) {
+function ProductDownloads({
+  pds, sds, ai, dark = false,
+}: {
+  pds: string | null; sds: string | null; ai: string | null; dark?: boolean
+}) {
   const docs = [
-    { url: pds, label: 'Data Sheet', icon: <FileText size={11} /> },
-    { url: sds, label: 'Safety Sheet', icon: <ShieldCheck size={11} /> },
-    { url: ai, label: 'App. Guide', icon: <ClipboardList size={11} /> },
+    { url: pds, label: 'Product Data Sheet',     short: 'Data Sheet',    icon: <FileText size={13} /> },
+    { url: sds, label: 'Safety Data Sheet',       short: 'Safety Sheet',  icon: <ShieldCheck size={13} /> },
+    { url: ai,  label: 'Application Instructions',short: 'App. Guide',    icon: <ClipboardList size={13} /> },
   ].filter(d => d.url)
 
   if (docs.length === 0) return null
 
   return (
-    <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-white/[0.06]">
-      {docs.map(d => (
-        <a
-          key={d.label}
-          href={d.url!}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all hover:opacity-80"
-          style={{ background: 'rgba(255,255,255,0.07)', color: '#9CAABB', border: '1px solid rgba(255,255,255,0.08)' }}
-          onClick={e => e.stopPropagation()}
-        >
-          {d.icon} {d.label}
-        </a>
-      ))}
-    </div>
-  )
-}
-
-function DocLinksLight({ pds, sds, ai }: { pds: string | null; sds: string | null; ai: string | null }) {
-  const docs = [
-    { url: pds, label: 'Data Sheet', icon: <FileText size={11} /> },
-    { url: sds, label: 'Safety Sheet', icon: <ShieldCheck size={11} /> },
-    { url: ai, label: 'App. Guide', icon: <ClipboardList size={11} /> },
-  ].filter(d => d.url)
-
-  if (docs.length === 0) return null
-
-  return (
-    <div className="flex flex-wrap gap-2 mt-3 pt-3" style={{ borderTop: '1px solid rgba(26,43,94,0.08)' }}>
-      {docs.map(d => (
-        <a
-          key={d.label}
-          href={d.url!}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all hover:opacity-70"
-          style={{ background: 'rgba(0,112,192,0.07)', color: '#0070C0', border: '1px solid rgba(0,112,192,0.12)' }}
-          onClick={e => e.stopPropagation()}
-        >
-          {d.icon} {d.label}
-        </a>
-      ))}
+    <div
+      className="mt-4 pt-4 rounded-xl p-3"
+      style={dark
+        ? { borderTop: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }
+        : { borderTop: '1px solid rgba(26,43,94,0.08)', background: 'rgba(0,112,192,0.03)', border: '1px solid rgba(26,43,94,0.07)' }
+      }
+    >
+      <div className="flex items-center gap-1.5 mb-2.5">
+        <Download size={10} style={{ color: dark ? 'rgba(245,166,35,0.7)' : '#9CAABB' }} />
+        <p className="font-mono text-[9px] uppercase tracking-[2.5px]" style={{ color: dark ? 'rgba(245,166,35,0.7)' : '#9CAABB' }}>
+          Product Downloads
+        </p>
+      </div>
+      <div className="flex flex-col gap-1.5">
+        {docs.map(d => (
+          <a
+            key={d.label}
+            href={d.url!}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-between gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all group/dl"
+            style={dark
+              ? { background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.75)', border: '1px solid rgba(255,255,255,0.08)' }
+              : { background: '#ffffff', color: '#1A2B5E', border: '1px solid rgba(26,43,94,0.10)' }
+            }
+            onMouseEnter={e => {
+              const el = e.currentTarget as HTMLElement
+              if (dark) { el.style.background = 'rgba(245,166,35,0.10)'; el.style.color = '#F5A623'; el.style.borderColor = 'rgba(245,166,35,0.25)' }
+              else { el.style.background = '#EFF6FF'; el.style.color = '#0070C0'; el.style.borderColor = 'rgba(0,112,192,0.2)' }
+            }}
+            onMouseLeave={e => {
+              const el = e.currentTarget as HTMLElement
+              if (dark) { el.style.background = 'rgba(255,255,255,0.05)'; el.style.color = 'rgba(255,255,255,0.75)'; el.style.borderColor = 'rgba(255,255,255,0.08)' }
+              else { el.style.background = '#ffffff'; el.style.color = '#1A2B5E'; el.style.borderColor = 'rgba(26,43,94,0.10)' }
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            <span className="flex items-center gap-2">
+              {d.icon}
+              <span>{d.label}</span>
+            </span>
+            <Download size={11} className="shrink-0 opacity-50 group-hover/dl:opacity-100 transition-opacity" />
+          </a>
+        ))}
+      </div>
     </div>
   )
 }
@@ -121,7 +128,7 @@ function ProductCard({ name, code, tag, description, image_url, slug, product_da
             Get a Quote <ArrowRight size={13} />
           </a>
         </div>
-        <DocLinks pds={product_data_sheet_url} sds={safety_data_sheet_url} ai={application_instruction_url} />
+        <ProductDownloads pds={product_data_sheet_url} sds={safety_data_sheet_url} ai={application_instruction_url} dark />
       </div>
     </div>
   )
@@ -146,7 +153,7 @@ function IndustrialCard({ name, tag, description, slug, product_data_sheet_url, 
             Get a Quote <ArrowRight size={14} />
           </a>
         )}
-        <DocLinksLight pds={product_data_sheet_url} sds={safety_data_sheet_url} ai={application_instruction_url} />
+        <ProductDownloads pds={product_data_sheet_url} sds={safety_data_sheet_url} ai={application_instruction_url} />
       </div>
     </div>
   )
