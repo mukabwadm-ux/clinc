@@ -6,6 +6,8 @@ import Footer from '@/components/sections/Footer'
 import FeaturedProduct from '@/components/FeaturedProduct'
 import { supabase } from '@/lib/supabase'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Products',
   description: "Explore Clincorps's range of Hempel Industrial & Marine Coatings — anti-corrosion, anti-fouling, hull protection, and infrastructure coatings available in Kenya and East Africa.",
