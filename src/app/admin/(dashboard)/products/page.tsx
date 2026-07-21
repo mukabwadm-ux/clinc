@@ -2,6 +2,8 @@ import { supabaseAdmin } from '@/lib/supabaseAdmin'
 import { Plus } from 'lucide-react'
 import ProductActions from './_components/ProductActions'
 
+export const dynamic = 'force-dynamic'
+
 export default async function AdminProductsPage() {
   const { data: products } = await supabaseAdmin
     .from('products')

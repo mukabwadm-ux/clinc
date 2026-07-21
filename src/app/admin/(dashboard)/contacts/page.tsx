@@ -1,6 +1,8 @@
 import { supabaseAdmin } from '@/lib/supabaseAdmin'
 import ContactActions from './_components/ContactActions'
 
+export const dynamic = 'force-dynamic'
+
 export default async function AdminContactsPage() {
   const { data: contacts } = await supabaseAdmin
     .from('contact_submissions')
