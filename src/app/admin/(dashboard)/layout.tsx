@@ -8,7 +8,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <div className="flex-1 flex flex-col pl-60 min-h-screen">
         <AdminHeader />
         <main className="flex-1 p-6 lg:p-8">
-          <div className="max-w-5xl">
+          <div className="w-full max-w-6xl mx-auto">
             {children}
           </div>
         </main>
