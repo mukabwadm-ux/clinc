@@ -25,6 +25,9 @@ export const productSchema = z.object({
     .transform(v => v || null),
   is_active: z.boolean().default(true),
   sort_order: z.coerce.number().int().min(0).max(9999).default(0),
+  product_data_sheet_url: z.string().max(1000).nullable().optional().transform(v => v || null),
+  safety_data_sheet_url: z.string().max(1000).nullable().optional().transform(v => v || null),
+  application_instruction_url: z.string().max(1000).nullable().optional().transform(v => v || null),
 })
 
 export const contactPatchSchema = z.object({

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { ArrowRight, Anchor, Factory } from 'lucide-react'
+import { ArrowRight, Anchor, Factory, FileText, ShieldCheck, ClipboardList } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
 import { supabase } from '@/lib/supabase'
@@ -20,9 +20,68 @@ interface Product {
   image_url: string | null
   slug: string | null
   is_active: boolean
+  product_data_sheet_url: string | null
+  safety_data_sheet_url: string | null
+  application_instruction_url: string | null
 }
 
-function ProductCard({ name, code, tag, description, image_url, slug }: Product) {
+function DocLinks({ pds, sds, ai }: { pds: string | null; sds: string | null; ai: string | null }) {
+  const docs = [
+    { url: pds, label: 'Data Sheet', icon: <FileText size={11} /> },
+    { url: sds, label: 'Safety Sheet', icon: <ShieldCheck size={11} /> },
+    { url: ai, label: 'App. Guide', icon: <ClipboardList size={11} /> },
+  ].filter(d => d.url)
+
+  if (docs.length === 0) return null
+
+  return (
+    <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-white/[0.06]">
+      {docs.map(d => (
+        <a
+          key={d.label}
+          href={d.url!}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all hover:opacity-80"
+          style={{ background: 'rgba(255,255,255,0.07)', color: '#9CAABB', border: '1px solid rgba(255,255,255,0.08)' }}
+          onClick={e => e.stopPropagation()}
+        >
+          {d.icon} {d.label}
+        </a>
+      ))}
+    </div>
+  )
+}
+
+function DocLinksLight({ pds, sds, ai }: { pds: string | null; sds: string | null; ai: string | null }) {
+  const docs = [
+    { url: pds, label: 'Data Sheet', icon: <FileText size={11} /> },
+    { url: sds, label: 'Safety Sheet', icon: <ShieldCheck size={11} /> },
+    { url: ai, label: 'App. Guide', icon: <ClipboardList size={11} /> },
+  ].filter(d => d.url)
+
+  if (docs.length === 0) return null
+
+  return (
+    <div className="flex flex-wrap gap-2 mt-3 pt-3" style={{ borderTop: '1px solid rgba(26,43,94,0.08)' }}>
+      {docs.map(d => (
+        <a
+          key={d.label}
+          href={d.url!}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all hover:opacity-70"
+          style={{ background: 'rgba(0,112,192,0.07)', color: '#0070C0', border: '1px solid rgba(0,112,192,0.12)' }}
+          onClick={e => e.stopPropagation()}
+        >
+          {d.icon} {d.label}
+        </a>
+      ))}
+    </div>
+  )
+}
+
+function ProductCard({ name, code, tag, description, image_url, slug, product_data_sheet_url, safety_data_sheet_url, application_instruction_url }: Product) {
   return (
     <div className="group rounded-2xl border border-white/[0.08] hover:border-gold/35 bg-white/[0.03] hover:shadow-[0_8px_36px_rgba(245,166,35,0.07)] transition-all duration-300 overflow-hidden flex flex-col cursor-default">
       <div className="h-0.5 w-full" style={{ background: 'linear-gradient(90deg, #F5A623, rgba(245,166,35,0.15))' }} />
@@ -62,12 +121,13 @@ function ProductCard({ name, code, tag, description, image_url, slug }: Product)
             Get a Quote <ArrowRight size={13} />
           </a>
         </div>
+        <DocLinks pds={product_data_sheet_url} sds={safety_data_sheet_url} ai={application_instruction_url} />
       </div>
     </div>
   )
 }
 
-function IndustrialCard({ name, tag, description, slug }: Product) {
+function IndustrialCard({ name, tag, description, slug, product_data_sheet_url, safety_data_sheet_url, application_instruction_url }: Product) {
   return (
     <div className="group rounded-2xl border bg-white hover:shadow-[0_8px_36px_rgba(26,43,94,0.09)] hover:border-gold/40 transition-all duration-300 overflow-hidden flex flex-col cursor-default" style={{ borderColor: 'rgba(26,43,94,0.09)' }}>
       <div className="h-0.5 w-full" style={{ background: 'linear-gradient(90deg, #F5A623, rgba(0,112,192,0.4))' }} />
@@ -86,6 +146,7 @@ function IndustrialCard({ name, tag, description, slug }: Product) {
             Get a Quote <ArrowRight size={14} />
           </a>
         )}
+        <DocLinksLight pds={product_data_sheet_url} sds={safety_data_sheet_url} ai={application_instruction_url} />
       </div>
     </div>
   )

@@ -21,6 +21,9 @@ export default async function EditProductPage({ params }: { params: Promise<{ id
         slug: data.slug ?? '',
         is_active: data.is_active,
         sort_order: data.sort_order ?? 0,
+        product_data_sheet_url: data.product_data_sheet_url ?? '',
+        safety_data_sheet_url: data.safety_data_sheet_url ?? '',
+        application_instruction_url: data.application_instruction_url ?? '',
       }}
     />
   )
