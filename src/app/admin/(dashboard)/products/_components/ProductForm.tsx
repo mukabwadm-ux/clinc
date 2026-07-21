@@ -558,7 +558,7 @@ function DocUpload({ label, description, icon, iconBg, fieldKey, url, onUpload, 
 // ── Shared helpers ────────────────────────────────────────────────────────────
 
 function fc(hasError: boolean) {
-  return `w-full rounded-lg px-4 py-2.5 text-sm outline-none transition-all focus:ring-2 focus:ring-blue-200 border ${hasError ? 'ring-1 ring-red-400 border-red-300' : 'border-slate-200'}`
+  return `w-full rounded-lg px-4 py-2.5 text-sm text-slate-800 bg-white outline-none transition-all focus:ring-2 focus:ring-blue-200 border ${hasError ? 'ring-1 ring-red-400 border-red-300' : 'border-slate-200'}`
 }
 
 function Field({ label, children, error }: { label: string; children: React.ReactNode; error?: string }) {
