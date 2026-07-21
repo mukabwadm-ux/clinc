@@ -4,7 +4,7 @@ import { jwtVerify } from 'jose'
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
   const isAdminPage = pathname.startsWith('/admin') && pathname !== '/admin/login'
-  const isAdminAPI = pathname.startsWith('/api/admin')
+  const isAdminAPI = pathname.startsWith('/api/admin') && pathname !== '/api/admin/login'
 
   if (!isAdminPage && !isAdminAPI) return NextResponse.next()
 
