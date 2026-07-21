@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { ArrowLeft, ArrowRight, Tag, Beaker, Wrench, ShieldCheck, FileText, ClipboardList, Download } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Tag, Beaker, Wrench, ShieldCheck } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
+import ProductDownloads from '@/components/ProductDownloads'
 import { supabase } from '@/lib/supabase'
 
 export const dynamic = 'force-dynamic'
@@ -42,12 +43,6 @@ export default async function ProductDetailPage({ params }: Props) {
   const images: Array<{ url: string; alt: string }> = Array.isArray(p.images) ? p.images : []
   const primaryImage = p.featured_image_url || images[0]?.url || p.image_url || null
   const primaryAlt   = p.featured_image_alt  || images[0]?.alt || p.name
-
-  const docs = [
-    { url: p.product_data_sheet_url,       label: 'Product Data Sheet',      icon: <FileText size={14} /> },
-    { url: p.safety_data_sheet_url,        label: 'Safety Data Sheet',       icon: <ShieldCheck size={14} /> },
-    { url: p.application_instruction_url,  label: 'Application Instructions',icon: <ClipboardList size={14} /> },
-  ].filter(d => d.url)
 
   return (
     <>
@@ -109,31 +104,12 @@ export default async function ProductDetailPage({ params }: Props) {
               </a>
 
               {/* Downloads */}
-              {docs.length > 0 && (
-                <div className="w-full rounded-xl p-4" style={{ border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.03)' }}>
-                  <div className="flex items-center gap-1.5 mb-3">
-                    <Download size={10} style={{ color: 'rgba(245,166,35,0.7)' }} />
-                    <p className="font-mono text-[9px] uppercase tracking-[2.5px]" style={{ color: 'rgba(245,166,35,0.7)' }}>Product Downloads</p>
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    {docs.map(d => (
-                      <a
-                        key={d.label}
-                        href={d.url!}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-between gap-3 px-3 py-2 rounded-lg text-xs font-semibold transition-all"
-                        style={{ background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.75)', border: '1px solid rgba(255,255,255,0.08)' }}
-                        onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(245,166,35,0.10)'; el.style.color = '#F5A623'; el.style.borderColor = 'rgba(245,166,35,0.25)' }}
-                        onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(255,255,255,0.05)'; el.style.color = 'rgba(255,255,255,0.75)'; el.style.borderColor = 'rgba(255,255,255,0.08)' }}
-                      >
-                        <span className="flex items-center gap-2">{d.icon}{d.label}</span>
-                        <Download size={11} className="opacity-50" />
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              )}
+              <ProductDownloads
+                pds={p.product_data_sheet_url}
+                sds={p.safety_data_sheet_url}
+                ai={p.application_instruction_url}
+                dark
+              />
 
               {/* Trust badge */}
               <div className="w-full rounded-xl p-4 flex items-center gap-3" style={{ border: '1px solid rgba(245,166,35,0.15)', background: 'rgba(245,166,35,0.04)' }}>
