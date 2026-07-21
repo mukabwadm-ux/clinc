@@ -23,6 +23,8 @@ interface Product {
   slug: string | null
   is_active: boolean
   is_featured: boolean
+  featured_image_url: string | null
+  featured_image_alt: string | null
   product_data_sheet_url: string | null
   safety_data_sheet_url: string | null
   application_instruction_url: string | null

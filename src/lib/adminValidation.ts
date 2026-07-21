@@ -32,6 +32,8 @@ export const productSchema = z.object({
     .transform(v => v || null),
   is_active: z.boolean().default(true),
   is_featured: z.boolean().default(false),
+  featured_image_url: z.string().max(1000).nullable().optional().transform(v => v || null),
+  featured_image_alt: z.string().max(500).nullable().optional().transform(v => v || null),
   sort_order: z.coerce.number().int().min(0).max(9999).default(0),
   product_data_sheet_url: z.string().max(1000).nullable().optional().transform(v => v || null),
   safety_data_sheet_url: z.string().max(1000).nullable().optional().transform(v => v || null),

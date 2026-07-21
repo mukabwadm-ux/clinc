@@ -12,6 +12,8 @@ interface FeaturedProps {
   description: string
   image_url: string | null
   images?: Array<{ url: string; alt: string }>
+  featured_image_url?: string | null
+  featured_image_alt?: string | null
   slug: string | null
   product_data_sheet_url: string | null
   safety_data_sheet_url: string | null
@@ -24,9 +26,17 @@ function stripHtml(html: string) {
 
 export default function FeaturedProduct(p: FeaturedProps) {
   const allImages: Array<{ url: string; alt: string }> = []
+
+  // featured_image_url is always first (the dedicated hero image)
+  if (p.featured_image_url) {
+    allImages.push({ url: p.featured_image_url, alt: p.featured_image_alt || p.name })
+  }
+  // then any additional product images
   if (p.images && p.images.length > 0) {
-    allImages.push(...p.images)
-  } else if (p.image_url) {
+    allImages.push(...p.images.filter(img => img.url !== p.featured_image_url))
+  }
+  // legacy fallback
+  if (allImages.length === 0 && p.image_url) {
     allImages.push({ url: p.image_url, alt: p.name })
   }
 

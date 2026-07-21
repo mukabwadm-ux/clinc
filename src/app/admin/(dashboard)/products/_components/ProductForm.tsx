@@ -24,6 +24,8 @@ const schema = z.object({
   slug: z.string().regex(/^[a-z0-9-]*$/, 'Slug: only lowercase letters, numbers and hyphens'),
   is_active: z.boolean(),
   is_featured: z.boolean(),
+  featured_image_url: z.string(),
+  featured_image_alt: z.string(),
   sort_order: z.number().int().min(0),
   images: z.array(z.object({
     url: z.string().min(1),
@@ -38,7 +40,8 @@ type FormValues = z.infer<typeof schema>
 
 const defaultValues: FormValues = {
   name: '', code: '', tag: '', category: 'marine',
-  description: '', slug: '', is_active: true, is_featured: false, sort_order: 0,
+  description: '', slug: '', is_active: true, is_featured: false,
+  featured_image_url: '', featured_image_alt: '', sort_order: 0,
   images: [] as Array<{ url: string; alt: string }>,
   product_data_sheet_url: '', safety_data_sheet_url: '', application_instruction_url: '',
 }
@@ -75,8 +78,10 @@ export default function ProductForm({ initial, productId }: Props) {
 
   const category = watch('category')
   const nameVal  = watch('name')
-  const isActive   = watch('is_active')
-  const isFeatured = watch('is_featured')
+  const isActive        = watch('is_active')
+  const isFeatured      = watch('is_featured')
+  const featImgUrl      = watch('featured_image_url')
+  const featImgAlt      = watch('featured_image_alt')
   const pdsUrl   = watch('product_data_sheet_url')
   const sdsUrl   = watch('safety_data_sheet_url')
   const aiUrl    = watch('application_instruction_url')
@@ -206,6 +211,41 @@ export default function ProductForm({ initial, productId }: Props) {
                   style={{ background: isFeatured ? '#0070C0' : '#CBD5E1' }} aria-pressed={isFeatured}>
                   <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-200 ${isFeatured ? 'translate-x-5' : 'translate-x-0'}`} />
                 </button>
+              </div>
+
+              {/* Featured Image */}
+              <div className="pt-3" style={{ borderTop: '1px solid rgba(26,43,94,0.07)' }}>
+                <p className="font-semibold text-sm mb-0.5" style={{ color: '#1A2B5E' }}>Featured Image</p>
+                <p className="text-xs mb-3" style={{ color: '#9CAABB' }}>Main image shown in the Featured section. Alt text required.</p>
+
+                {featImgUrl ? (
+                  <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(26,43,94,0.10)' }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={featImgUrl} alt={featImgAlt || ''} className="w-full h-36 object-contain bg-slate-50 p-3" />
+                    <div className="p-2.5 space-y-2">
+                      <input
+                        {...register('featured_image_alt')}
+                        type="text"
+                        placeholder="Alt text *"
+                        className="w-full text-xs px-2.5 py-1.5 rounded-md border outline-none focus:ring-1 focus:ring-blue-200"
+                        style={{ borderColor: errors.featured_image_alt ? '#FCA5A5' : 'rgba(26,43,94,0.15)', color: '#1A2B5E' }}
+                      />
+                      {errors.featured_image_alt && <p className="text-[10px]" style={{ color: '#EF4444' }}>{errors.featured_image_alt.message}</p>}
+                      <button
+                        type="button"
+                        onClick={() => { setValue('featured_image_url', ''); setValue('featured_image_alt', '') }}
+                        className="text-xs px-3 py-1 rounded-lg border cursor-pointer"
+                        style={{ color: '#EF4444', borderColor: 'rgba(239,68,68,0.2)' }}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <FeaturedImageUploader
+                    onUploaded={(url, alt) => { setValue('featured_image_url', url); setValue('featured_image_alt', alt) }}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -379,6 +419,85 @@ function ImageUploader({ onUploaded }: { onUploaded: (url: string) => void }) {
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(26,43,94,0.15)'; (e.currentTarget as HTMLElement).style.color = '#475569' }}
           >
             <Plus size={15} /> Add Image
+          </label>
+        </div>
+      )}
+    </div>
+  )
+}
+
+// ── FeaturedImageUploader ─────────────────────────────────────────────────────
+
+function FeaturedImageUploader({ onUploaded }: { onUploaded: (url: string, alt: string) => void }) {
+  const [uploading, setUploading] = useState(false)
+  const [alt, setAlt] = useState('')
+  const [altErr, setAltErr] = useState('')
+  const [uploadErr, setUploadErr] = useState('')
+  const [pending, setPending] = useState<File | null>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]; if (!file) return
+    setUploadErr(''); setAltErr(''); setPending(file); setAlt('')
+    if (inputRef.current) inputRef.current.value = ''
+  }
+
+  async function confirmUpload() {
+    if (!pending) return
+    if (!alt.trim()) { setAltErr('Alt text is required'); return }
+    setUploading(true); setUploadErr('')
+    const fd = new FormData()
+    fd.append('file', pending); fd.append('alt', alt.trim()); fd.append('bucket', 'product-images')
+    try {
+      const res = await fetch('/api/admin/upload', { method: 'POST', body: fd })
+      const data = await res.json()
+      if (!res.ok) { setUploadErr(data.error ?? 'Upload failed'); return }
+      onUploaded(data.url, alt.trim())
+      setPending(null); setAlt('')
+    } catch { setUploadErr('Network error — try again') }
+    finally { setUploading(false) }
+  }
+
+  return (
+    <div>
+      {pending ? (
+        <div className="rounded-xl p-3 space-y-2.5" style={{ background: '#F8F9FB', border: '1px solid rgba(26,43,94,0.10)' }}>
+          <div className="flex items-center gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={URL.createObjectURL(pending)} alt="" className="w-14 h-14 object-cover rounded-lg shrink-0" />
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold truncate" style={{ color: '#1A2B5E' }}>{pending.name}</p>
+              <p className="text-xs" style={{ color: '#9CAABB' }}>{(pending.size / 1024).toFixed(1)} KB</p>
+            </div>
+            <button type="button" onClick={() => setPending(null)} className="text-gray-400 hover:text-gray-600 cursor-pointer"><X size={15} /></button>
+          </div>
+          <div>
+            <input type="text" value={alt} onChange={e => { setAlt(e.target.value); setAltErr('') }}
+              placeholder="Alt text *"
+              className="w-full text-xs px-2.5 py-1.5 rounded-md border outline-none focus:ring-1 focus:ring-blue-200"
+              style={{ borderColor: altErr ? '#FCA5A5' : 'rgba(26,43,94,0.15)', color: '#1A2B5E' }}
+            />
+            {altErr && <p className="text-[10px] mt-0.5" style={{ color: '#EF4444' }}>{altErr}</p>}
+            {uploadErr && <p className="text-[10px] mt-0.5" style={{ color: '#EF4444' }}>{uploadErr}</p>}
+          </div>
+          <div className="flex gap-2">
+            <button type="button" onClick={() => setPending(null)} className="text-xs px-3 py-1 rounded-lg border cursor-pointer" style={{ color: '#6B7A99', borderColor: '#E2E8F0' }}>Cancel</button>
+            <button type="button" onClick={confirmUpload} disabled={uploading}
+              className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-lg cursor-pointer disabled:opacity-50"
+              style={{ background: '#0070C0', color: '#fff' }}>
+              {uploading ? <><span className="w-3 h-3 rounded-full border-2 border-current border-t-transparent animate-spin" /> Uploading…</> : <><Upload size={11} /> Upload</>}
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <input ref={inputRef} type="file" accept=".jpg,.jpeg,.png,.webp" onChange={handleFile} className="hidden" id="feat-img-upload" />
+          <label htmlFor="feat-img-upload"
+            className="inline-flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg border cursor-pointer transition-all"
+            style={{ borderColor: 'rgba(26,43,94,0.15)', color: '#475569', borderStyle: 'dashed' }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = '#0070C0'; (e.currentTarget as HTMLElement).style.color = '#0070C0' }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(26,43,94,0.15)'; (e.currentTarget as HTMLElement).style.color = '#475569' }}>
+            <ImageIcon size={13} /> Upload Featured Image
           </label>
         </div>
       )}
