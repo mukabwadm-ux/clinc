@@ -117,7 +117,7 @@ function IndustrialCard({ name, code, tag, description, images, image_url, featu
 
         <div className="flex items-center gap-4 mt-5 pt-4 flex-wrap" style={{ borderTop: '1px solid rgba(26,43,94,0.06)' }}>
           {slug && (
-            <a href={`/products/${slug}`} className="inline-flex items-center gap-1.5 text-xs font-black tracking-widest uppercase rounded-lg px-4 py-2 transition-all duration-200 cursor-pointer" style={{ color: '#fff', background: '#0070C0' }}>
+            <a href={`/products/${slug}`} className="inline-flex items-center gap-1.5 text-xs font-black tracking-widest uppercase rounded-lg px-4 py-2 transition-all duration-200 cursor-pointer" style={{ color: '#0D1B4B', background: '#F5A623' }}>
               View Product <ArrowRight size={13} />
             </a>
           )}
