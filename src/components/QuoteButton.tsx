@@ -32,7 +32,7 @@ export default function QuoteButton({ productName, variant = 'ghost', fullWidth 
     ? { background: '#F5A623', color: '#0D1B4B', boxShadow: '0 0 24px rgba(245,166,35,0.28)' }
     : variant === 'ghost'
     ? { color: '#6B7A99' }
-    : { color: '#0070C0' }
+    : { color: '#F5A623' }
 
   return (
     <>
