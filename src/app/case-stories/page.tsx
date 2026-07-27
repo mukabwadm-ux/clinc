@@ -70,6 +70,13 @@ const marineProjects = [
     tag: 'Full Hull Coating',
     description: 'Full hull restoration of MV Kivu Spear 1, documented from initial slipway positioning through active hot-work and repainting. The job covered the complete underwater hull area with the vessel supported on shipway trolleys.',
     specs: [],
+    images: [
+      '/case-stories/project-03/KS1.jpeg',
+      '/case-stories/project-03/KS2.jpeg',
+      '/case-stories/project-03/KS3.jpeg',
+      '/case-stories/project-03/KS4.jpeg',
+      '/case-stories/project-03/KS5.jpeg',
+    ],
   },
   {
     number: '05',
