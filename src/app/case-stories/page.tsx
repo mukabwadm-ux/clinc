@@ -86,6 +86,13 @@ const marineProjects = [
     tag: 'Passenger Ferry',
     description: 'Complete repaint of the high-speed passenger ferry Kilimanjaro, beginning with a meticulous Hempel Paints inspection before full surface preparation and recoating of the hull and superstructure, finishing with the restored red hull and re-lettered livery.',
     specs: [],
+    images: [
+      '/case-stories/project-04/KF1.jpeg',
+      '/case-stories/project-04/KF2.jpeg',
+      '/case-stories/project-04/KF3.jpeg',
+      '/case-stories/project-04/KF4.jpeg',
+      '/case-stories/project-04/KF5.jpeg',
+    ],
   },
   {
     number: '06',
