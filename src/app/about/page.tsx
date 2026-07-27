@@ -205,7 +205,7 @@ export default function AboutPage() {
                   ))}
                 </ul>
                 <div className="flex flex-wrap gap-4 mt-8">
-                  <a href="https://www.hempel.com/en/products" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-xs font-black tracking-widest uppercase cursor-pointer transition-all duration-200" style={{ background: '#F5A623', color: '#0D1B4B' }}>
+                  <a href="https://www.hempel.com/all-products" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-xs font-black tracking-widest uppercase cursor-pointer transition-all duration-200" style={{ background: '#F5A623', color: '#0D1B4B' }}>
                     Hempel Products <ArrowRight size={14} />
                   </a>
                   <a href="https://www.hempel.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-xs font-bold tracking-widest uppercase cursor-pointer transition-all duration-200 hover:opacity-80" style={{ border: '1px solid rgba(26,43,94,0.20)', color: '#1A2B5E' }}>
