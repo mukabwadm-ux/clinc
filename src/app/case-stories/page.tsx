@@ -124,6 +124,12 @@ const marineProjects = [
       { label: 'Blast Standard', value: 'SA 2.5 (near-white metal)' },
       { label: 'Coating System', value: 'High-build epoxy primer + premium antifouling topcoat' },
     ],
+    images: [
+      '/case-stories/project-06/MVN1.jpeg',
+      '/case-stories/project-06/MVN2.jpeg',
+      '/case-stories/project-06/MVN3.jpeg',
+      '/case-stories/project-06/MVN4.jpeg',
+    ],
   },
   {
     number: '08',
