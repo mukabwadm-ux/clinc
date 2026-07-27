@@ -181,6 +181,10 @@ const marineProjects = [
     tag: 'Patrol Vessel',
     description: 'The Kenya Revenue Authority patrol vessel KRA 002 was lifted and positioned at the shipyard for scheduled hull maintenance work, supporting KRA\'s marine enforcement and customs patrol operations along the Kenyan coast.',
     specs: [],
+    images: [
+      '/case-stories/project-09/KRA1.jpeg',
+      '/case-stories/project-09/KRA2.jpeg',
+    ],
   },
 ]
 
