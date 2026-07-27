@@ -166,6 +166,12 @@ const marineProjects = [
     tag: 'Pilot Boat',
     description: 'Full hull restoration of pilot vessel Malkia, operated under the Mombasa Pilots service — from initial slipway lift and hull assessment through to the finished orange-and-black pilot livery ready for return to active harbour duty.',
     specs: [],
+    images: [
+      '/case-stories/project-08/MPV1.jpeg',
+      '/case-stories/project-08/MPV3.jpeg',
+      '/case-stories/project-08/MPV4.jpeg',
+      '/case-stories/project-08/MPV5.jpeg',
+    ],
   },
   {
     number: '11',
