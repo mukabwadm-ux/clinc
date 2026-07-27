@@ -102,6 +102,15 @@ const marineProjects = [
     tag: 'Corrosion Protection',
     description: "Complete hull treatment using Hempel's corrosion protection and antifouling systems to restore operational performance and extend service life ahead of return to service.",
     specs: [],
+    images: [
+      '/case-stories/project-05/SVHT1.jpeg',
+      '/case-stories/project-05/SVHT2.jpeg',
+      '/case-stories/project-05/SVHT3.jpeg',
+      '/case-stories/project-05/SVHT4.jpeg',
+      '/case-stories/project-05/SVHT5.jpeg',
+      '/case-stories/project-05/SVHT6.jpeg',
+      '/case-stories/project-05/SVHT7.jpeg',
+    ],
   },
   {
     number: '07',
