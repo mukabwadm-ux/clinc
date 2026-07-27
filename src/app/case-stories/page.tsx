@@ -139,6 +139,15 @@ const marineProjects = [
     tag: 'New-Build, Full System',
     description: 'Full surface preparation and end-to-end Hempel coating on a new-build ferry and tug boat — high-performance priming, intermediate, and topcoat layers above the waterline for weather resistance, and a specialised antifouling kit below for long-term hull efficiency.',
     specs: [],
+    images: [
+      '/case-stories/project-07/FTB1.jpeg',
+      '/case-stories/project-07/FTB2.jpeg',
+      '/case-stories/project-07/FTB3.jpeg',
+      '/case-stories/project-07/FTB4.jpeg',
+      '/case-stories/project-07/FTB5.jpeg',
+      '/case-stories/project-07/FTB6.jpeg',
+      '/case-stories/project-07/FTB7.jpeg',
+    ],
   },
   {
     number: '09',
