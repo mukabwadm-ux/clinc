@@ -46,6 +46,12 @@ const marineProjects = [
       { label: 'Primer', value: 'Hempadur Quattro 17634 epoxy primer' },
       { label: 'Duration', value: '3-day documented sequence' },
     ],
+    images: [
+      '/case-stories/project-02/HB1.jpeg',
+      '/case-stories/project-02/HB2.jpeg',
+      '/case-stories/project-02/HB3.jpeg',
+      '/case-stories/project-02/HB4.jpeg',
+    ],
   },
   {
     number: '03',
