@@ -25,8 +25,18 @@ export default function Hero() {
       {/* Video carousel — sits behind the overlay, still image above is the fallback */}
       <HeroCarousel />
 
+      {/* Overlay — vertical on phones, where copy spans the full width and a
+          left-to-right scrim would leave text sitting on bright video. */}
+      <div
+        className="absolute inset-0 z-[5] sm:hidden"
+        style={{ background: 'linear-gradient(to bottom, rgba(4,13,26,0.60) 0%, rgba(4,13,26,0.76) 45%, rgba(4,13,26,0.93) 100%)' }}
+      />
+
       {/* Overlay — dark left, open right */}
-      <div className="absolute inset-0 z-[5]" style={{ background: 'linear-gradient(to right, rgba(4,13,26,0.92) 0%, rgba(4,13,26,0.82) 38%, rgba(13,27,69,0.40) 62%, rgba(4,13,26,0.08) 100%)' }} />
+      <div
+        className="absolute inset-0 z-[5] hidden sm:block"
+        style={{ background: 'linear-gradient(to right, rgba(4,13,26,0.92) 0%, rgba(4,13,26,0.82) 38%, rgba(13,27,69,0.40) 62%, rgba(4,13,26,0.08) 100%)' }}
+      />
 
       {/* Warm gold glow — bottom left corner */}
       <div

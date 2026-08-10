@@ -79,7 +79,7 @@ export default function HeroCarousel() {
               style={{
                 zIndex: isActive ? 2 : 1,
                 clipPath: isActive ? 'inset(0 0 0 0)' : 'inset(0 0 0 100%)',
-                transform: isActive ? 'scale(1)' : 'scale(1.14)',
+                transform: isActive ? 'scale(1)' : 'scale(1.06)',
                 transition: isActive
                   ? `clip-path ${WIPE_MS}ms cubic-bezier(0.16,1,0.3,1), transform 1600ms cubic-bezier(0.16,1,0.3,1)`
                   : // Snap the outgoing slide back only once it is hidden behind

@@ -97,9 +97,11 @@ html {
    settles from an overscale; a gold light bar rides the wipe edge. */
 
 /* Slow drift on the playing clip so a static shot never feels frozen. */
+/* Kept shallow: the clips are 720p and already upscaled to fill the hero,
+   so every extra percent of zoom costs visible sharpness. */
 @keyframes heroDrift {
   from { transform: scale(1); }
-  to   { transform: scale(1.07); }
+  to   { transform: scale(1.03); }
 }
 .hero-drift {
   animation: heroDrift 18s ease-in-out infinite alternate;
