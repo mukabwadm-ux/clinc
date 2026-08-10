@@ -14,6 +14,7 @@ const team: TeamMember[] = [
     initials: 'CL',
     name: 'Clinton',
     role: 'Founder & CEO',
+    image: '/team/clinton.jpg',
     bio: 'Clinton Ochieng is a dynamic business leader with a DipM ACIM, MSc in Project Management, and AMPP-SSPC Level 2 Certified Protective Coating Inspector credentials. He leads our company, specializing in delivering innovative solutions in coatings, logistics, and business development. With a strong foundation in marketing (BBA), leadership (SBS Leadership Excellence), and facilitation (IFC/World Bank Group certified), we drive growth through strategic vision and execution.',
   },
   {
