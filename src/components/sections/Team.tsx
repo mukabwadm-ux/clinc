@@ -25,6 +25,7 @@ const team: TeamMember[] = [
     initials: 'RO',
     name: 'Robbins',
     role: 'Social Media Manager',
+    image: '/team/robbins.jpg',
     bio: "Robbins drives operational excellence across Clin Corps's distribution network, ensuring products reach clients on time and at the highest standard. His technical expertise in coatings applications and logistics management is the backbone behind every successful project delivery across East Africa.",
   },
 ]
