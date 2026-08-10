@@ -2,13 +2,21 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { Menu, X } from 'lucide-react'
+import { ChevronDown, Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-const navLinks = [
+type NavLink = { label: string; href: string; children?: { label: string; href: string }[] }
+
+const navLinks: NavLink[] = [
   { label: 'Products', href: '/products' },
-  { label: 'About', href: '/about' },
-  { label: 'Leadership', href: '/leadership' },
+  {
+    label: 'About',
+    href: '/about',
+    children: [
+      { label: 'About Us', href: '/about' },
+      { label: 'Leadership', href: '/leadership' },
+    ],
+  },
   { label: 'Case Stories', href: '/case-stories' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -46,15 +54,54 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-7 xl:gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="font-sans text-sm font-medium text-white/75 hover:text-white transition-colors duration-200 cursor-pointer"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.children ? (
+                // Opens on hover and on keyboard focus, so it is reachable by tab.
+                <div key={link.href} className="relative group">
+                  <a
+                    href={link.href}
+                    className="inline-flex items-center gap-1 font-sans text-sm font-medium text-white/75 hover:text-white transition-colors duration-200 cursor-pointer"
+                  >
+                    {link.label}
+                    <ChevronDown
+                      size={14}
+                      className="transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180"
+                    />
+                  </a>
+
+                  {/* Hover bridge keeps the menu open while crossing the gap */}
+                  <div className="absolute left-0 top-full h-3 w-full" />
+
+                  <div
+                    className="absolute left-0 top-full mt-3 min-w-[196px] rounded-xl overflow-hidden py-1.5 opacity-0 invisible -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all duration-200"
+                    style={{
+                      background: 'rgba(4,13,26,0.97)',
+                      border: '1px solid rgba(255,255,255,0.10)',
+                      boxShadow: '0 18px 44px rgba(0,0,0,0.45)',
+                      backdropFilter: 'blur(10px)',
+                    }}
+                  >
+                    {link.children.map((child) => (
+                      <a
+                        key={child.href}
+                        href={child.href}
+                        className="block px-4 py-2.5 font-sans text-sm font-medium text-white/70 hover:text-white hover:bg-white/[0.06] transition-colors duration-150 cursor-pointer"
+                      >
+                        {child.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="font-sans text-sm font-medium text-white/75 hover:text-white transition-colors duration-200 cursor-pointer"
+                >
+                  {link.label}
+                </a>
+              )
+            )}
             <a
               href="/contact"
               className="inline-flex items-center font-sans bg-gold text-navy rounded-lg px-5 py-2.5 text-xs font-black tracking-widest uppercase hover:brightness-110 transition-all duration-200 cursor-pointer shadow-[0_0_20px_rgba(245,166,35,0.25)]"
@@ -89,15 +136,33 @@ export default function Navbar() {
           </div>
           <div className="flex flex-col flex-1 items-start justify-center gap-1 px-6">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="font-sans font-black text-white/80 hover:text-gold transition-colors duration-200 py-3 cursor-pointer w-full"
-                style={{ fontSize: 'clamp(26px, 7vw, 38px)' }}
-              >
-                {link.label}
-              </a>
+              <div key={link.href} className="w-full">
+                <a
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="block font-sans font-black text-white/80 hover:text-gold transition-colors duration-200 py-3 cursor-pointer w-full"
+                  style={{ fontSize: 'clamp(26px, 7vw, 38px)' }}
+                >
+                  {link.label}
+                </a>
+                {link.children && (
+                  <div className="flex flex-col pl-4 pb-2 -mt-1" style={{ borderLeft: '1px solid rgba(255,255,255,0.12)' }}>
+                    {link.children
+                      .filter((child) => child.href !== link.href)
+                      .map((child) => (
+                        <a
+                          key={child.href}
+                          href={child.href}
+                          onClick={() => setMenuOpen(false)}
+                          className="font-sans font-semibold text-white/55 hover:text-gold transition-colors duration-200 py-2 cursor-pointer"
+                          style={{ fontSize: 'clamp(16px, 4.2vw, 21px)' }}
+                        >
+                          {child.label}
+                        </a>
+                      ))}
+                  </div>
+                )}
+              </div>
             ))}
             <a
               href="/contact"

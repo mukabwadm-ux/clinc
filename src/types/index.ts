@@ -5,6 +5,9 @@ export interface TeamMember {
   /** Headshot path under /public. Falls back to initials while unset. */
   image?: string
   initials: string
+  /** Internal profile page, if this member has one. */
+  profileHref?: string
+  linkedin?: string
 }
 
 export interface Stat {

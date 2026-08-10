@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import { ArrowRight } from 'lucide-react'
+import LinkedInIcon from '@/components/icons/LinkedInIcon'
 import type { TeamMember } from '@/types'
 
 // Card palette taken from the supplied reference design.
@@ -11,10 +13,12 @@ const BIO_COLOR = '#2E3A4E'
 
 const team: TeamMember[] = [
   {
-    initials: 'CL',
-    name: 'Clinton',
+    initials: 'CO',
+    name: 'Clinton Ochieng',
     role: 'Founder & CEO',
     image: '/team/clinton.jpg',
+    profileHref: '/leadership',
+    linkedin: 'https://www.linkedin.com/in/clinton-ochieng/',
     bio: 'Clin Corp Limited is led by Clinton Ochieng, an accomplished business leader with extensive experience in industrial and marine protective coatings, infrastructure projects, and strategic business development. Under his leadership, Clin Corp has become the authorized distributor of Hempel Industrial and Marine Coatings in Kenya while delivering world-class coating solutions across East Africa.',
   },
   {
@@ -111,6 +115,33 @@ export default function Team() {
               >
                 {member.bio}
               </p>
+
+              {(member.profileHref || member.linkedin) && (
+                <div className="flex items-center gap-3 mt-6 sm:mt-7">
+                  {member.profileHref && (
+                    <a
+                      href={member.profileHref}
+                      className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 font-sans text-[11px] sm:text-xs font-black tracking-widest uppercase transition-all duration-200 cursor-pointer hover:brightness-110"
+                      style={{ background: ACCENT, color: '#FFFFFF' }}
+                    >
+                      View Profile
+                      <ArrowRight size={14} />
+                    </a>
+                  )}
+                  {member.linkedin && (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${member.name} on LinkedIn`}
+                      className="inline-flex items-center justify-center w-10 h-10 rounded-lg transition-all duration-200 cursor-pointer hover:scale-105"
+                      style={{ background: '#0A66C2', color: '#FFFFFF' }}
+                    >
+                      <LinkedInIcon size={17} />
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
           ))}
         </div>
