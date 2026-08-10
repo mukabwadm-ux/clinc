@@ -1,16 +1,18 @@
-﻿export default function JsonLd() {
+﻿import { SITE_URL, SITE_NAME, CONTACT_EMAIL } from '@/lib/site'
+
+export default function JsonLd() {
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'Organization',
-        '@id': 'https://clincorp.co.ke/#organization',
+        '@id': `${SITE_URL}/#organization`,
         name: 'Clincorps Limited',
-        alternateName: 'Clincorps',
-        url: 'https://clincorp.co.ke',
+        alternateName: SITE_NAME,
+        url: SITE_URL,
         logo: {
           '@type': 'ImageObject',
-          url: 'https://clincorp.co.ke/clincorp_logo.png',
+          url: `${SITE_URL}/clincorp_logo.png`,
           width: 160,
           height: 48,
         },
@@ -37,7 +39,7 @@
           '@type': 'ContactPoint',
           telephone: '+254-723-887-417',
           contactType: 'sales',
-          email: 'clinton@clincorp.co.ke',
+          email: CONTACT_EMAIL,
           areaServed: 'KE',
           availableLanguage: 'English',
         },
@@ -45,20 +47,20 @@
       },
       {
         '@type': 'WebSite',
-        '@id': 'https://clincorp.co.ke/#website',
-        url: 'https://clincorp.co.ke',
-        name: 'Clincorps',
+        '@id': `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: SITE_NAME,
         description: 'Authorized Hempel Industrial & Marine Coatings Distributor — Kenya',
-        publisher: { '@id': 'https://clincorp.co.ke/#organization' },
+        publisher: { '@id': `${SITE_URL}/#organization` },
         inLanguage: 'en-KE',
       },
       {
         '@type': 'LocalBusiness',
-        '@id': 'https://clincorp.co.ke/#localbusiness',
+        '@id': `${SITE_URL}/#localbusiness`,
         name: 'Clincorps Limited',
-        image: 'https://clincorp.co.ke/clincorp_logo.png',
+        image: `${SITE_URL}/clincorp_logo.png`,
         telephone: '+254723887417',
-        email: 'clinton@clincorp.co.ke',
+        email: CONTACT_EMAIL,
         address: {
           '@type': 'PostalAddress',
           streetAddress: 'Britam Towers, Upper Hill',
@@ -71,7 +73,7 @@
           latitude: -1.2921,
           longitude: 36.8219,
         },
-        url: 'https://clincorp.co.ke',
+        url: SITE_URL,
         priceRange: '$$',
         openingHoursSpecification: {
           '@type': 'OpeningHoursSpecification',

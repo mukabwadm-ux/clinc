@@ -2,6 +2,7 @@ import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
 import { supabaseAdmin } from '@/lib/supabaseAdmin'
+import { SENDER_EMAIL, CONTACT_EMAIL } from '@/lib/site'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -36,8 +37,8 @@ export async function POST(req: Request) {
     }])
 
     await resend.emails.send({
-      from: 'Clincorps Website <enquiries@clincorp.co.ke>',
-      to: ['clin@clincorps.com'],
+      from: SENDER_EMAIL,
+      to: [CONTACT_EMAIL],
       subject: `Quote Request: ${productName} — ${fullName} (${company})`,
       html: `
         <h2 style="color:#040D1A">New Product Quote Request</h2>

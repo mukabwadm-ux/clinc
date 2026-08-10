@@ -2,6 +2,7 @@
 import { Poppins } from 'next/font/google'
 import './globals.css'
 import JsonLd from '@/components/JsonLd'
+import { SITE_URL, SITE_NAME } from '@/lib/site'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -11,7 +12,7 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://clincorp.co.ke'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Clincorps | Authorized Hempel Distributor — Industrial & Marine Coatings Kenya',
     template: '%s | Clincorps Kenya',
@@ -35,15 +36,15 @@ export const metadata: Metadata = {
     'coating solutions East Africa',
     'infrastructure coatings Kenya',
   ],
-  authors: [{ name: 'Clincorps Limited', url: 'https://clincorp.co.ke' }],
+  authors: [{ name: 'Clincorps Limited', url: SITE_URL }],
   creator: 'Clincorps Limited',
   publisher: 'Clincorps Limited',
   category: 'Industrial Coatings & Paint Distribution',
   openGraph: {
     type: 'website',
     locale: 'en_KE',
-    url: 'https://clincorp.co.ke',
-    siteName: 'Clincorps',
+    url: SITE_URL,
+    siteName: SITE_NAME,
     title: 'Clincorps — Future Today | Authorized Hempel Distributor, Kenya',
     description:
       'Kenya\'s Authorized Distributor for Hempel Industrial & Marine Coatings. 37% East Africa market share. Nairobi, Kenya — Est. 2024.',
@@ -75,7 +76,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://clincorp.co.ke',
+    canonical: SITE_URL,
   },
 }
 
