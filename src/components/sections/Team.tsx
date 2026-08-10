@@ -15,7 +15,7 @@ const team: TeamMember[] = [
     name: 'Clinton',
     role: 'Founder & CEO',
     image: '/team/clinton.jpg',
-    bio: 'Clinton Ochieng is a dynamic business leader with a DipM ACIM, MSc in Project Management, and AMPP-SSPC Level 2 Certified Protective Coating Inspector credentials. He leads our company, specializing in delivering innovative solutions in coatings, logistics, and business development. With a strong foundation in marketing (BBA), leadership (SBS Leadership Excellence), and facilitation (IFC/World Bank Group certified), we drive growth through strategic vision and execution.',
+    bio: 'Clin Corp Limited is led by Clinton Ochieng, an accomplished business leader with extensive experience in industrial and marine protective coatings, infrastructure projects, and strategic business development. Under his leadership, Clin Corp has become the authorized distributor of Hempel Industrial and Marine Coatings in Kenya while delivering world-class coating solutions across East Africa.',
   },
   {
     initials: 'RO',
