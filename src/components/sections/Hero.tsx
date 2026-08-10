@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { ChevronDown, ShieldCheck } from 'lucide-react'
+import HeroCarousel from '@/components/HeroCarousel'
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
@@ -21,18 +22,21 @@ export default function Hero() {
         backgroundPosition: 'center',
       }}
     >
+      {/* Video carousel — sits behind the overlay, still image above is the fallback */}
+      <HeroCarousel />
+
       {/* Overlay — dark left, open right */}
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(4,13,26,0.92) 0%, rgba(4,13,26,0.82) 38%, rgba(13,27,69,0.40) 62%, rgba(4,13,26,0.08) 100%)' }} />
+      <div className="absolute inset-0 z-[5]" style={{ background: 'linear-gradient(to right, rgba(4,13,26,0.92) 0%, rgba(4,13,26,0.82) 38%, rgba(13,27,69,0.40) 62%, rgba(4,13,26,0.08) 100%)' }} />
 
       {/* Warm gold glow — bottom left corner */}
       <div
-        className="absolute -bottom-20 -left-20 w-[500px] h-[500px] lg:w-[700px] lg:h-[700px] rounded-full pointer-events-none"
+        className="absolute z-[6] -bottom-20 -left-20 w-[500px] h-[500px] lg:w-[700px] lg:h-[700px] rounded-full pointer-events-none"
         style={{ background: 'radial-gradient(circle, rgba(245,166,35,0.14) 0%, transparent 70%)', filter: 'blur(70px)' }}
       />
 
       {/* Soft blue glow — top */}
       <div
-        className="absolute -top-10 left-1/4 w-[400px] h-[400px] rounded-full pointer-events-none"
+        className="absolute z-[6] -top-10 left-1/4 w-[400px] h-[400px] rounded-full pointer-events-none"
         style={{ background: 'radial-gradient(circle, rgba(0,112,192,0.10) 0%, transparent 70%)', filter: 'blur(60px)' }}
       />
 

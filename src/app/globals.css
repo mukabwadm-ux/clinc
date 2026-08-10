@@ -92,6 +92,51 @@ html {
   to { transform: scaleX(1); }
 }
 
+/* Hero video carousel
+   The incoming slide is revealed by a right-to-left clip wipe while it
+   settles from an overscale; a gold light bar rides the wipe edge. */
+
+/* Slow drift on the playing clip so a static shot never feels frozen. */
+@keyframes heroDrift {
+  from { transform: scale(1); }
+  to   { transform: scale(1.07); }
+}
+.hero-drift {
+  animation: heroDrift 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Remounted on every slide change, so the sweep replays each time. */
+@keyframes heroSweep {
+  from { transform: translateX(105vw); opacity: 0; }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  to   { transform: translateX(-105vw); opacity: 0; }
+}
+.hero-sweep {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 42vw;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(245, 166, 35, 0.06) 45%,
+    rgba(245, 166, 35, 0.85) 50%,
+    rgba(255, 255, 255, 0.55) 51%,
+    rgba(0, 112, 192, 0.10) 58%,
+    transparent 100%
+  );
+  animation: heroSweep 1.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-drift { animation: none; }
+  .hero-sweep { display: none; }
+}
+
 @layer base {
   * {
     @apply border-border;
