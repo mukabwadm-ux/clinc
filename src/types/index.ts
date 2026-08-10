@@ -1,10 +1,10 @@
 export interface TeamMember {
-  initials: string
   name: string
   role: string
   bio: string
-  gradientFrom: string
-  gradientTo: string
+  /** Headshot path under /public. Falls back to initials while unset. */
+  image?: string
+  initials: string
 }
 
 export interface Stat {
