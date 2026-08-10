@@ -133,7 +133,7 @@ export default function LeadershipPage() {
                 </span>
               </div>
 
-              <p className="font-sans text-sm sm:text-base lg:text-lg leading-relaxed mt-6 max-w-xl" style={{ color: '#8899AE' }}>
+              <p className="font-sans text-sm sm:text-base lg:text-lg leading-relaxed mt-6 max-w-xl" style={{ color: '#FFFFFF' }}>
                 Clin Corp Limited is led by Clinton Ochieng, an accomplished business leader with extensive
                 experience in industrial and marine protective coatings, infrastructure projects, and strategic
                 business development. Under his leadership, Clin Corp has become the authorized distributor of
@@ -219,6 +219,22 @@ export default function LeadershipPage() {
                 A career built on <span style={{ color: '#F5A623' }}>protection.</span>
               </h2>
               <div className="w-14 h-1 rounded-full mt-5" style={{ background: 'linear-gradient(90deg, #F5A623, #0070C0)' }} />
+
+              <div className="relative mt-8 sm:mt-10 w-full max-w-sm mx-auto lg:mx-0">
+                <div
+                  className="absolute -bottom-3 -right-3 w-24 h-24 rounded-br-2xl pointer-events-none hidden sm:block"
+                  style={{ borderBottom: '3px solid #F5A623', borderRight: '3px solid #F5A623' }}
+                />
+                <div className="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-[0_18px_50px_rgba(13,27,75,0.16)]">
+                  <Image
+                    src="/team/clinton-bio.jpg"
+                    alt="Clinton Ochieng, Managing Director of Clin Corp Limited"
+                    fill
+                    sizes="(min-width: 640px) 384px, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
             </div>
 
             <div className="font-sans leading-relaxed space-y-5 text-[15px] sm:text-base" style={{ color: '#2E3A4E' }}>
