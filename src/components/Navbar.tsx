@@ -39,7 +39,7 @@ export default function Navbar() {
               alt="Clincorps"
               height={40}
               width={130}
-              className="object-contain bg-white rounded-lg px-2 py-1 w-[108px] sm:w-[128px] lg:w-[148px] h-auto"
+              className="object-contain bg-white rounded-lg px-2 py-1 w-[108px] sm:w-[128px] lg:w-[178px] h-auto"
             />
           </a>
 
