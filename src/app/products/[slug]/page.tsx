@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const desc = data.description.replace(/<[^>]*>/g, '').replace(/&[a-z]+;/gi, ' ').trim().slice(0, 160)
   return {
     title: `${data.name} | ${data.category === 'marine' ? 'Marine' : 'Industrial'} Coating`,
-    description: `${data.name} — ${desc}. Available in Kenya via Clincorps.`,
+    description: `${data.name} — ${desc}. Available in Kenya via Clin Corps.`,
   }
 }
 

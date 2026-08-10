@@ -20,7 +20,7 @@ function resolveSiteUrl(value: string | undefined): string {
 /** Canonical origin, never with a trailing slash. */
 export const SITE_URL = resolveSiteUrl(rawUrl)
 
-export const SITE_NAME = 'Clincorps'
+export const SITE_NAME = 'Clin Corps'
 
 /** Inbox that receives contact + quote form submissions. */
 export const CONTACT_EMAIL = 'clin@clincorps.com'

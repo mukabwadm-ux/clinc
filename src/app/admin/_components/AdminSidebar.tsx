@@ -30,7 +30,7 @@ export default function AdminSidebar() {
       {/* Brand */}
       <div className="px-5 pt-5 pb-4" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="bg-white rounded-xl px-3 py-1.5 inline-flex items-center">
-          <Image src="/clincorp_logo.png" alt="Clincorps" width={108} height={32} className="h-8 w-auto object-contain" />
+          <Image src="/clincorp_logo.png" alt="Clin Corps" width={108} height={32} className="h-8 w-auto object-contain" />
         </div>
         <div className="flex items-center gap-2 mt-3">
           <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />

@@ -7,7 +7,7 @@ import QuoteButton from '@/components/QuoteButton'
 
 export const metadata: Metadata = {
   title: 'Hempalin Enamel 52140 | Marine Topcoat',
-  description: 'Hempalin Enamel 52140 — a glossy, general purpose alkyd topcoat forming a weather resistant coating. Resistant to salt water and mineral oil. Available in Kenya via Clincorps.',
+  description: 'Hempalin Enamel 52140 — a glossy, general purpose alkyd topcoat forming a weather resistant coating. Resistant to salt water and mineral oil. Available in Kenya via Clin Corps.',
 }
 
 export default function HempalinEnamel52140() {

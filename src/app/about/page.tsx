@@ -7,7 +7,7 @@ import Footer from '@/components/sections/Footer'
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Clincorps Limited — a leading provider of high performance protective coatings and industrial solutions in East Africa. Authorised distributor of Hempel products.',
+  description: 'Clin Corps Limited — a leading provider of high performance protective coatings and industrial solutions in East Africa. Authorised distributor of Hempel products.',
 }
 
 const values = [
@@ -79,7 +79,7 @@ export default function AboutPage() {
                   }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#F5A623' }} />
-                  About Clincorps · East Africa
+                  About Clin Corps · East Africa
                 </div>
 
                 {/* Headline */}
@@ -134,7 +134,7 @@ export default function AboutPage() {
                   East Africa&apos;s Leading<br /><span style={{ color: '#0070C0' }}>Coatings Partner.</span>
                 </h2>
                 <p className="font-sans text-sm sm:text-base leading-relaxed mt-5" style={{ color: '#6B7A99' }}>
-                  Clincorps Limited is a leading provider of high performance protective coatings and industrial solutions in East Africa. As the authorised distributor of HEMPEL products, we deliver world-class coatings, technical expertise and reliable service that protect assets, extend life and enhance performance.
+                  Clin Corps Limited is a leading provider of high performance protective coatings and industrial solutions in East Africa. As the authorised distributor of HEMPEL products, we deliver world-class coatings, technical expertise and reliable service that protect assets, extend life and enhance performance.
                 </p>
 
                 <div className="mt-8 space-y-5">
@@ -235,10 +235,10 @@ export default function AboutPage() {
                   <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[3px]" style={{ color: '#F5A623' }}>WHY CHOOSE US</p>
                 </div>
                 <h2 className="font-sans font-black text-white" style={{ fontSize: 'clamp(28px, 4.5vw, 52px)' }}>
-                  The Clincorps <span style={{ color: '#F5A623' }}>Promise.</span>
+                  The Clin Corps <span style={{ color: '#F5A623' }}>Promise.</span>
                 </h2>
                 <p className="font-sans text-sm sm:text-base mt-4 leading-relaxed max-w-lg" style={{ color: '#6B7A99' }}>
-                  Quality products. Technical expertise. Reliable delivery. Lasting protection. That is the Clincorps promise.
+                  Quality products. Technical expertise. Reliable delivery. Lasting protection. That is the Clin Corps promise.
                 </p>
                 <ul className="mt-8 space-y-4">
                   {whyUs.map((item, i) => (

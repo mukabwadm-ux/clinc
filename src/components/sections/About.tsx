@@ -38,7 +38,7 @@ export default function About() {
             </h2>
 
             <p className="font-sans text-sm sm:text-base leading-relaxed mt-5 sm:mt-6 max-w-lg" style={{ color: '#6B7A99' }}>
-              Clincorps is Kenya&apos;s Authorized Distributor for Hempel Industrial and Marine
+              Clin Corps is Kenya&apos;s Authorized Distributor for Hempel Industrial and Marine
               Coatings, proudly serving East Africa from Nairobi since 2024. In under two years,
               we have captured <strong className="font-bold" style={{ color: '#1A2B5E' }}>37% market share</strong> across
               the region — built on a foundation of uncompromising quality, deep technical knowledge,
@@ -76,7 +76,7 @@ export default function About() {
             />
             <Image
               src="/ccimage.jpeg"
-              alt="Clincorps — Authorised Hempel Distributor"
+              alt="Clin Corps — Authorised Hempel Distributor"
               width={600}
               height={450}
               className="relative w-full h-auto rounded-2xl object-cover"

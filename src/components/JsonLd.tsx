@@ -7,7 +7,7 @@ export default function JsonLd() {
       {
         '@type': 'Organization',
         '@id': `${SITE_URL}/#organization`,
-        name: 'Clincorps Limited',
+        name: 'Clin Corps Limited',
         alternateName: SITE_NAME,
         url: SITE_URL,
         logo: {
@@ -57,7 +57,7 @@ export default function JsonLd() {
       {
         '@type': 'LocalBusiness',
         '@id': `${SITE_URL}/#localbusiness`,
-        name: 'Clincorps Limited',
+        name: 'Clin Corps Limited',
         image: `${SITE_URL}/clincorp_logo.png`,
         telephone: '+254723887417',
         email: CONTACT_EMAIL,
