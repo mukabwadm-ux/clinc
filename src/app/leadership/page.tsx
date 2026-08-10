@@ -210,7 +210,7 @@ export default function LeadershipPage() {
       {/* ── Biography ────────────────────────────────────────────────── */}
       <section className="py-14 sm:py-20 lg:py-28" style={{ background: '#FAFAF8' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-center">
             <div>
               <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[3px]" style={{ color: '#0070C0' }}>
                 Biography

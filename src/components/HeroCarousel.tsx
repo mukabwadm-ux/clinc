@@ -42,7 +42,9 @@ export default function HeroCarousel() {
 
     let cancelled = false
     if (active) {
-      active.currentTime = 0
+      // Don't touch a freshly mounted clip: the autoPlay attribute has already
+      // started it during parse, and seeking would restart the buffering.
+      if (active.currentTime > 0) active.currentTime = 0
       // Autoplay can be refused (Low Power Mode, data saver). The timer below
       // keeps the carousel moving either way.
       void active.play().catch(() => {})
@@ -94,6 +96,9 @@ export default function HeroCarousel() {
                 src={src}
                 muted
                 playsInline
+                // Present in the server-rendered HTML, so the first clip starts
+                // during parse instead of waiting for hydration.
+                autoPlay={isActive}
                 preload={i === index ? 'auto' : i === next ? 'metadata' : 'none'}
                 onTimeUpdate={isActive ? onTimeUpdate : undefined}
                 onEnded={isActive ? () => goTo(index + 1) : undefined}
