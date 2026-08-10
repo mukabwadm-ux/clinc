@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { Bell } from 'lucide-react'
+import NotificationBell from './NotificationBell'
 
 const titles: Record<string, string> = {
   '/admin': 'Dashboard',
@@ -30,15 +30,7 @@ export default function AdminHeader() {
       <h1 className="font-black text-base" style={{ color: '#1A2B5E' }}>{title}</h1>
 
       <div className="flex items-center gap-3">
-        <button
-          className="w-8 h-8 flex items-center justify-center rounded-lg transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-200"
-          style={{ color: '#94A3B8' }}
-          aria-label="Notifications"
-          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#F1F5F9' }}
-          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent' }}
-        >
-          <Bell size={16} />
-        </button>
+        <NotificationBell />
         <div className="flex items-center gap-2">
           <div
             className="w-8 h-8 rounded-full flex items-center justify-center font-black text-xs"

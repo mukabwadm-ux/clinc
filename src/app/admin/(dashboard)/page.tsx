@@ -1,23 +1,52 @@
+import { Package, Mail, ArrowRight } from 'lucide-react'
 import { supabaseAdmin } from '@/lib/supabaseAdmin'
-import { Package, Mail, MailOpen, Clock, ArrowRight } from 'lucide-react'
+import DashboardLive from '../_components/DashboardLive'
+import type { ActivityPayload } from '@/app/api/admin/activity/route'
 
-export default async function AdminDashboard() {
-  const [productsRes, contactsRes] = await Promise.all([
-    supabaseAdmin.from('products').select('id, is_active', { count: 'exact' }),
-    supabaseAdmin.from('contact_submissions').select('id, full_name, email, company, created_at, is_read', { count: 'exact' }).order('created_at', { ascending: false }).limit(6),
+// Counts must reflect the database on every load, never a cached render.
+export const dynamic = 'force-dynamic'
+
+/** First paint only — ActivityProvider takes over polling once mounted. */
+async function getInitialSnapshot(): Promise<ActivityPayload> {
+  const [products, active, contacts, unread, quotes, newQuotes, recent] = await Promise.all([
+    supabaseAdmin.from('products').select('id', { count: 'exact', head: true }),
+    supabaseAdmin.from('products').select('id', { count: 'exact', head: true }).eq('is_active', true),
+    supabaseAdmin.from('contact_submissions').select('id', { count: 'exact', head: true }),
+    supabaseAdmin.from('contact_submissions').select('id', { count: 'exact', head: true }).eq('is_read', false),
+    supabaseAdmin.from('quotes').select('id', { count: 'exact', head: true }),
+    supabaseAdmin.from('quotes').select('id', { count: 'exact', head: true }).eq('status', 'new'),
+    supabaseAdmin
+      .from('contact_submissions')
+      .select('id, full_name, company, is_read, created_at')
+      .order('created_at', { ascending: false })
+      .limit(6),
   ])
 
-  const totalProducts = productsRes.count ?? 0
-  const activeProducts = (productsRes.data ?? []).filter(p => p.is_active).length
-  const totalContacts = contactsRes.count ?? 0
-  const unreadContacts = (contactsRes.data ?? []).filter(c => !c.is_read).length
-  const recentContacts = contactsRes.data ?? []
+  return {
+    stats: {
+      totalProducts: products.count ?? 0,
+      activeProducts: active.count ?? 0,
+      totalContacts: contacts.count ?? 0,
+      unreadContacts: unread.count ?? 0,
+      totalQuotes: quotes.count ?? 0,
+      newQuotes: newQuotes.count ?? 0,
+    },
+    events: (recent.data ?? []).map((c) => ({
+      id: `contact-${c.id}`,
+      type: 'contact' as const,
+      title: 'New contact enquiry',
+      detail: `${c.full_name}${c.company ? ` · ${c.company}` : ''}`,
+      at: c.created_at,
+      href: '/admin/contacts',
+      pending: !c.is_read,
+    })),
+    generatedAt: new Date().toISOString(),
+  }
+}
 
-  const stats = [
-    { label: 'Total Products', value: totalProducts, sub: `${activeProducts} active`, icon: Package, color: '#0070C0', bg: 'rgba(0,112,192,0.10)' },
-    { label: 'Contact Submissions', value: totalContacts, sub: 'All time', icon: Mail, color: '#F5A623', bg: 'rgba(245,166,35,0.10)' },
-    { label: 'Unread Messages', value: unreadContacts, sub: unreadContacts > 0 ? 'Needs attention' : 'All read', icon: MailOpen, color: unreadContacts > 0 ? '#EF4444' : '#10B981', bg: unreadContacts > 0 ? 'rgba(239,68,68,0.10)' : 'rgba(16,185,129,0.10)' },
-  ]
+export default async function AdminDashboard() {
+  const initial = await getInitialSnapshot()
+  const { unreadContacts } = initial.stats
 
   return (
     <div className="space-y-6">
@@ -35,21 +64,8 @@ export default async function AdminDashboard() {
         </div>
       </div>
 
-      {/* Stat cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-        {stats.map(({ label, value, sub, icon: Icon, color, bg }) => (
-          <div key={label} className="bg-white rounded-2xl p-6 flex flex-col items-center text-center shadow-sm gap-3" style={{ border: '1px solid rgba(26,43,94,0.07)' }}>
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: bg }}>
-              <Icon size={22} style={{ color }} />
-            </div>
-            <div>
-              <p className="font-black leading-none" style={{ color: '#1A2B5E', fontSize: '2rem' }}>{value}</p>
-              <p className="font-semibold text-sm mt-1" style={{ color: '#1A2B5E' }}>{label}</p>
-              <p className="font-mono text-[10px] mt-0.5" style={{ color: '#9CAABB' }}>{sub}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      {/* Live stats + recent messages */}
+      <DashboardLive initial={initial} />
 
       {/* Quick actions */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -89,35 +105,6 @@ export default async function AdminDashboard() {
           <ArrowRight size={16} className="shrink-0 transition-transform group-hover:translate-x-1" style={{ color: '#CBD5E1' }} />
         </a>
       </div>
-
-      {/* Recent contacts */}
-      {recentContacts.length > 0 && (
-        <div className="bg-white rounded-2xl shadow-sm overflow-hidden" style={{ border: '1px solid rgba(26,43,94,0.07)' }}>
-          <div className="px-6 py-4 flex items-center justify-between" style={{ borderBottom: '1px solid rgba(26,43,94,0.07)' }}>
-            <div className="flex items-center gap-2">
-              <Clock size={14} style={{ color: '#F5A623' }} />
-              <span className="font-black text-sm" style={{ color: '#1A2B5E' }}>Recent Messages</span>
-            </div>
-            <a href="/admin/contacts" className="font-mono text-[10px] uppercase tracking-widest hover:underline" style={{ color: '#0070C0' }}>
-              View all
-            </a>
-          </div>
-          <div className="divide-y" style={{ borderColor: 'rgba(26,43,94,0.06)' }}>
-            {recentContacts.map((c) => (
-              <div key={c.id} className="px-6 py-3.5 flex items-center gap-4">
-                <div className="w-2 h-2 rounded-full shrink-0" style={{ background: c.is_read ? 'transparent' : '#F5A623', border: c.is_read ? '1.5px solid #CBD5E1' : 'none' }} />
-                <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-sm truncate" style={{ color: '#1A2B5E' }}>{c.full_name}</p>
-                  <p className="text-xs truncate" style={{ color: '#6B7A99' }}>{c.company ? `${c.company} · ` : ''}{c.email}</p>
-                </div>
-                <p className="font-mono text-[10px] shrink-0" style={{ color: '#9CAABB' }}>
-                  {new Date(c.created_at).toLocaleDateString('en-KE', { day: 'numeric', month: 'short' })}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   )
 }
