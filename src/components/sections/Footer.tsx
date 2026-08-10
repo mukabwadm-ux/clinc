@@ -9,6 +9,7 @@ const productLinks = [
 
 const companyLinks = [
   { label: 'About', href: '/about' },
+  { label: 'Leadership', href: '/leadership' },
   { label: 'Case Stories', href: '/case-stories' },
   { label: 'Contact', href: '/contact' },
 ]
