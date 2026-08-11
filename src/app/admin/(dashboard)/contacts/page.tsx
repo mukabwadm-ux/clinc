@@ -56,7 +56,7 @@ export default async function AdminContactsPage() {
                     {/* Actions */}
                     <div className="mt-3 flex items-center gap-3">
                       <a
-                        href={`mailto:${c.email}?subject=Re: Your enquiry&body=Hi ${c.full_name},%0D%0A%0D%0AThank you for reaching out to Clin Corps.`}
+                        href={`mailto:${c.email}?subject=Re: Your enquiry&body=Hi ${c.full_name},%0D%0A%0D%0AThank you for reaching out to Clin Corp.`}
                         className="text-xs font-semibold transition-colors cursor-pointer"
                         style={{ color: '#0070C0' }}
                       >

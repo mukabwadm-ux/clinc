@@ -79,7 +79,7 @@ export default function Hero() {
               className={`block whitespace-nowrap transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: '0.15s' }}
             >
-              CLIN CORPS.
+              CLIN CORP.
             </span>
             <span
               className={`block whitespace-nowrap transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}

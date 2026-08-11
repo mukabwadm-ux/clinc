@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     'Clinton Ochieng, Managing Director of Clin Corp Limited — an accomplished business leader in industrial and marine protective coatings, infrastructure projects and strategic business development across East Africa.',
   alternates: { canonical: `${SITE_URL}/leadership` },
   openGraph: {
-    title: 'Meet Our Managing Director — Clinton Ochieng | Clin Corps',
+    title: 'Meet Our Managing Director — Clinton Ochieng | Clin Corp',
     description:
       'Leading Clin Corp Limited as the authorized distributor of Hempel Industrial and Marine Coatings in Kenya.',
     url: `${SITE_URL}/leadership`,

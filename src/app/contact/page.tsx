@@ -5,7 +5,7 @@ import Footer from '@/components/sections/Footer'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Get in touch with Clin Corps — Kenya\'s authorized Hempel coatings distributor. Reach us at our Nairobi office for product enquiries, quotes, and project consultations.',
+  description: 'Get in touch with Clin Corp — Kenya\'s authorized Hempel coatings distributor. Reach us at our Nairobi office for product enquiries, quotes, and project consultations.',
 }
 
 export default function ContactPage() {

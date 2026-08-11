@@ -26,7 +26,7 @@ const team: TeamMember[] = [
     name: 'Robbins',
     role: 'Social Media Manager',
     image: '/team/robbins.jpg',
-    bio: "Robbins drives operational excellence across Clin Corps's distribution network, ensuring products reach clients on time and at the highest standard. His technical expertise in coatings applications and logistics management is the backbone behind every successful project delivery across East Africa.",
+    bio: "Robbins drives operational excellence across Clin Corp's distribution network, ensuring products reach clients on time and at the highest standard. His technical expertise in coatings applications and logistics management is the backbone behind every successful project delivery across East Africa.",
   },
 ]
 
@@ -58,7 +58,7 @@ export default function Team() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="font-mono text-[10px] sm:text-[11px] text-blue uppercase tracking-[3px]">THE PEOPLE</p>
         <h2 className="font-sans font-black text-white mt-2 sm:mt-3" style={{ fontSize: 'clamp(26px, 4.5vw, 48px)' }}>
-          The Clin Corps <span className="text-blue">Team.</span>
+          The Clin Corp <span className="text-blue">Team.</span>
         </h2>
         <p className="font-sans text-slate text-sm sm:text-base mt-3 sm:mt-4">
           Experienced leaders driving East Africa&apos;s coatings industry forward.

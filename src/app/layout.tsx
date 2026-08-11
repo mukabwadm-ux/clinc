@@ -14,11 +14,11 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Clin Corps | Authorized Hempel Distributor — Industrial & Marine Coatings Kenya',
-    template: '%s | Clin Corps Kenya',
+    default: 'Clin Corp | Authorized Hempel Distributor — Industrial & Marine Coatings Kenya',
+    template: '%s | Clin Corp Kenya',
   },
   description:
-    'Clin Corps is Kenya\'s Authorized Distributor for Hempel Industrial and Marine Coatings. Serving East Africa from Nairobi since 2024 with 37% market share. Anti-corrosion, anti-fouling, hull protection & infrastructure coatings.',
+    'Clin Corp is Kenya\'s Authorized Distributor for Hempel Industrial and Marine Coatings. Serving East Africa from Nairobi since 2024 with 37% market share. Anti-corrosion, anti-fouling, hull protection & infrastructure coatings.',
   keywords: [
     'Hempel distributor Kenya',
     'industrial coatings Kenya',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     'anti-corrosion coatings Kenya',
     'anti-fouling paint Kenya',
     'protective coatings Nairobi',
-    'Clin Corps Kenya',
+    'Clin Corp Kenya',
     'Hempel authorized distributor',
     'paint distributor Kenya',
     'hull protection coatings',
@@ -36,16 +36,16 @@ export const metadata: Metadata = {
     'coating solutions East Africa',
     'infrastructure coatings Kenya',
   ],
-  authors: [{ name: 'Clin Corps Limited', url: SITE_URL }],
-  creator: 'Clin Corps Limited',
-  publisher: 'Clin Corps Limited',
+  authors: [{ name: 'Clin Corp Limited', url: SITE_URL }],
+  creator: 'Clin Corp Limited',
+  publisher: 'Clin Corp Limited',
   category: 'Industrial Coatings & Paint Distribution',
   openGraph: {
     type: 'website',
     locale: 'en_KE',
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: 'Clin Corps — Future Today | Authorized Hempel Distributor, Kenya',
+    title: 'Clin Corp — Future Today | Authorized Hempel Distributor, Kenya',
     description:
       'Kenya\'s Authorized Distributor for Hempel Industrial & Marine Coatings. 37% East Africa market share. Nairobi, Kenya — Est. 2024.',
     images: [
@@ -53,13 +53,13 @@ export const metadata: Metadata = {
         url: '/clincorp_logo.png',
         width: 1200,
         height: 630,
-        alt: 'Clin Corps — Authorized Hempel Distributor Kenya',
+        alt: 'Clin Corp — Authorized Hempel Distributor Kenya',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Clin Corps | Hempel Coatings Distributor — Kenya',
+    title: 'Clin Corp | Hempel Coatings Distributor — Kenya',
     description:
       'Authorized Hempel Industrial & Marine Coatings distributor in Kenya. 37% East Africa market share since 2024.',
     images: ['/clincorp_logo.png'],

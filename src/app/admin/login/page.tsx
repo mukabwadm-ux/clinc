@@ -48,7 +48,7 @@ export default function AdminLoginPage() {
       <div className="hidden lg:flex flex-col justify-between w-[420px] shrink-0 px-10 py-12 border-r" style={{ background: 'linear-gradient(160deg, #0D1B45 0%, #040D1A 100%)', borderColor: 'rgba(255,255,255,0.06)' }}>
         <div>
           <div className="bg-white rounded-xl px-3 py-2 inline-block">
-            <Image src="/clincorp_logo.png" alt="Clin Corps" width={120} height={36} className="h-9 w-auto object-contain" />
+            <Image src="/clincorp_logo.png" alt="Clin Corp" width={120} height={36} className="h-9 w-auto object-contain" />
           </div>
           <p className="font-mono text-[10px] uppercase tracking-[3px] mt-3" style={{ color: 'rgba(245,166,35,0.7)' }}>Admin Portal</p>
         </div>
@@ -59,12 +59,12 @@ export default function AdminLoginPage() {
             Manage your<br /><span style={{ color: '#F5A623' }}>products</span> &amp;<br />customer enquiries.
           </h2>
           <p className="text-sm mt-4 leading-relaxed" style={{ color: 'rgba(107,122,153,0.9)' }}>
-            Secure access to the Clin Corps backend. All actions are protected and logged.
+            Secure access to the Clin Corp backend. All actions are protected and logged.
           </p>
         </div>
 
         <p className="font-mono text-[10px]" style={{ color: 'rgba(107,122,153,0.4)' }}>
-          © {new Date().getFullYear()} Clin Corps Limited · Secured
+          © {new Date().getFullYear()} Clin Corp Limited · Secured
         </p>
       </div>
 
@@ -74,7 +74,7 @@ export default function AdminLoginPage() {
           {/* Mobile logo */}
           <div className="flex justify-center mb-8 lg:hidden">
             <div className="bg-white rounded-xl px-3 py-2">
-              <Image src="/clincorp_logo.png" alt="Clin Corps" width={110} height={34} className="h-8 w-auto object-contain" />
+              <Image src="/clincorp_logo.png" alt="Clin Corp" width={110} height={34} className="h-8 w-auto object-contain" />
             </div>
           </div>
 

@@ -6,7 +6,7 @@ import Footer from '@/components/sections/Footer'
 
 export const metadata: Metadata = {
   title: 'Case Stories',
-  description: 'Real-world marine and industrial coating projects delivered by Clin Corps across East Africa — hull restorations, infrastructure protection, and tank linings using Hempel systems.',
+  description: 'Real-world marine and industrial coating projects delivered by Clin Corp across East Africa — hull restorations, infrastructure protection, and tank linings using Hempel systems.',
 }
 
 const marineProjects = [
@@ -208,7 +208,7 @@ const industrialProjects = [
     date: '10 September 2025',
     location: 'Uganda',
     tag: 'Fuel Storage Tank',
-    description: "Complete three-coat Hempel system on a fuel storage tank for Total Energy Uganda — demonstrating Clin Corps' project reach into the wider East African region.",
+    description: "Complete three-coat Hempel system on a fuel storage tank for Total Energy Uganda — demonstrating Clin Corp's project reach into the wider East African region.",
     specs: [
       { label: 'Primer', value: 'Hempadur Avanguard 500 1734G' },
       { label: 'Intermediate', value: 'Hempadur Multi 500 45950' },
@@ -262,7 +262,7 @@ export default function CaseStoriesPage() {
               Case <span className="text-blue">Stories.</span>
             </h1>
             <p className="font-sans text-base sm:text-lg mt-4 max-w-2xl leading-relaxed" style={{ color: '#6B7A99' }}>
-              From Mombasa Shipyard to Uganda's fuel terminals — how Clin Corps has protected East Africa's most critical marine and industrial assets using Hempel coating systems.
+              From Mombasa Shipyard to Uganda's fuel terminals — how Clin Corp has protected East Africa's most critical marine and industrial assets using Hempel coating systems.
             </p>
             <div className="w-14 h-0.5 mt-6 rounded-full" style={{ background: 'linear-gradient(90deg, #F5A623, #0070C0)' }} />
 
@@ -457,7 +457,7 @@ export default function CaseStoriesPage() {
                   Hempaguard X7 — Fouling Release &amp; Fuel Efficiency
                 </h3>
                 <p className="font-sans text-sm sm:text-[15px] leading-relaxed mt-4 max-w-2xl" style={{ color: '#6B7A99' }}>
-                  Clin Corps promotes Hempaguard X7, Hempel&apos;s fusion fouling-release technology combining a hydrogel binder with biocide. In side-by-side comparison against a competitor premium silicone system after 180 days idle, Hempaguard X7 vessels showed a cleaner hull and smoother movement through the water.
+                  Clin Corp promotes Hempaguard X7, Hempel&apos;s fusion fouling-release technology combining a hydrogel binder with biocide. In side-by-side comparison against a competitor premium silicone system after 180 days idle, Hempaguard X7 vessels showed a cleaner hull and smoother movement through the water.
                 </p>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">

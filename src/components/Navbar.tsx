@@ -45,10 +45,10 @@ export default function Navbar() {
           <a href="/" className="shrink-0">
             <Image
               src="/clincorp_logo.png"
-              alt="Clin Corps"
+              alt="Clin Corp"
               height={40}
               width={130}
-              className="object-contain bg-white rounded-lg px-2 py-1 w-[108px] sm:w-[128px] lg:w-[178px] h-auto"
+              className="object-contain bg-white rounded-lg px-2 py-1 w-[108px] sm:w-[128px] lg:w-[214px] h-auto"
             />
           </a>
 
@@ -125,7 +125,7 @@ export default function Navbar() {
       {menuOpen && (
         <div className="fixed inset-0 z-50 flex flex-col" style={{ background: '#040D1A' }}>
           <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.08]">
-            <Image src="/clincorp_logo.png" alt="Clin Corps" height={36} width={120} className="object-contain bg-white rounded-lg px-2 py-1 h-auto" />
+            <Image src="/clincorp_logo.png" alt="Clin Corp" height={36} width={120} className="object-contain bg-white rounded-lg px-2 py-1 h-auto" />
             <button
               className="text-white/80 p-1.5 cursor-pointer hover:text-white transition-colors"
               onClick={() => setMenuOpen(false)}

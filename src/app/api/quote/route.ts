@@ -53,7 +53,7 @@ export async function POST(req: Request) {
         <p style="color:#6B7A99;font-size:13px;font-weight:bold;margin-bottom:6px">Requirements</p>
         <p style="white-space:pre-wrap;font-size:14px">${message}</p>
         <hr style="margin:16px 0;border:none;border-top:1px solid #eee"/>
-        <p style="font-size:11px;color:#9CAABB">Submitted via Clin Corps product quote form</p>
+        <p style="font-size:11px;color:#9CAABB">Submitted via Clin Corp product quote form</p>
       `,
     })
 
