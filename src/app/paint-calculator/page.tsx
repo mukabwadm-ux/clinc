@@ -31,7 +31,7 @@ export default function PaintCalculatorPage() {
               }}
             >
               <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#F5A623' }} />
-              Internal Tool · Not for Client Distribution
+              Let&apos;s get you the right calculations
             </div>
             <h1 className="font-sans font-black leading-[0.95]" style={{ fontSize: 'clamp(28px, 4.5vw, 52px)' }}>
               Paint Calculator
