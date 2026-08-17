@@ -39,5 +39,8 @@ next-env.d.ts
 # credentials / notes
 dbclinc.txt
 
+# confidential source docs (client quotes, pricing) — repo is public, never commit these
+/docs/
+
 # claude code
 .claude/
