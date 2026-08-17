@@ -4,8 +4,6 @@ import { z } from 'zod'
 import { supabaseAdmin } from '@/lib/supabaseAdmin'
 import { SENDER_EMAIL, CONTACT_EMAIL } from '@/lib/site'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 const quoteSchema = z.object({
   productName: z.string().min(1).max(500),
   fullName: z.string().min(2).max(200),
@@ -25,6 +23,7 @@ export async function POST(req: Request) {
     }
 
     const { productName, fullName, email, phone, company, message } = parsed.data
+    const resend = new Resend(process.env.RESEND_API_KEY)
 
     await supabaseAdmin.from('quotes').insert([{
       product_name: productName,

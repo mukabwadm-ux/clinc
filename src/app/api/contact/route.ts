@@ -4,8 +4,6 @@ import { contactSchema } from '@/lib/validations'
 import { supabaseAdmin } from '@/lib/supabaseAdmin'
 import { SENDER_EMAIL, CONTACT_EMAIL } from '@/lib/site'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(req: Request) {
   try {
     const body = await req.json()
@@ -16,6 +14,7 @@ export async function POST(req: Request) {
     }
 
     const { fullName, email, company, message } = parsed.data
+    const resend = new Resend(process.env.RESEND_API_KEY)
 
     // Save to Supabase (non-blocking — don't fail the request if DB is down)
     await supabaseAdmin.from('contact_submissions').insert([{
