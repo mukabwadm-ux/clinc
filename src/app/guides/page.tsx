@@ -8,6 +8,7 @@ import { GUIDES } from '@/lib/guides/guides'
 export const metadata: Metadata = {
   title: 'Guides',
   description: 'Technical guides on protective and marine coatings from Clin Corp, Kenya\'s authorised Hempel distributor.',
+  robots: { index: false, follow: false },
 }
 
 export default function GuidesIndexPage() {

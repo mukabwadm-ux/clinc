@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: 'Marine Paint Systems Guide',
   description:
     "Recommended Hempel coating systems for every area of a vessel — topside to cargo holds — plus a look at Hempel's antifouling technology.",
+  robots: { index: false, follow: false },
 }
 
 /** A product name, linked to its /products page when one exists — plain text otherwise. */
