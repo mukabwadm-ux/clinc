@@ -20,7 +20,7 @@ export function HoverLinkChip({ href, style, className, children }: HoverLinkChi
     <Link
       href={href}
       className={`${className} cursor-pointer`}
-      style={hovered ? { ...style, color: HOVER_GOLD } : style}
+      style={hovered ? { ...style, color: HOVER_GOLD, textDecoration: 'underline' } : style}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >

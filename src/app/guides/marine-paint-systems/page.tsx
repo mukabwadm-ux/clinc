@@ -6,6 +6,7 @@ import Footer from '@/components/sections/Footer'
 import { SHIP_AREAS, TANKS, CARGO_HOLDS, BIOCIDE_TABLE, ANTIFOULING_LADDER } from '@/lib/guides/marine-paint-systems'
 import { productSlug } from '@/lib/guides/product-links'
 import { HoverLinkChip } from '@/components/guides/HoverLinkChip'
+import { ImagePlaceholder } from '@/components/guides/ImagePlaceholder'
 
 export const metadata: Metadata = {
   title: 'Marine Paint Systems Guide',
@@ -92,6 +93,8 @@ export default function MarinePaintSystemsGuidePage() {
                     </div>
                   </div>
 
+                  <ImagePlaceholder label={`Ship diagram — ${area.title} highlighted`} aspect="aspect-[16/5]" className="mt-4" />
+
                   <div className="mt-5 grid gap-4 sm:grid-cols-2">
                     {area.systems.map((sys) => (
                       <div key={sys.label} className="rounded-xl p-4" style={{ background: '#FAFAF8', border: '1px solid rgba(26,43,94,0.08)' }}>
@@ -123,9 +126,10 @@ export default function MarinePaintSystemsGuidePage() {
               <div className="h-px w-8 rounded-full" style={{ background: '#F5A623' }} />
               <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[3px]" style={{ color: '#F5A623' }}>Tanks &amp; Compartments</p>
             </div>
-            <h2 className="font-sans font-black mb-10" style={{ fontSize: 'clamp(24px, 3.5vw, 40px)' }}>
+            <h2 className="font-sans font-black mb-6" style={{ fontSize: 'clamp(24px, 3.5vw, 40px)' }}>
               Tank Systems at a Glance
             </h2>
+            <ImagePlaceholder label="Ship diagram — tank locations (fresh water, ballast, grey water, engine room, fish tanks)" dark aspect="aspect-[21/9]" className="mb-8" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {TANKS.map((tank) => (
                 <div key={tank.name} className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(255,255,255,0.03)' }}>
@@ -156,6 +160,7 @@ export default function MarinePaintSystemsGuidePage() {
               The right cargo hold system depends on what the vessel carries as much as the hull itself — chemical
               resistance, abrasion resistance, and low-temperature performance all point to different products.
             </p>
+            <ImagePlaceholder label="Cutaway diagram — cargo hold locations by vessel type" aspect="aspect-[21/9]" className="mb-8" />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {CARGO_HOLDS.map((c) => (
                 <div key={c.vesselType} className="rounded-xl p-5 border bg-white" style={{ borderColor: 'rgba(26,43,94,0.10)' }}>
@@ -222,6 +227,7 @@ export default function MarinePaintSystemsGuidePage() {
                   Nanocapsules built from two acrylic polymers — a hydrophobic shell that controls water penetration,
                   and a hydrophilic core that hydrolyses on contact with seawater, releasing biocide in a controlled way.
                 </p>
+                <ImagePlaceholder label="NAT nanocapsule diagram — hydrolysis sequence" dark aspect="aspect-[4/3]" className="mt-4" />
               </div>
               <div className="rounded-xl p-6 border border-white/[0.08]" style={{ background: 'rgba(255,255,255,0.03)' }}>
                 <p className="font-sans font-black text-sm mb-2" style={{ color: '#0070C0' }}>Rosin</p>
@@ -229,11 +235,12 @@ export default function MarinePaintSystemsGuidePage() {
                   Seawater dissolves the rosin binder, releasing biocide as it leaches out. The leached layer is a
                   weakened, insoluble polymer; zinc carboxylate keeps that layer thin and controls the biocide release rate.
                 </p>
+                <ImagePlaceholder label="Rosin leaching diagram — seawater penetration & leach layer" dark aspect="aspect-[4/3]" className="mt-4" />
               </div>
             </div>
 
             {/* Globic 9000 feature */}
-            <div className="rounded-2xl p-6 sm:p-8 mb-14" style={{ background: 'linear-gradient(135deg, rgba(245,166,35,0.10), rgba(0,112,192,0.06))', border: '1px solid rgba(245,166,35,0.25)' }}>
+            <div className="rounded-2xl p-6 sm:p-8 mb-6" style={{ background: 'linear-gradient(135deg, rgba(245,166,35,0.10), rgba(0,112,192,0.06))', border: '1px solid rgba(245,166,35,0.25)' }}>
               <div className="flex items-start gap-3 mb-4">
                 <ShieldCheck size={20} style={{ color: '#F5A623' }} className="mt-0.5 shrink-0" />
                 <div>
@@ -241,18 +248,29 @@ export default function MarinePaintSystemsGuidePage() {
                   <h3 className="font-sans font-black text-xl mt-1">Hempel&apos;s Globic 9000</h3>
                 </div>
               </div>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm" style={{ color: '#D6DCE8' }}>
-                <li>• One of Hempel&apos;s premium SPC antifoulings</li>
-                <li>• Hydrolysing nano acrylate technology</li>
-                <li>• Rated up to 90 months</li>
-                <li>• Microfibre-reinforced coating</li>
-                <li>• Flexible trading pattern</li>
-                <li>• Fewer areas needing full blasting at drydock</li>
-              </ul>
-              <p className="text-xs mt-4" style={{ color: '#8899AE' }}>
-                The microfibres reinforce the coating&apos;s mechanical strength, which reduces cracking and peeling —
-                and in turn reduces drydocking costs over the coating&apos;s life.
-              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr] gap-6 items-start">
+                <div>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm" style={{ color: '#D6DCE8' }}>
+                    <li>• One of Hempel&apos;s premium SPC antifoulings</li>
+                    <li>• Hydrolysing nano acrylate technology</li>
+                    <li>• Rated up to 90 months</li>
+                    <li>• Microfibre-reinforced coating</li>
+                    <li>• Flexible trading pattern</li>
+                    <li>• Fewer areas needing full blasting at drydock</li>
+                  </ul>
+                  <p className="text-xs mt-4" style={{ color: '#8899AE' }}>
+                    The microfibres reinforce the coating&apos;s mechanical strength, which reduces cracking and peeling —
+                    and in turn reduces drydocking costs over the coating&apos;s life.
+                  </p>
+                </div>
+                <ImagePlaceholder label="Product photo — Globic 9000 application" dark aspect="aspect-square sm:aspect-[3/4]" />
+              </div>
+            </div>
+
+            {/* Microfibre technology comparison */}
+            <div className="grid grid-cols-2 gap-3 mb-14">
+              <ImagePlaceholder label="With microfibres" dark aspect="aspect-square" />
+              <ImagePlaceholder label="Without microfibres — cracking & peeling" dark aspect="aspect-square" />
             </div>
 
             {/* Performance ladder */}
