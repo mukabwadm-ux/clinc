@@ -4,11 +4,30 @@ import { ArrowLeft, ArrowRight, Layers, ShieldCheck } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
 import { SHIP_AREAS, TANKS, CARGO_HOLDS, BIOCIDE_TABLE, ANTIFOULING_LADDER } from '@/lib/guides/marine-paint-systems'
+import { productSlug } from '@/lib/guides/product-links'
 
 export const metadata: Metadata = {
   title: 'Marine Paint Systems Guide',
   description:
     "Recommended Hempel coating systems for every area of a vessel — topside to cargo holds — plus a look at Hempel's antifouling technology.",
+}
+
+/** A product name, linked to its /products page when one exists — plain text otherwise. */
+function ProductChip({ name, background, color }: { name: string; background: string; color: string }) {
+  const slug = productSlug(name)
+  const className = 'text-xs font-medium px-2.5 py-1 rounded-full transition-colors'
+  if (slug) {
+    return (
+      <Link href={`/products/${slug}`} className={`${className} hover:underline`} style={{ background, color }}>
+        {name}
+      </Link>
+    )
+  }
+  return (
+    <span className={className} style={{ background, color }}>
+      {name}
+    </span>
+  )
 }
 
 export default function MarinePaintSystemsGuidePage() {
@@ -79,9 +98,7 @@ export default function MarinePaintSystemsGuidePage() {
                         <p className="text-sm font-bold mt-1.5" style={{ color: '#1A2B5E' }}>{sys.spec}</p>
                         <div className="flex flex-wrap gap-1.5 mt-3">
                           {sys.products.map((p) => (
-                            <span key={p} className="text-xs font-medium px-2.5 py-1 rounded-full" style={{ background: 'rgba(26,43,94,0.06)', color: '#1A2B5E' }}>
-                              {p}
-                            </span>
+                            <ProductChip key={p} name={p} background="rgba(26,43,94,0.06)" color="#1A2B5E" />
                           ))}
                         </div>
                       </div>
@@ -115,9 +132,7 @@ export default function MarinePaintSystemsGuidePage() {
                   {tank.spec && <p className="text-xs mt-1" style={{ color: '#F5A623' }}>{tank.spec}</p>}
                   <div className="flex flex-wrap gap-1.5 mt-3">
                     {tank.products.map((p) => (
-                      <span key={p} className="text-xs font-medium px-2.5 py-1 rounded-full" style={{ background: 'rgba(255,255,255,0.06)', color: '#8899AE' }}>
-                        {p}
-                      </span>
+                      <ProductChip key={p} name={p} background="rgba(255,255,255,0.06)" color="#8899AE" />
                     ))}
                   </div>
                 </div>
@@ -147,9 +162,7 @@ export default function MarinePaintSystemsGuidePage() {
                   <p className="text-xs font-semibold mt-1" style={{ color: '#0070C0' }}>{c.driver}</p>
                   <div className="flex flex-wrap gap-1.5 mt-3">
                     {c.products.map((p) => (
-                      <span key={p} className="text-xs font-medium px-2.5 py-1 rounded-full" style={{ background: 'rgba(26,43,94,0.06)', color: '#1A2B5E' }}>
-                        {p}
-                      </span>
+                      <ProductChip key={p} name={p} background="rgba(26,43,94,0.06)" color="#1A2B5E" />
                     ))}
                   </div>
                   {c.note && <p className="text-xs mt-3" style={{ color: '#8899AE' }}>{c.note}</p>}
@@ -248,20 +261,28 @@ export default function MarinePaintSystemsGuidePage() {
                 <div key={tier.months} className="rounded-xl p-4 sm:p-5 border border-white/[0.08]" style={{ background: 'rgba(255,255,255,0.03)' }}>
                   <p className="text-xs font-bold uppercase tracking-wide mb-3" style={{ color: '#6B7A99' }}>{tier.months}</p>
                   <div className="flex flex-wrap gap-2">
-                    {tier.products.map((p) => (
-                      <span
-                        key={p.name}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full"
-                        style={
-                          p.featured
-                            ? { background: '#F5A623', color: '#0D1B4B' }
-                            : { background: 'rgba(255,255,255,0.06)', color: 'white', border: '1px solid rgba(255,255,255,0.1)' }
-                        }
-                      >
-                        {p.name}
-                        <span style={{ opacity: 0.7, fontWeight: 500 }}>· {p.tech}</span>
-                      </span>
-                    ))}
+                    {tier.products.map((p) => {
+                      const slug = productSlug(p.name)
+                      const className = 'inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full transition-colors'
+                      const style = p.featured
+                        ? { background: '#F5A623', color: '#0D1B4B' }
+                        : { background: 'rgba(255,255,255,0.06)', color: 'white', border: '1px solid rgba(255,255,255,0.1)' }
+                      const content = (
+                        <>
+                          {p.name}
+                          <span style={{ opacity: 0.7, fontWeight: 500 }}>· {p.tech}</span>
+                        </>
+                      )
+                      return slug ? (
+                        <Link key={p.name} href={`/products/${slug}`} className={`${className} hover:underline`} style={style}>
+                          {content}
+                        </Link>
+                      ) : (
+                        <span key={p.name} className={className} style={style}>
+                          {content}
+                        </span>
+                      )
+                    })}
                   </div>
                 </div>
               ))}
