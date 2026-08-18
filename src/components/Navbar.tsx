@@ -16,6 +16,7 @@ const navLinks: NavLink[] = [
       { label: 'Paint Calculator', href: '/paint-calculator' },
     ],
   },
+  { label: 'Guides', href: '/guides' },
   {
     label: 'About',
     href: '/about',
