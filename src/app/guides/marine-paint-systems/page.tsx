@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
 import { SHIP_AREAS, TANKS, CARGO_HOLDS, BIOCIDE_TABLE, ANTIFOULING_LADDER } from '@/lib/guides/marine-paint-systems'
 import { productSlug } from '@/lib/guides/product-links'
+import { HoverLinkChip } from '@/components/guides/HoverLinkChip'
 
 export const metadata: Metadata = {
   title: 'Marine Paint Systems Guide',
@@ -18,9 +19,9 @@ function ProductChip({ name, background, color }: { name: string; background: st
   const className = 'text-xs font-medium px-2.5 py-1 rounded-full transition-colors'
   if (slug) {
     return (
-      <Link href={`/products/${slug}`} className={`${className} hover:underline`} style={{ background, color }}>
+      <HoverLinkChip href={`/products/${slug}`} style={{ background, color }} className={className}>
         {name}
-      </Link>
+      </HoverLinkChip>
     )
   }
   return (
@@ -274,9 +275,9 @@ export default function MarinePaintSystemsGuidePage() {
                         </>
                       )
                       return slug ? (
-                        <Link key={p.name} href={`/products/${slug}`} className={`${className} hover:underline`} style={style}>
+                        <HoverLinkChip key={p.name} href={`/products/${slug}`} style={style} className={className}>
                           {content}
-                        </Link>
+                        </HoverLinkChip>
                       ) : (
                         <span key={p.name} className={className} style={style}>
                           {content}
