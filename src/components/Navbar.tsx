@@ -8,7 +8,14 @@ import { cn } from '@/lib/utils'
 type NavLink = { label: string; href: string; children?: { label: string; href: string }[] }
 
 const navLinks: NavLink[] = [
-  { label: 'Products', href: '/products' },
+  {
+    label: 'Products',
+    href: '/products',
+    children: [
+      { label: 'All Products', href: '/products' },
+      { label: 'Paint Calculator', href: '/paint-calculator' },
+    ],
+  },
   {
     label: 'About',
     href: '/about',

@@ -4,6 +4,7 @@ import { SITE_URL } from '@/lib/site'
 const routes: { path: string; priority: number }[] = [
   { path: '', priority: 1 },
   { path: '/products', priority: 0.9 },
+  { path: '/paint-calculator', priority: 0.7 },
   { path: '/leadership', priority: 0.8 },
   { path: '/about', priority: 0.8 },
   { path: '/case-stories', priority: 0.7 },

@@ -5,8 +5,7 @@ import PaintCalculator from '@/components/paint-calculator/PaintCalculator'
 
 export const metadata: Metadata = {
   title: 'Paint Calculator',
-  description: 'Internal tool for estimating paint quantities, coverage and cost across Hempel protective coating systems.',
-  robots: { index: false, follow: false },
+  description: 'Estimate paint quantities, coverage and cost across Hempel protective coating systems with Clin Corp’s Paint Calculator.',
 }
 
 export default function PaintCalculatorPage() {
