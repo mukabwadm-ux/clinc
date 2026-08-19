@@ -8,6 +8,8 @@ const routes: { path: string; priority: number }[] = [
   { path: '/leadership', priority: 0.8 },
   { path: '/about', priority: 0.8 },
   { path: '/case-stories', priority: 0.7 },
+  { path: '/guides', priority: 0.7 },
+  { path: '/guides/marine-paint-systems', priority: 0.6 },
   { path: '/contact', priority: 0.6 },
 ]
 
