@@ -152,11 +152,11 @@ export default function Hero() {
           style={{ transitionDelay: '0.4s' }}
         >
           <Image
-            src="/hero/hempel-partner-badge.jpg"
+            src="/hero/hempel-partner-badge.png"
             alt="Hempel — Authorised Distributor, trusted since 1915"
-            width={1024}
-            height={1024}
-            className="w-[186px] xl:w-[225px] h-auto block rounded-[20px]"
+            width={748}
+            height={738}
+            className="w-[223px] xl:w-[270px] h-auto block rounded-[20px]"
             style={{ filter: 'drop-shadow(0 16px 40px rgba(0,0,0,0.35))' }}
             priority
           />
