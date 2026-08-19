@@ -6,7 +6,7 @@ import Footer from '@/components/sections/Footer'
 import { SHIP_AREAS, TANKS, CARGO_HOLDS, BIOCIDE_TABLE, ANTIFOULING_LADDER } from '@/lib/guides/marine-paint-systems'
 import { productSlug } from '@/lib/guides/product-links'
 import { HoverLinkChip } from '@/components/guides/HoverLinkChip'
-import { ImagePlaceholder } from '@/components/guides/ImagePlaceholder'
+import { GuideImage } from '@/components/guides/GuideImage'
 
 export const metadata: Metadata = {
   title: 'Marine Paint Systems Guide',
@@ -93,7 +93,11 @@ export default function MarinePaintSystemsGuidePage() {
                     </div>
                   </div>
 
-                  <ImagePlaceholder label={`Ship diagram — ${area.title} highlighted`} aspect="aspect-[16/5]" className="mt-4" />
+                  <GuideImage
+                    src={`/guides/marine-paint-systems/${area.id}.jpg`}
+                    alt={`Ship diagram highlighting the ${area.title} zone`}
+                    className="mt-4"
+                  />
 
                   <div className="mt-5 grid gap-4 sm:grid-cols-2">
                     {area.systems.map((sys) => (
@@ -129,7 +133,11 @@ export default function MarinePaintSystemsGuidePage() {
             <h2 className="font-sans font-black mb-6" style={{ fontSize: 'clamp(24px, 3.5vw, 40px)' }}>
               Tank Systems at a Glance
             </h2>
-            <ImagePlaceholder label="Ship diagram — tank locations (fresh water, ballast, grey water, engine room, fish tanks)" dark aspect="aspect-[21/9]" className="mb-8" />
+            <GuideImage
+              src="/guides/marine-paint-systems/tanks-compartments.jpg"
+              alt="Ship diagram showing fresh water, ballast, grey water, engine room, and fish tank locations"
+              className="mb-8"
+            />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {TANKS.map((tank) => (
                 <div key={tank.name} className="rounded-xl p-5 border border-white/[0.08]" style={{ background: 'rgba(255,255,255,0.03)' }}>
@@ -160,7 +168,11 @@ export default function MarinePaintSystemsGuidePage() {
               The right cargo hold system depends on what the vessel carries as much as the hull itself — chemical
               resistance, abrasion resistance, and low-temperature performance all point to different products.
             </p>
-            <ImagePlaceholder label="Cutaway diagram — cargo hold locations by vessel type" aspect="aspect-[21/9]" className="mb-8" />
+            <GuideImage
+              src="/guides/marine-paint-systems/cargo-holds.jpg"
+              alt="Cutaway diagram showing cargo hold locations by vessel type"
+              className="mb-8"
+            />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {CARGO_HOLDS.map((c) => (
                 <div key={c.vesselType} className="rounded-xl p-5 border bg-white" style={{ borderColor: 'rgba(26,43,94,0.10)' }}>
@@ -227,7 +239,11 @@ export default function MarinePaintSystemsGuidePage() {
                   Nanocapsules built from two acrylic polymers — a hydrophobic shell that controls water penetration,
                   and a hydrophilic core that hydrolyses on contact with seawater, releasing biocide in a controlled way.
                 </p>
-                <ImagePlaceholder label="NAT nanocapsule diagram — hydrolysis sequence" dark aspect="aspect-[4/3]" className="mt-4" />
+                <GuideImage
+                  src="/guides/marine-paint-systems/nat-technology.jpg"
+                  alt="Diagram illustrating NAT nanocapsule hydrolysis — shell breaks down to release biocide"
+                  className="mt-4"
+                />
               </div>
               <div className="rounded-xl p-6 border border-white/[0.08]" style={{ background: 'rgba(255,255,255,0.03)' }}>
                 <p className="font-sans font-black text-sm mb-2" style={{ color: '#0070C0' }}>Rosin</p>
@@ -235,7 +251,11 @@ export default function MarinePaintSystemsGuidePage() {
                   Seawater dissolves the rosin binder, releasing biocide as it leaches out. The leached layer is a
                   weakened, insoluble polymer; zinc carboxylate keeps that layer thin and controls the biocide release rate.
                 </p>
-                <ImagePlaceholder label="Rosin leaching diagram — seawater penetration & leach layer" dark aspect="aspect-[4/3]" className="mt-4" />
+                <GuideImage
+                  src="/guides/marine-paint-systems/rosin-technology.jpg"
+                  alt="Diagram illustrating the rosin leach layer forming between seawater and the coating"
+                  className="mt-4"
+                />
               </div>
             </div>
 
@@ -263,14 +283,26 @@ export default function MarinePaintSystemsGuidePage() {
                     and in turn reduces drydocking costs over the coating&apos;s life.
                   </p>
                 </div>
-                <ImagePlaceholder label="Product photo — Globic 9000 application" dark aspect="aspect-square sm:aspect-[3/4]" />
+                <GuideImage
+                  src="/guides/marine-paint-systems/globic-9000.jpg"
+                  alt="Applicator spraying Hempel's Globic 9000 antifouling onto a ship hull"
+                  aspect="aspect-square"
+                />
               </div>
             </div>
 
             {/* Microfibre technology comparison */}
             <div className="grid grid-cols-2 gap-3 mb-14">
-              <ImagePlaceholder label="With microfibres" dark aspect="aspect-square" />
-              <ImagePlaceholder label="Without microfibres — cracking & peeling" dark aspect="aspect-square" />
+              <GuideImage
+                src="/guides/marine-paint-systems/microfibre-with-fibres.jpg"
+                alt="Close-up of a coating surface reinforced with microfibres"
+                aspect="aspect-square"
+              />
+              <GuideImage
+                src="/guides/marine-paint-systems/microfibre-without-fibres.jpg"
+                alt="Close-up of a cracked and peeling coating surface without microfibres"
+                aspect="aspect-square"
+              />
             </div>
 
             {/* Performance ladder */}
