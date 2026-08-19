@@ -148,15 +148,16 @@ export default function Hero() {
 
         {/* Hempel partner badge — right column, hidden below lg so it doesn't crowd the single-column mobile layout */}
         <div
-          className={`hidden lg:block shrink-0 rounded-2xl overflow-hidden transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-          style={{ transitionDelay: '0.4s', boxShadow: '0 16px 40px rgba(0,0,0,0.35)' }}
+          className={`hidden lg:block shrink-0 transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          style={{ transitionDelay: '0.4s' }}
         >
           <Image
-            src="/hero/hempel-partner-badge.png"
+            src="/hero/hempel-partner-badge.jpg"
             alt="Hempel — Authorised Distributor, trusted since 1915"
-            width={230}
-            height={221}
-            className="w-[190px] xl:w-[230px] h-auto block"
+            width={1024}
+            height={1024}
+            className="w-[143px] xl:w-[173px] h-auto block"
+            style={{ filter: 'drop-shadow(0 16px 40px rgba(0,0,0,0.35))' }}
             priority
           />
         </div>
