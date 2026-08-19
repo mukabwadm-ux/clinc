@@ -156,7 +156,7 @@ export default function Hero() {
             alt="Hempel — Authorised Distributor, trusted since 1915"
             width={748}
             height={738}
-            className="w-[223px] xl:w-[270px] h-auto block rounded-[20px]"
+            className="w-[268px] xl:w-[324px] h-auto block rounded-[20px]"
             style={{ filter: 'drop-shadow(0 16px 40px rgba(0,0,0,0.35))' }}
             priority
           />
