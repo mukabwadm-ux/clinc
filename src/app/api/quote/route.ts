@@ -1,8 +1,8 @@
-import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
 import { supabaseAdmin } from '@/lib/supabaseAdmin'
-import { SENDER_EMAIL, CONTACT_EMAIL } from '@/lib/site'
+import { sendMail } from '@/lib/mailer'
+import { CONTACT_EMAIL } from '@/lib/site'
 
 const quoteSchema = z.object({
   productName: z.string().min(1).max(500),
@@ -23,7 +23,6 @@ export async function POST(req: Request) {
     }
 
     const { productName, fullName, email, phone, company, message } = parsed.data
-    const resend = new Resend(process.env.RESEND_API_KEY)
 
     await supabaseAdmin.from('quotes').insert([{
       product_name: productName,
@@ -35,9 +34,8 @@ export async function POST(req: Request) {
       status: 'new',
     }])
 
-    await resend.emails.send({
-      from: SENDER_EMAIL,
-      to: [CONTACT_EMAIL],
+    await sendMail({
+      to: CONTACT_EMAIL,
       subject: `Quote Request: ${productName} — ${fullName} (${company})`,
       html: `
         <h2 style="color:#040D1A">New Product Quote Request</h2>

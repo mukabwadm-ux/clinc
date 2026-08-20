@@ -23,7 +23,9 @@ export const SITE_URL = resolveSiteUrl(rawUrl)
 export const SITE_NAME = 'Clin Corp'
 
 /** Inbox that receives contact + quote form submissions. */
-export const CONTACT_EMAIL = 'clin@clincorps.com'
+export const CONTACT_EMAIL = 'info@clincorps.com'
 
-/** Resend "from" address — the domain must be verified in Resend. */
-export const SENDER_EMAIL = `${SITE_NAME} Website <enquiries@clincorps.com>`
+/** SMTP "from" address — falls back to this if SMTP_FROM isn't set. Must be
+ *  the authenticated SMTP account or one of its verified aliases, or most
+ *  providers will reject or silently misdeliver the send. */
+export const SENDER_EMAIL = `${SITE_NAME} Website <info@clincorps.com>`

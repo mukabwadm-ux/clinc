@@ -1,8 +1,8 @@
-import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
 import { contactSchema } from '@/lib/validations'
 import { supabaseAdmin } from '@/lib/supabaseAdmin'
-import { SENDER_EMAIL, CONTACT_EMAIL } from '@/lib/site'
+import { sendMail } from '@/lib/mailer'
+import { CONTACT_EMAIL } from '@/lib/site'
 
 export async function POST(req: Request) {
   try {
@@ -14,7 +14,6 @@ export async function POST(req: Request) {
     }
 
     const { fullName, email, company, message } = parsed.data
-    const resend = new Resend(process.env.RESEND_API_KEY)
 
     // Save to Supabase (non-blocking — don't fail the request if DB is down)
     await supabaseAdmin.from('contact_submissions').insert([{
@@ -25,9 +24,8 @@ export async function POST(req: Request) {
     }])
 
     // Send email notification
-    await resend.emails.send({
-      from: SENDER_EMAIL,
-      to: [CONTACT_EMAIL],
+    await sendMail({
+      to: CONTACT_EMAIL,
       subject: `New Enquiry from ${fullName} — ${company}`,
       html: `
         <h2>New Website Enquiry</h2>
