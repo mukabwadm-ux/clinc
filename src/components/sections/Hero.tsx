@@ -144,6 +144,21 @@ export default function Hero() {
             </div>
           </div>
 
+          {/* Hempel partner badge — mobile/tablet, sits in the content flow since the two-column right-side placement doesn't apply below lg */}
+          <div
+            className={`lg:hidden flex justify-center mt-8 transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            style={{ transitionDelay: '0.95s' }}
+          >
+            <Image
+              src="/hero/hempel-partner-badge.png"
+              alt="Hempel — Authorised Distributor, trusted since 1915"
+              width={748}
+              height={738}
+              className="w-[150px] sm:w-[170px] h-auto block rounded-[20px]"
+              style={{ filter: 'drop-shadow(0 12px 30px rgba(0,0,0,0.35))' }}
+            />
+          </div>
+
         </div>
 
         {/* Hempel partner badge — right column, hidden below lg so it doesn't crowd the single-column mobile layout */}
