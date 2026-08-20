@@ -146,7 +146,7 @@ export default function Hero() {
 
           {/* Hempel partner badge — mobile/tablet, sits in the content flow since the two-column right-side placement doesn't apply below lg */}
           <div
-            className={`lg:hidden flex justify-center mt-8 transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            className={`lg:hidden flex justify-start mt-8 transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
             style={{ transitionDelay: '0.95s' }}
           >
             <Image
