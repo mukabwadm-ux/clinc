@@ -11,6 +11,8 @@ const companyLinks = [
   { label: 'About', href: '/about' },
   { label: 'Leadership', href: '/leadership' },
   { label: 'Case Stories', href: '/case-stories' },
+  { label: 'Guides', href: '/guides' },
+  { label: 'Blogs & Articles', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ]
 

@@ -45,3 +45,6 @@ dbclinc.txt
 # claude code
 .claude/
 .env*
+
+# impeccable design-hook session cache (config.json is committed)
+.impeccable/hook.cache.json

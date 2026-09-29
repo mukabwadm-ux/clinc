@@ -147,3 +147,87 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+/* Blog & article body — the rich-text HTML authored in the admin editor. */
+.post-body {
+  color: #3D4B6B;
+  font-size: 17px;
+  line-height: 1.8;
+  overflow-wrap: break-word;
+}
+.post-body > * + * { margin-top: 1.15em; }
+.post-body h2 {
+  color: #1A2B5E;
+  font-weight: 900;
+  font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1.25;
+  margin-top: 2.2em;
+  scroll-margin-top: 96px;
+}
+.post-body h3 {
+  color: #1A2B5E;
+  font-weight: 800;
+  font-size: clamp(18px, 2vw, 21px);
+  line-height: 1.35;
+  margin-top: 1.8em;
+  scroll-margin-top: 96px;
+}
+.post-body h4 {
+  color: #1A2B5E;
+  font-weight: 700;
+  font-size: 17px;
+  margin-top: 1.6em;
+}
+.post-body h2 + *, .post-body h3 + *, .post-body h4 + * { margin-top: 0.6em; }
+.post-body strong { color: #1A2B5E; font-weight: 700; }
+.post-body a {
+  color: #0070C0;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 112, 192, 0.35);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s;
+}
+.post-body a:hover { text-decoration-color: #0070C0; }
+.post-body ul, .post-body ol { padding-left: 1.4em; }
+.post-body ul { list-style: disc; }
+.post-body ol { list-style: decimal; }
+.post-body li + li { margin-top: 0.4em; }
+.post-body li::marker { color: #F5A623; font-weight: 700; }
+.post-body blockquote {
+  border-left: 3px solid #F5A623;
+  background: rgba(245, 166, 35, 0.06);
+  border-radius: 0 12px 12px 0;
+  padding: 1em 1.25em;
+  color: #1A2B5E;
+  font-weight: 500;
+}
+.post-body img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid rgba(26, 43, 94, 0.08);
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+}
+.post-body hr {
+  border: 0;
+  height: 1px;
+  background: rgba(26, 43, 94, 0.12);
+  margin: 2.5em 0;
+}
+.post-body code {
+  font-size: 0.9em;
+  background: rgba(26, 43, 94, 0.06);
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+}
+.post-body pre {
+  background: #040D1A;
+  color: #E2E8F0;
+  padding: 1.1em 1.25em;
+  border-radius: 12px;
+  overflow-x: auto;
+  font-size: 14px;
+}
+.post-body pre code { background: none; padding: 0; }

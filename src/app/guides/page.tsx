@@ -4,13 +4,18 @@ import { ArrowRight, BookOpen } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/sections/Footer'
 import { GUIDES } from '@/lib/guides/guides'
+import PostCard from '@/components/blog/PostCard'
+import { listPosts } from '@/lib/blog/queries'
+
+export const revalidate = 600
 
 export const metadata: Metadata = {
   title: 'Guides',
   description: 'Technical guides on protective and marine coatings from Clin Corp, Kenya\'s authorised Hempel distributor.',
 }
 
-export default function GuidesIndexPage() {
+export default async function GuidesIndexPage() {
+  const { posts: latest } = await listPosts()
   return (
     <>
       <Navbar />
@@ -67,6 +72,32 @@ export default function GuidesIndexPage() {
                   </span>
                 </Link>
               ))}
+            </div>
+
+            <div className="mt-16 sm:mt-20">
+              <div className="flex items-end justify-between gap-4 mb-6">
+                <div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="h-px w-8 rounded-full" style={{ background: '#F5A623' }} />
+                    <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[3px]" style={{ color: '#F5A623' }}>Insights</p>
+                  </div>
+                  <h2 className="font-sans font-black leading-tight" style={{ fontSize: 'clamp(22px, 3vw, 32px)', color: '#1A2B5E' }}>
+                    Blogs &amp; Articles
+                  </h2>
+                </div>
+                <Link href="/blog" className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-widest cursor-pointer shrink-0" style={{ color: '#0070C0' }}>
+                  View all <ArrowRight size={13} />
+                </Link>
+              </div>
+              {latest.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {latest.slice(0, 3).map((post) => <PostCard key={post.id} post={post} headingLevel="h3" />)}
+                </div>
+              ) : (
+                <p className="text-sm" style={{ color: '#6B7A99' }}>
+                  Practical advice on coatings, corrosion protection and application — first posts coming soon.
+                </p>
+              )}
             </div>
           </div>
         </section>

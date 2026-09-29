@@ -8,6 +8,8 @@ const titles: Record<string, string> = {
   '/admin/products': 'Products',
   '/admin/products/new': 'Add Product',
   '/admin/quotes': 'Quotes',
+  '/admin/posts': 'Blogs & Articles',
+  '/admin/posts/new': 'New Post',
   '/admin/media': 'Media',
   '/admin/contacts': 'Contacts',
 }
@@ -15,6 +17,7 @@ const titles: Record<string, string> = {
 function getTitle(pathname: string): string {
   if (titles[pathname]) return titles[pathname]
   if (pathname.includes('/products/') && pathname.endsWith('/edit')) return 'Edit Product'
+  if (pathname.includes('/posts/') && pathname.endsWith('/edit')) return 'Edit Post'
   return 'Admin'
 }
 

@@ -40,6 +40,47 @@ export const productSchema = z.object({
   application_instruction_url: z.string().max(1000).nullable().optional().transform(v => v || null),
 })
 
+const optionalText = (max: number) =>
+  z.string().max(max).transform(strip).nullable().optional().transform(v => v || null)
+
+export const postSchema = z.object({
+  type: z.enum(['blog', 'article'] as const, { error: 'Type must be blog or article' }),
+  status: z.enum(['draft', 'published'] as const, { error: 'Status must be draft or published' }),
+  title: z.string().min(1, 'Title is required').max(200).transform(strip),
+  slug: z
+    .string()
+    .min(1, 'Slug is required')
+    .max(120)
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Slug: lowercase letters, numbers, single hyphens only'),
+  excerpt: z.string().max(400).transform(strip).default(''),
+  content: z.string().max(300000, 'Content is too long').transform(s => s.trim()),
+  category: z.string().min(1, 'Category is required').max(80).transform(strip),
+  tags: z.array(z.string().max(50).transform(strip)).max(20).default([])
+    .transform(tags => [...new Set(tags.filter(Boolean))]),
+  author_name: z.string().min(1, 'Author is required').max(120).transform(strip),
+  cover_image_url: z.string().max(1000).nullable().optional().transform(v => v || null),
+  cover_image_alt: optionalText(300),
+  meta_title: optionalText(120),
+  meta_description: optionalText(320),
+  focus_keyword: optionalText(100),
+  canonical_url: z.string().max(500).nullable().optional().transform(v => v?.trim() || null)
+    .refine(v => !v || /^https:\/\/\S+$/.test(v), 'Canonical URL must start with https://'),
+  noindex: z.boolean().default(false),
+  is_featured: z.boolean().default(false),
+  faqs: z.array(z.object({
+    question: z.string().max(300).transform(strip),
+    answer: z.string().max(2000).transform(strip),
+  })).max(20).default([])
+    .transform(faqs => faqs.filter(f => f.question && f.answer)),
+  published_at: z.string().datetime({ offset: true }).nullable().optional().transform(v => v || null),
+}).superRefine((v, ctx) => {
+  if (v.status === 'published' && v.content.replace(/<[^>]*>/g, '').trim().length === 0) {
+    ctx.addIssue({ code: 'custom', path: ['content'], message: 'Content is required to publish' })
+  }
+})
+
+export type PostInput = z.infer<typeof postSchema>
+
 export const contactPatchSchema = z.object({
   is_read: z.boolean(),
 })

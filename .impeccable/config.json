@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/lib/blog/shared.ts"
+        ],
+        "createdAt": "2026-09-29T17:51:18.771Z",
+        "reason": "Claude: L209 is a regex literal matching <img> tags in post HTML for alt-text SEO checks, not a rendered image"
+      }
+    ]
+  }
+}

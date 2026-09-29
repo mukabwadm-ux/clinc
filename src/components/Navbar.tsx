@@ -25,7 +25,14 @@ const navLinks: NavLink[] = [
     ],
   },
   { label: 'Case Stories', href: '/case-stories' },
-  { label: 'Guides', href: '/guides' },
+  {
+    label: 'Guides',
+    href: '/guides',
+    children: [
+      { label: 'All Guides', href: '/guides' },
+      { label: 'Blogs & Articles', href: '/blog' },
+    ],
+  },
   { label: 'Contact', href: '/contact' },
 ]
 
