@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import { supabaseAdmin } from '@/lib/supabaseAdmin'
 import { uuidSchema } from '@/lib/adminValidation'
 import type { Post } from '@/lib/blog/shared'
-import PostForm, { isoToLocalInput } from '../../_components/PostForm'
+import PostForm from '../../_components/PostForm'
 import { getInternalLinks } from '../../_components/internalLinks'
 
 export const dynamic = 'force-dynamic'
@@ -44,8 +44,8 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
         noindex: post.noindex,
         is_featured: post.is_featured,
         faqs: Array.isArray(post.faqs) ? post.faqs : [],
-        published_at: isoToLocalInput(post.published_at),
       }}
+      publishedAtIso={post.published_at}
     />
   )
 }
