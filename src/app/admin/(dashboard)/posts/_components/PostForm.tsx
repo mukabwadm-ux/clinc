@@ -75,9 +75,11 @@ interface Props {
   /** Live URL — only for posts that are currently public. */
   liveSlug?: string | null
   internalLinks: { label: string; href: string }[]
+  /** Stored publish date (ISO). Converted to the editor's local time in the browser. */
+  publishedAtIso?: string | null
 }
 
-export default function PostForm({ initial, postId, liveSlug, internalLinks }: Props) {
+export default function PostForm({ initial, postId, liveSlug, internalLinks, publishedAtIso }: Props) {
   const router = useRouter()
   const searchParams = useSearchParams()
   const isEdit = !!postId
@@ -87,12 +89,17 @@ export default function PostForm({ initial, postId, liveSlug, internalLinks }: P
   const [openedAt] = useState(() => Date.now())
 
   const {
-    register, handleSubmit, setValue, control, setError, reset,
+    register, handleSubmit, setValue, control, setError, reset, resetField,
     formState: { errors, isSubmitting, isDirty },
   } = useForm<PostFormValues>({
     resolver: zodResolver(schema),
     defaultValues: { ...defaultValues, ...initial },
   })
+
+  // Convert the stored UTC date to local time in the browser (the server runs on UTC).
+  useEffect(() => {
+    if (publishedAtIso) resetField('published_at', { defaultValue: isoToLocalInput(publishedAtIso) })
+  }, [publishedAtIso, resetField])
 
   const { fields: faqFields, append: addFaq, remove: removeFaq } = useFieldArray({ control, name: 'faqs' })
   const { field: contentField } = useController({ control, name: 'content' })
